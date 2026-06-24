@@ -1,200 +1,132 @@
-/* ==========================================================================
-   MEDIA QUERIES (RESPONSIVIDADE PREMIUM OTIMIZADA)
-   ========================================================================== */
-
-/* Tablets e Desktops Pequenos */
 @media (max-width: 1024px) {
-    .container {
-        padding: 0 32px;
-    }
-
-    .section-padding {
-        padding: 80px 0;
-    }
-
-    .hero-content h1 {
-        font-size: 3.2rem;
-    }
-
-    /* Nova Barra de Filtros Interna no Layout Tablet */
     .filter-inner-grid {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        padding: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
-    .filter-divider {
-        width: 100%;
-        height: 1px;
-        background-color: #e2e8f0;
+    /* Remove a borda lateral dos elementos que agora quebram linha */
+    .filter-group {
+        padding-right: 0;
+        border-right: none;
+    }
+
+    /* Adiciona borda discreta apenas no primeiro bloco de cada linha fictícia */
+    .filter-inner-grid .filter-group:nth-child(1),
+    .filter-inner-grid .filter-group:nth-child(3) {
+        border-right: 1px solid var(--border-color);
+        padding-right: 16px;
     }
 
     .btn-search {
+        grid-column: span 2;
         width: 100%;
-        justify-content: center;
-    }
-
-    /* Adaptação da Listagem Vertical */
-    .properties-grid-vertical {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        height: 52px;
     }
 
     .about-container,
-    .contact-container,
-    .modal-grid {
+    .contact-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 48px;
     }
 
-    .about-image {
-        max-width: 500px;
-        margin: 0 auto;
+    .about-image img {
+        max-height: 440px;
+        width: 100%;
+        object-position: center;
     }
 }
 
-/* Smartphones Grandes e Tablets em Retrato */
+/* Tablets em Modo Retrato e Dispositivos Mobile */
 @media (max-width: 768px) {
-    .section-padding {
-        padding: 60px 0;
-    }
-
-    /* Fundo adaptado para a paleta escura corporativa quando fixo no mobile */
     #header {
         padding: 16px 0;
-        background-color: rgba(11, 25, 44, 0.98);
-        border-bottom: 1px solid var(--primary-blue-light);
     }
 
-    #header .logo,
-    #header .mobile-menu-toggle {
-        color: var(--white);
-    }
-
-    /* Oculta o grupo de redes do topo para evitar quebra de layout */
-    #header .header-socials {
-        display: none;
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-        z-index: 1001;
-    }
-
-    /* Menu Lateral Mobile (Drawer Premium) */
     .nav-menu {
         position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background-color: var(--primary-blue);
-        padding: 90px 40px 40px 40px;
-        box-shadow: -10px 0 30px rgba(6, 15, 26, 0.3);
+        top: 73px; /* Alinhado precisamente com a altura reduzida do header */
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 73px);
+        background-color: var(--white);
+        padding: 40px 24px;
         transition: var(--transition);
-        z-index: 1000;
-        border-left: 1px solid var(--primary-blue-light);
+        box-shadow: var(--shadow-md);
         display: flex;
         flex-direction: column;
-        justify-content: space-between; /* Empurra as redes sociais para a base */
+        justify-content: space-between; /* Empurra redes sociais para o rodapé do menu */
+        overflow-y: auto;
     }
 
     .nav-menu.active {
-        right: 0;
+        left: 0;
     }
 
     .nav-menu ul {
         flex-direction: column;
-        gap: 24px;
+        gap: 28px;
     }
 
-    .nav-menu a {
-        font-size: 1.1rem;
-        color: var(--white);
+    .nav-link {
+        font-size: 1.15rem;
+        font-weight: 600;
         display: block;
-        padding: 8px 0;
     }
 
-    .nav-menu a:hover,
-    .nav-menu a.active {
-        color: var(--gold);
-    }
-
-    /* Reposicionamento das Redes Sociais dentro do Menu Drawer */
+    /* Redes sociais realocadas para dentro do menu mobile (Experiência Completa) */
     .nav-menu .header-socials {
         display: flex;
-        justify-content: flex-start;
-        gap: 16px;
+        justify-content: center;
+        gap: 20px;
         padding-top: 32px;
-        border-top: 1px solid var(--primary-blue-light);
+        border-top: 1px solid var(--border-color);
     }
 
-    .nav-menu .header-socials a {
-        color: rgba(255, 255, 255, 0.8);
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius: 50%;
+    #header .header-socials {
+        display: none; /* Esconde do header principal */
+    }
+
+    .mobile-menu-toggle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
-        padding: 0;
+        width: 40px;
+        height: 40px;
     }
 
-    .nav-menu .header-socials a:hover {
-        color: var(--gold);
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Hero & Trust Bar Adjustments */
-    .hero-section {
-        padding-top: 80px;
-        min-height: auto;
-        height: auto;
-        padding-bottom: 60px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .trust-bar {
-        padding: 20px 0;
-    }
-
-    .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    /* Reset completo dos divisores do filtro em telas mobile */
+    .filter-inner-grid {
+        grid-template-columns: 1fr;
         gap: 16px;
     }
 
-    /* Mudança para Grid de Coluna Única nos Cards */
-    .properties-grid-vertical {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .filter-group,
+    .filter-inner-grid .filter-group:nth-child(1),
+    .filter-inner-grid .filter-group:nth-child(3) {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 12px;
     }
 
-    /* Tipografia e Blocos Gerais */
+    .btn-search {
+        grid-column: span 1;
+        margin-top: 8px;
+    }
+
     .section-header-flex {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
-        margin-bottom: 32px;
     }
 
-    .section-header h2,
-    .section-header-title h2,
-    .middle-cta-container h2,
-    .about-content h2,
-    .contact-info h2 {
-        font-size: 2rem;
+    .property-info {
+        padding: 24px; /* Otimização de espaço interno em mobile */
     }
 
-    .testimonial-card {
-        padding: 30px 20px;
+    .contact-form-wrapper,
+    .modal-content {
+        padding: 32px 20px;
     }
 
     .footer-container {
@@ -206,57 +138,40 @@
     .footer-brand p {
         margin: 0 auto;
     }
-}
 
-/* Smartphones Pequenos */
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.1rem;
+    .footer-copy {
+        text-align: center;
     }
 
-    .trust-grid,
-    .stats-grid,
-    .modal-meta-grid {
-        grid-template-columns: 1fr;
-        /* Simplificação total para viewport compacto */
-    }
-
-    .filter-wrapper-floating {
-        padding: 12px;
-    }
-
-    .filter-modes {
-        padding-left: 4px;
-    }
-
-    .property-info {
-        padding: 20px;
-    }
-
-    .property-features {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    /* Modal Premium Refinado */
-    .modal-content {
-        padding: 30px 16px 20px 16px;
-        width: 94%;
-        margin: 0 auto;
-    }
-
-    .modal-close {
-        top: 12px;
-        right: 16px;
-        color: var(--primary-blue);
-    }
-
-    /* Botão flutuante do WhatsApp otimizado */
     .whatsapp-floating {
-        bottom: 20px;
-        right: 20px;
+        bottom: 24px;
+        right: 24px;
         width: 52px;
         height: 52px;
-        font-size: 1.6rem;
+        font-size: 1.75rem;
+    }
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE E ANIMAÇÕES
+   ========================================================================== */
+
+/* Suporte para usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

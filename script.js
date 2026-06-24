@@ -1,92 +1,79 @@
-/* ==========================================================================
-   ARRAYS DE DADOS DOS EMPREENDIMENTOS (REFERÊNCIA DE ALTO PADRÃO - PALMAS/TO)
-   ========================================================================== */
 const empreendimentos = [
     {
         id: 1,
-        nome: "Residencial Palma",
-        status: "Lançamento",
+        nome: "Reserva dos Girassóis",
+        status: "Destaque",
         statusCode: "lancamento",
-        badgeColor: "#10b981", /* Verde Esmeralda Soft */
-        bairro: "Orla 14",
-        quartos: 3,
-        vagas: 2,
-        area: "120m² a 180m²",
-        imagem: "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
-        descricao: "O maior destaque da Orla 14. Apartamentos com vista panorâmica definitiva para o lago, acabamento de alto padrão e varanda gourmet integrada.",
-        diferenciais: ["Piscina de borda infinita", "Automação residencial completa", "Portaria blindada com IA", "Gerador integral"]
+        badgeColor: "#10b981",
+        bairro: "Quadra 1506 Sul",
+        quartos: 2,
+        vagas: "1 a 2",
+        area: "Planta Inteligente",
+        // Ajustado para o nome real do arquivo na sua pasta img
+        imagem: "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
+        descricao: "Uma excelente oportunidade de investimento patrimonial com plantas inteligentes pensadas para o bem-estar e o conforto da sua família.",
+        diferenciais: ["2 Quartos (sendo 1 Suíte)", "Varanda Gourmet Integrada", "1 a 2 Vagas de Garagem", "Opções de quintal privativo (Garden)"]
     },
     {
         id: 2,
-        nome: "Reserva dos Girassóis",
-        status: "Últimas Unidades",
-        statusCode: "ultimas",
-        badgeColor: "#b89047", /* Dourado Corporativo */
-        bairro: "Plano Diretor Sul",
+        nome: "Residencial 606 Norte",
+        status: "Exclusivo",
+        statusCode: "venda",
+        badgeColor: "#b89047",
+        bairro: "Quadra 606 Norte",
         quartos: 2,
         vagas: 1,
-        area: "78m²",
-        imagem: "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUAR TA-R03.jpg",
-        descricao: "Oportunidade única de morar bem no coração corporativo de Palmas. Planta inteligente e perfeitamente otimizada para a vida moderna.",
-        diferenciais: ["Coworking interno premium", "Rooftop Lounge", "Vaga pronta para carro elétrico"]
+        area: "Planta Otimizada",
+        // Ajustado conforme o padrão de nomenclatura que você está usando
+        imagem: "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
+        descricao: "Localização estratégica que une tranquilidade residencial ao acesso facilitado aos principais pontos comerciais da região norte.",
+        diferenciais: ["2 Quartos Premium", "Sacada com Vista Privilegiada", "1 Vaga de Garagem Coberta", "Alta iluminação natural"]
     },
     {
         id: 3,
-        nome: "Palmeira Serene",
-        status: "Exclusivo",
-        statusCode: "venda",
-        badgeColor: "#d97706", /* Âmbar Sofisticado */
-        bairro: "Jardim Europa",
-        quartos: 4,
-        vagas: 3,
-        area: "210m²",
+        nome: "Residencial 1101 Sul",
+        status: "Lançamento",
+        statusCode: "lancamento",
+        badgeColor: "#d97706",
+        bairro: "Quadra 1101 Sul",
+        quartos: 2,
+        vagas: "Privativa",
+        area: "Conceito Moderno",
+        // Ajustado para a imagem correspondente da guarita/fachada disponível
         imagem: "img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg",
-        descricao: "Verdadeiras mansões suspensas em área nobre. Conforto térmico de última geração adaptado perfeitamente ao clima da capital.",
-        diferenciais: ["Elevador privativo biométrico", "4 Suítes plenas", "Climatização central dutada"]
+        descricao: "Conceito moderno de moradia que integra uma infraestrutura de lazer incomparável para desfrutar os melhores momentos em família.",
+        diferenciais: ["2 Quartos (plantas versáteis)", "Ampla Varanda Social", "Garagem Privativa", "Lazer completo, equipado e decorado"]
     },
     {
         id: 4,
         nome: "Palmeira Solare",
-        status: "À Venda",
-        statusCode: "venda",
-        badgeColor: "#3b82f6", /* Azul Soft */
-        bairro: "Orla 14",
-        quartos: 3,
-        vagas: 2,
-        area: "95m²",
+        status: "Últimas Unidades",
+        statusCode: "ultimas",
+        badgeColor: "#3b82f6",
+        bairro: "Ao lado do Shopping Capim Dourado",
+        quartos: 2,
+        vagas: "Até 2",
+        area: "Alto Padrão",
+        // Ajustado para o nome real do arquivo na sua pasta img
         imagem: "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
-        descricao: "Arquitetura biofílica perfeitamente integrada à paisagem urbana. Iluminação natural abundante e áreas comuns com assinaturas renomadas.",
-        diferenciais: ["Energia solar nas áreas comuns", "Academia de última geração", "Pet Place com spa dedicado"]
-    },
-    {
-        id: 5,
-        nome: "Palmeira Boreal",
-        status: "Sucesso de Vendas",
-        statusCode: "sucesso",
-        badgeColor: "#0f1a24", /* Azul Marinho Profundo */
-        bairro: "Plano Diretor Sul",
-        quartos: 4,
-        vagas: 4,
-        area: "340m²",
-        imagem: "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg", // Usando como referência premium disponível
-        descricao: "O ápice absoluto do luxo, sofisticação e da privacidade. Um marco arquitetônico com pouquíssimas unidades remanescentes.",
-        diferenciais: ["Heliponto homologado próximo", "Piscina privativa na varanda", "Adega climatizada no subsolo"]
+        descricao: "O ápice da conveniência urbana. Viva a poucos passos do principal shopping da cidade com total requinte, segurança e lazer completo.",
+        diferenciais: ["2 Quartos (Suíte com Acabamento Premium)", "Varanda com Churrasqueira integrada", "Até 2 Vagas de Garagem", "Complexo de Lazer com Piscina e SPA"]
     }
 ];
 
-// DEPOIMENTOS (PROVA SOCIAL PREMIUM)
+// DATASET DE DEPOIMENTOS (RESOLVE O ERRO DE REFERÊNCIA)
 const depoimentos = [
     {
-        nome: "Mariana Fontes",
-        cargo: "Investidora — Orla 14",
-        texto: '"A assessoria superou todas as expectativas. Desde as primeiras reuniões corporativas até o suporte estratégico na escolha das melhores plantas, o processo foi impecável."',
-        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+        nome: "Ricardo Cavalcante",
+        cargo: "Investidor Imobiliário",
+        texto: "O atendimento consultivo superou todas as expectativas. A transparência na apresentação das plantas corporativas na Orla 14 foi o diferencial para fecharmos o negócio.",
+        img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&auto=format&fit=crop&q=80"
     },
     {
-        nome: "Dr. Carlos Eduardo",
-        cargo: "Médico — Palmeira Boreal",
-        texto: '"Atendimento com total discrição e nível premium. Atua verdadeiramente como um consultor estratégico focado na expansão e proteção do patrimônio imobiliário de alto padrão."',
-        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100"
+        nome: "Mariana Fontes",
+        cargo: "Investidora - Orla 14",
+        texto: "O Neto superou todas as expectativas. Desde a primeira reunião até o suporte pós-venda na entrega das chaves do Residencial Palma, o processo foi impecável.",
+        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
     }
 ];
 
@@ -101,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initModal();
 });
 
-// STICKY HEADER & MENU LATERAL MOBILE (DRAWER COM SUPORTE A REDES SOCIAIS)
+// STICKY HEADER & MENU LATERAL MOBILE
 function initHeader() {
     const header = document.getElementById("header");
     if (header) {
@@ -125,7 +112,6 @@ function initHeader() {
                 : '<i class="fa-solid fa-bars"></i>';
         });
 
-        // Fecha o menu ao clicar em qualquer link de navegação interno
         nav.querySelectorAll("ul a").forEach(link => {
             link.addEventListener("click", () => {
                 nav.classList.remove("active");
@@ -135,7 +121,7 @@ function initHeader() {
     }
 }
 
-// RENDERIZAR CARDS (ESTILO DE SELEÇÃO EXCLUSIVA - SEM EXIBIÇÃO DE PREÇOS)
+// RENDERIZAR CARDS (SEM EXIBIÇÃO DE PREÇOS)
 function renderCards(dados) {
     const container = document.getElementById("properties-container");
     if (!container) return;
@@ -148,36 +134,40 @@ function renderCards(dados) {
     }
 
     dados.forEach((item) => {
-        const card = document.createElement("div");
+        const card = document.createElement("article");
         card.className = "property-card";
         
+        // Mapeia os diferenciais para criar os itens da lista lateral/inferior do card
+        let featuresHTML = "";
+        item.diferenciais.forEach((dif, index) => {
+            let icon = "fa-check";
+            if (index === 0) icon = "fa-bed";
+            else if (index === 1) icon = "fa-vector-square";
+            else if (index === 2) icon = "fa-car";
+            
+            featuresHTML += `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
+        });
+        
         card.innerHTML = `
-            <div class="property-media">
-                <span class="property-badge" style="background-color: ${item.badgeColor}">${item.status}</span>
-                <div class="property-slider">
-                    <img src="${item.imagem}" alt="${item.nome}" loading="lazy">
-                </div>
+            <div class="property-image-wrapper">
+                <img src="${item.imagem}" alt="${item.nome} - ${item.bairro}" loading="lazy">
+                <span class="property-tag" style="background-color: ${item.badgeColor || 'var(--gold)'}">${item.status}</span>
             </div>
             <div class="property-info">
-                <div class="property-location">
-                    <i class="fa-solid fa-location-dot icon-gold"></i> ${item.bairro}, Palmas - TO
-                </div>
+                <span class="property-location"><i class="fa-solid fa-map-pin"></i> ${item.bairro}, Palmas - TO</span>
                 <h3>${item.nome}</h3>
-                <p class="property-desc">${item.descricao}</p>
-                <div class="property-features">
-                    <span><i class="fa-solid fa-ruler-combined"></i> ${item.area}</span>
-                    <span><i class="fa-solid fa-bed"></i> ${item.quartos} Qts</span>
-                    <span><i class="fa-solid fa-car"></i> ${item.vagas} Vag</span>
-                </div>
-                <button class="btn btn-primary-outline btn-full open-details" data-id="${item.id}">
-                    Contatar Consultor <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem; margin-left: 4px;"></i>
+                <p class="property-description">${item.descricao}</p>
+                <ul class="property-features">
+                    ${featuresHTML}
+                </ul>
+                <button class="btn btn-secondary-card open-details" data-id="${item.id}" style="width: 100%; text-align: center; margin-top: 15px;">
+                    Solicitar Informações
                 </button>
             </div>
         `;
         container.appendChild(card);
     });
 
-    // Gatilhos do Modal Dinâmico Premium
     document.querySelectorAll(".open-details").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const button = e.target.closest(".open-details");
@@ -187,11 +177,12 @@ function renderCards(dados) {
     });
 }
 
-// FILTROS REAL-TIME ATUALIZADOS
+// FILTROS REAL-TIME
 function initFilters() {
     const filterStatus = document.getElementById("filter-status");
     const filterBairro = document.getElementById("filter-bairro");
     const filterQuartos = document.getElementById("filter-quartos");
+    const btnSearch = document.getElementById("btn-execute-filter");
 
     if (!filterStatus || !filterBairro || !filterQuartos) return;
 
@@ -202,7 +193,8 @@ function initFilters() {
             filtrados = filtrados.filter(item => item.statusCode === filterStatus.value);
         }
         if (filterBairro.value) {
-            filtrados = filtrados.filter(item => item.bairro === filterBairro.value);
+            // Permite busca parcial ou por correspondência de bairros mapeados na busca
+            filtrados = filtrados.filter(item => item.bairro.toLowerCase().includes(filterBairro.value.toLowerCase()));
         }
         if (filterQuartos.value) {
             const q = parseInt(filterQuartos.value);
@@ -212,9 +204,17 @@ function initFilters() {
         renderCards(filtrados);
     }
 
+    // Filtros executam tanto na mudança quanto no clique do botão "Buscar"
     [filterStatus, filterBairro, filterQuartos].forEach(el => {
         el.addEventListener("change", aplicarFiltros);
     });
+
+    if (btnSearch) {
+        btnSearch.addEventListener("click", (e) => {
+            e.preventDefault();
+            aplicarFiltros();
+        });
+    }
 }
 
 // ANIMAÇÃO DE MÉTRICAS (INTERSECTION OBSERVER)
@@ -257,14 +257,14 @@ function initStatsAnimation() {
     observer.observe(statsSection);
 }
 
-// CARROSSEL SUAVE DE DEPOIMENTOS
+// CARROSSEL DE DEPOIMENTOS
 let currentTestimonial = 0;
 function initTestimonials() {
     const nextBtn = document.getElementById("next-testimonial");
     const prevBtn = document.getElementById("prev-testimonial");
     const card = document.querySelector(".testimonial-card");
 
-    if (!nextBtn || !prevBtn || !card) return;
+    if (!nextBtn || !prevBtn || !card || !depoimentos.length) return;
 
     function updateTestimonial(index) {
         const t = depoimentos[index];
@@ -272,7 +272,7 @@ function initTestimonials() {
         card.style.transform = "translateY(8px)";
         
         setTimeout(() => {
-            card.querySelector(".testimonial-text").innerText = t.texto;
+            card.querySelector(".testimonial-text").innerText = `"${t.texto.replace(/"/g, '')}"`;
             card.querySelector(".testimonial-user img").src = t.img;
             card.querySelector(".testimonial-user h4").innerText = t.nome;
             card.querySelector(".testimonial-user span").innerText = t.cargo;
@@ -292,9 +292,9 @@ function initTestimonials() {
     });
 }
 
-// CAPTURA E VALIDAÇÃO DE LEADS DE ALTO PADRÃO
+// CAPTURA E VALIDAÇÃO DE LEADS (Ajustado id do formulário para bater com o HTML "lead-form")
 function initFormValidation() {
-    const form = document.getElementById("contact-form");
+    const form = document.getElementById("lead-form") || document.getElementById("contact-form");
     if (!form) return;
     
     form.addEventListener("submit", (e) => {
@@ -318,6 +318,7 @@ function initFormValidation() {
 
         if (isValid) {
             const btn = form.querySelector("button[type='submit']");
+            const originalText = btn.innerText;
             btn.innerText = "Enviando Solicitação Privada...";
             btn.disabled = true;
 
@@ -344,7 +345,7 @@ function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// CONTROLE DO MODAL CORPORATIVO (SEM PREÇOS - FOCO TOTAL NA SOLICITAÇÃO)
+// CONTROLE DO MODAL
 const modal = document.getElementById("premium-modal");
 function initModal() {
     if (!modal) return;
@@ -378,37 +379,37 @@ function openModalDetails(id) {
 
     let diferenciaisHTML = "";
     item.diferenciais.forEach(dif => {
-        diferenciaisHTML += `<li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark); font-weight:500;"><i class="fa-solid fa-check" style="color:var(--gold); font-size: 0.95rem;"></i> ${dif}</li>`;
+        diferenciaisHTML += `<li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark); font-weight:500; text-align: left;"><i class="fa-solid fa-check" style="color:var(--gold); font-size: 0.95rem;"></i> ${dif}</li>`;
     });
 
     body.innerHTML = `
-        <div class="modal-grid">
+        <div class="modal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left;">
             <div class="modal-gallery">
-                <img src="${item.imagem}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md); object-fit:cover; height:280px; margin-bottom:12px;">
-                <div style="background:var(--bg-light); padding: 16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); border-radius:var(--radius-md); font-size: 0.85rem; border: 1px dashed var(--primary-blue-light); text-align:center;">
-                    <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; margin-right:8px; color: var(--gold);"></i> Plantas de Prerrogativa Corporativa sob Consulta.
+                <img src="${item.imagem}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">
+                <div style="background:var(--bg-light, #f9f9f9); padding: 16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted, #666); border-radius:var(--radius-md, 8px); font-size: 0.85rem; border: 1px dashed #3b82f6; text-align:center;">
+                    <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; margin-right:8px; color: var(--gold, #b89047);"></i> Plantas de Prerrogativa Corporativa sob Consulta.
                 </div>
             </div>
-            <div class="modal-info" style="display: flex; flex-direction: column;">
+            <div class="modal-info" style="display: flex; flex-direction: column; justify-content: center;">
                 <span style="color:${item.badgeColor}; font-weight:700; text-transform:uppercase; font-size:0.75rem; letter-spacing: 0.5px;">${item.status}</span>
-                <h2 style="font-size:1.8rem; margin: 4px 0 12px 0; color:var(--text-dark); line-height: 1.2; font-weight:700;">${item.nome}</h2>
-                <p style="color:var(--text-muted); margin-bottom:20px; font-size: 0.95rem; line-height: 1.5;">${item.descricao}</p>
+                <h2 style="font-size:1.8rem; margin: 4px 0 12px 0; color:var(--text-dark, #111); line-height: 1.2; font-weight:700;">${item.nome}</h2>
+                <p style="color:var(--text-muted, #666); margin-bottom:20px; font-size: 0.95rem; line-height: 1.5;">${item.descricao}</p>
                 
-                <h4 style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 10px; font-weight:700;">Diferenciais do Empreendimento</h4>
-                <ul style="margin-bottom: 24px; display:flex; flex-direction:column; gap:10px;">
+                <h4 style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; color: var(--text-muted, #666); margin-bottom: 10px; font-weight:700;">Destaques da Unidade</h4>
+                <ul style="margin-bottom: 24px; display:flex; flex-direction:column; gap:10px; list-style: none; padding: 0;">
                     ${diferenciaisHTML}
                 </ul>
 
                 <div class="modal-meta-grid" style="margin-bottom: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                    <div style="font-size: 0.85rem; color: var(--text-dark);"><strong>Configuração de Área:</strong><br><span style="color:var(--text-muted);">${item.area}</span></div>
-                    <div style="font-size: 0.85rem; color: var(--text-dark);"><strong>Região Climatizada:</strong><br><span style="color:var(--text-muted);">${item.bairro}</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-dark, #111);"><strong>Configuração:</strong><br><span style="color:var(--text-muted, #666);">${item.area}</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-dark, #111);"><strong>Região / Setor:</strong><br><span style="color:var(--text-muted, #666);">${item.bairro}</span></div>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:10px; margin-top: auto;">
-                    <a href="https://wa.me/5563999999999?text=Olá,%20gostaria%20de%20receber%20a%20ficha%20técnica%20e%20disponibilidade%20do%20${encodeURIComponent(item.nome)}" target="_blank" class="btn btn-primary" style="text-align: center; justify-content: center;">
+                    <a href="https://wa.me/5563999999999?text=Olá,%20gostaria%20de%20receber%20a%20ficha%20técnica%20e%20disponibilidade%20do%20${encodeURIComponent(item.nome)}" target="_blank" class="btn btn-primary" style="text-align: center; justify-content: center; display: inline-flex; align-items: center; background: #10b981; color: #fff; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 600;">
                         <i class="fa-brands fa-whatsapp" style="margin-right: 6px;"></i> Simular Disponibilidade via WhatsApp
                     </a>
-                    <button class="btn btn-primary-outline" id="modal-scroll-contact">Consultar Memorial Descritivo Completo</button>
+                    <button class="btn btn-primary-outline" id="modal-scroll-contact" style="padding: 12px; border-radius: 6px; background: transparent; border: 1px solid #ccc; cursor: pointer;">Consultar Memorial Descritivo Completo</button>
                 </div>
             </div>
         </div>

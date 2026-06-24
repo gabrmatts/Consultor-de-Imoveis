@@ -4,232 +4,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Encontre seu imóvel de alto padrão em Palmas com Neto Consultor de Imóveis. Lançamentos exclusivos e atendimento personalizado.">
+    <meta name="description" content="Encontre seu imóvel de alto padrão em Palmas com Neto Consultor de Imóveis. Lançamentos exclusivos e atendimento personalizado de forma reservada.">
     <title>Neto Consultor de Imóveis | Mercado Imobiliário Premium em Palmas</title>
+    
     <!-- Fontes e Ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Estilos -->
+    
+    <!-- Estilos Unificados e Escaláveis -->
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="src/responsivo.css">
 </head>
 
 <body>
 
-    <!-- HEADER (Navbar limpa e elegante) -->
+    <!-- HEADER (Navbar Suspensa e Minimalista) -->
     <header id="header">
         <div class="container header-container">
-            <a href="#inicio" class="logo">
-                NETO<span class="zap-purple-text">CONSULTOR</span>
+            <a href="#inicio" class="logo" aria-label="Neto Consultor - Voltar ao Início">
+                NETO<span class="brand-accent">CONSULTOR</span>
             </a>
-            <nav class="nav-menu">
+            
+            <nav class="nav-menu" aria-label="Navegação Principal">
                 <ul>
-                    <li><a href="#inicio" class="active">Início</a></li>
-                    <li><a href="#empreendimentos">Empreendimentos</a></li>
-                    <li><a href="#sobre">Sobre Mim</a></li>
-                    <li><a href="#clientes">Clientes</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#inicio" class="nav-link active">Início</a></li>
+                    <li><a href="#empreendimentos" class="nav-link">Empreendimentos</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre Mim</a></li>
+                    <li><a href="#clientes" class="nav-link">Clientes</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
             
-            <!-- Redes Sociais Premium substituindo o CTA antigo -->
+            <!-- Redes Sociais Premium -->
             <div class="header-socials">
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Acessar o Instagram Profissional"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Acessar Perfil no LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Acessar Página no Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             </div>
 
-            <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="header" aria-label="Abrir Menu de Navegação">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <!-- HERO SECTION (Design Elegante e Imponente com Filtro Flutuante Integrado) -->
-    <section id="inicio" class="hero-section" style="background-image: url('image_5352e3.jpg');">
-        <div class="hero-bg-overlay"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <span class="hero-subtitle">Sua Consultoria de Alto Padrão em Palmas</span>
-                <h1>Encontre a Casa<br>dos Seus Sonhos</h1>
-                <p>Os melhores empreendimentos selecionados a dedo, combinando arquitetura biofílica, localizações icônicas e total privacidade patrimonial.</p>
-            </div>
-
-            <!-- FILTROS DE BUSCA FLUTUANTES (Alinhado com a arquitetura limpa do script) -->
-            <div class="filter-wrapper-floating">
-                <div class="filter-modes">
-                    <button class="filter-mode-btn active">Comprar</button>
-                    <button class="filter-mode-btn">Lançamentos</button>
+    <main>
+        <!-- HERO SECTION (Sofisticação Visual e Filtro Inteligente) -->
+        <section id="inicio" class="hero-section" style="background-image: url('PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg');">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Sua Consultoria de Alto Padrão em Palmas</span>
+                    <h1>Encontre a Casa<br>dos Seus Sonhos</h1>
+                    <p>Os melhores empreendimentos selecionados a dedo, combinando arquitetura biofílica, localizações icônicas e total privacidade patrimonial.</p>
                 </div>
-                <div class="filter-inner-grid">
-                    <div class="filter-group">
-                        <label for="filter-status"><i class="fa-solid fa-toggle-on icon-purple"></i> Status</label>
-                        <select id="filter-status">
-                            <option value="">Mostrar Todos</option>
-                            <option value="lancamento">Lançamentos</option>
-                            <option value="ultimas">Últimas Unidades</option>
-                            <option value="venda">À Venda</option>
-                            <option value="sucesso">Sucesso de Vendas</option>
-                        </select>
+
+                <!-- FILTROS DE BUSCA FLUTUANTES -->
+                <div class="filter-wrapper-floating">
+                    <div class="filter-modes">
+                        <button class="filter-mode-btn active" type="button" data-mode="comprar">Comprar</button>
+                        <button class="filter-mode-btn" type="button" data-mode="lancamentos">Lançamentos</button>
                     </div>
-                    <div class="filter-divider"></div>
-                    <div class="filter-group">
-                        <label for="filter-bairro"><i class="fa-solid fa-map-pin icon-purple"></i> Região / Bairro</label>
-                        <select id="filter-bairro">
-                            <option value="">Todos os Bairros</option>
-                            <option value="Orla 14">Orla 14</option>
-                            <option value="Plano Diretor Sul">Plano Diretor Sul</option>
-                            <option value="Jardim Europa">Jardim Europa</option>
-                        </select>
-                    </div>
-                    <div class="filter-divider"></div>
-                    <div class="filter-group">
-                        <label for="filter-quartos"><i class="fa-solid fa-bed icon-purple"></i> Quartos Mínimos</label>
-                        <select id="filter-quartos">
-                            <option value="">Qualquer quantidade</option>
-                            <option value="2">2+ Quartos</option>
-                            <option value="3">3+ Quartos</option>
-                            <option value="4">4+ Quartos</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-search" id="btn-execute-filter" aria-label="Buscar imóveis">
-                        <i class="fa-solid fa-magnifying-glass"></i> <span>Buscar</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST BAR INTEGRADA -->
-    <div class="trust-bar">
-        <div class="container trust-grid">
-            <div class="trust-item"><i class="fa-solid fa-user-tie"></i> Atendimento Personalizado</div>
-            <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Suporte Completo</div>
-            <div class="trust-item"><i class="fa-solid fa-gem"></i> Empreendimentos Selecionados</div>
-            <div class="trust-item"><i class="fa-solid fa-handshake"></i> Consultoria Especializada</div>
-        </div>
-    </div>
-
-    <!-- SEÇÃO DE EMPREENDIMENTOS (Estilo "Best Deals" Minimalista e Sofisticado) -->
-    <section id="empreendimentos" class="section-padding">
-        <div class="container">
-            <div class="section-header-flex">
-                <div class="section-header-title">
-                    <span class="subtitle">Oportunidades Exclusivas</span>
-                    <h2 class="serif-title">Best Deals</h2>
-                    <p>Descubra os projetos de maior destaque no mercado premium sem precificações públicas expostas.</p>
-                </div>
-                <a href="#contato" class="view-all-link">Ver Todos no Portfólio <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <!-- Grid de cards verticais limpos renderizados dinamicamente pelo JavaScript (Sem Preços) -->
-            <div class="properties-grid-vertical" id="properties-container">
-                <!-- O JavaScript irá injetar os cards estruturados aqui automaticamente -->
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA INTERMEDIÁRIO -->
-    <section class="middle-cta-section">
-        <div class="container middle-cta-container">
-            <h2>Não encontrou o que procurava?</h2>
-            <p>Deixe que uma consultoria analítica encontre a joia rara ideal para o seu perfil e investimento.</p>
-            <a href="#contato" class="btn btn-primary">Encontrar Meu Imóvel Ideal</a>
-        </div>
-    </section>
-
-    <!-- MAPA DE LOCALIZAÇÃO -->
-    <section class="map-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">Localização Privilegiada</span>
-                <h2>Empreendimentos em Palmas - TO</h2>
-            </div>
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31849.578680381663!2d-48.3340455!3d-10.1834045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9324cc30e9d6d713%3A0x67eeaaeb4f0e0fdf!2sPalmas%2C%20TO!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOBRE O CONSULTOR -->
-    <section id="sobre" class="about-section section-padding">
-        <div class="container about-container">
-            <div class="about-image">
-                <img src="img/Foto Profissonal - Neto.png"
-                    alt="Neto Consultor de Imóveis" loading="lazy">
-            </div>
-            <div class="about-content">
-                <span class="subtitle">Especialista no Alto Padrão</span>
-                <h2>Conheça Neto Consultor de Imóveis</h2>
-                <p>Com anos de atuação sólida no mercado imobiliário de Palmas, dedico minha carreira a transformar transações imobiliárias em experiências seguras, sofisticadas e extremamente rentáveis.</p>
-                <p>Minha premissa é o atendimento sob medida (tailor-made), garantindo segurança jurídica e privacidade absoluta da escolha da planta à entrega das chaves.</p>
-
-                <div class="stats-grid" id="stats-section">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="250">0</span>
-                        <span class="stat-label">Imóveis Vendidos</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="500">0</span>
-                        <span class="stat-label">Clientes Atendidos</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="10">0</span>
-                        <span class="stat-label">Anos de Experiência</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="100">0</span>
-                        <span class="stat-label">% de Satisfação</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEEDBACK DOS CLIENTES -->
-    <section id="clientes" class="testimonials-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">Prova Social</span>
-                <h2>Veja os depoimentos de quem realizou o sonho</h2>
-                <p>Histórias reais de investidores e famílias que confiaram em nossa assessoria exclusiva.</p>
-            </div>
-
-            <div class="testimonials-wrapper">
-                <div class="testimonials-slider">
-                    <div class="testimonial-card active">
-                        <div class="testimonial-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
+                    <div class="filter-inner-grid">
+                        <div class="filter-group">
+                            <label for="filter-status"><i class="fa-solid fa-toggle-on icon-accent"></i> Status</label>
+                            <select id="filter-status" name="status">
+                                <option value="">Mostrar Todos</option>
+                                <option value="lancamento">Lançamentos</option>
+                                <option value="ultimas">Últimas Unidades</option>
+                                <option value="venda">À Venda</option>
+                                <option value="sucesso">Sucesso de Vendas</option>
+                            </select>
                         </div>
-                        <p class="testimonial-text">"O Neto superou todas as expectativas. Desde a primeira reunião até o suporte pós-venda na entrega das chaves do Residencial Palma, o processo foi impecável."</p>
-                        <div class="testimonial-user">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
-                                alt="Cliente" loading="lazy">
-                            <div>
-                                <h4>Mariana Fontes</h4>
-                                <span>Investidora - Orla 14</span>
+                        <div class="filter-divider" aria-hidden="true"></div>
+                        <div class="filter-group">
+                            <label for="filter-bairro"><i class="fa-solid fa-map-pin icon-accent"></i> Região / Bairro</label>
+                            <select id="filter-bairro" name="bairro">
+                                <option value="">Todos os Bairros</option>
+                                <option value="Orla 14">Orla 14</option>
+                                <option value="Plano Diretor Sul">Plano Diretor Sul</option>
+                                <option value="Jardim Europa">Jardim Europa</option>
+                            </select>
+                        </div>
+                        <div class="filter-divider" aria-hidden="true"></div>
+                        <div class="filter-group">
+                            <label for="filter-quartos"><i class="fa-solid fa-bed icon-accent"></i> Quartos Mínimos</label>
+                            <select id="filter-quartos" name="quartos">
+                                <option value="">Qualquer quantidade</option>
+                                <option value="2">2+ Quartos</option>
+                                <option value="3">3+ Quartos</option>
+                                <option value="4">4+ Quartos</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-search" id="btn-execute-filter" aria-label="Executar busca de imóveis">
+                            <i class="fa-solid fa-magnifying-glass"></i> <span>Buscar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST BAR INTEGRADA (Garantia de Autoridade) -->
+        <section class="trust-bar" aria-label="Diferenciais do Atendimento">
+            <div class="container trust-grid">
+                <div class="trust-item"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> <span>Atendimento Personalizado</span></div>
+                <div class="trust-item"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> <span>Suporte Completo</span></div>
+                <div class="trust-item"><i class="fa-solid fa-gem" aria-hidden="true"></i> <span>Empreendimentos Selecionados</span></div>
+                <div class="trust-item"><i class="fa-solid fa-handshake" aria-hidden="true"></i> <span>Consultoria Especializada</span></div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE EMPREENDIMENTOS -->
+        <section id="empreendimentos" class="section-padding">
+            <div class="container">
+                <div class="section-header-flex">
+                    <div class="section-header-title">
+                        <span class="subtitle">Oportunidades Exclusivas</span>
+                        <h2 class="serif-title">Empreendimentos</h2>
+                        <p>Descubra os projetos de maior destaque no mercado premium sem precificações públicas expostas.</p>
+                    </div>
+                    <a href="#contato" class="view-all-link">Ver Todos no Portfólio <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+
+                <!-- Grid de Imóveis Atualizado com Infraestrutura Detalhada -->
+                <div class="properties-grid-vertical" id="properties-container">
+                    
+                    <!-- Imóvel 1 -->
+                    <article class="property-card">
+                        <div class="property-image-wrapper">
+                            <img src="img/reserva-girassois.jpg" alt="Reserva dos Girassóis - Quadra 1506 Sul" loading="lazy">
+                            <span class="property-tag">Destaque</span>
+                        </div>
+                        <div class="property-info">
+                            <span class="property-location"><i class="fa-solid fa-map-pin"></i> Quadra 1506 Sul, Palmas - TO</span>
+                            <h3>Reserva dos Girassóis</h3>
+                            <p class="property-description">Uma excelente oportunidade de investimento patrimonial com plantas inteligentes pensadas para o bem-estar e o conforto da sua família.</p>
+                            <ul class="property-features">
+                                <li><i class="fa-solid fa-bed"></i> 2 Quartos (sendo 1 Suíte)</li>
+                                <li><i class="fa-solid fa-house-laptop"></i> Varanda Gourmet Integrada</li>
+                                <li><i class="fa-solid fa-car"></i> 1 a 2 Vagas de Garagem</li>
+                                <li><i class="fa-solid fa-border-top-left"></i> Opções de quintal privativo (Garden)</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-secondary-card">Solicitar Informações</a>
+                        </div>
+                    </article>
+
+                    <!-- Imóvel 2 -->
+                    <article class="property-card">
+                        <div class="property-image-wrapper">
+                            <img src="img/residencial-606-norte.jpg" alt="Empreendimento na Quadra 606 Norte" loading="lazy">
+                            <span class="property-tag">Exclusivo</span>
+                        </div>
+                        <div class="property-info">
+                            <span class="property-location"><i class="fa-solid fa-map-pin"></i> Quadra 606 Norte, Palmas - TO</span>
+                            <h3>Residencial 606 Norte</h3>
+                            <p class="property-description">Localização estratégica que une tranquilidade residencial ao acesso facilitado aos principais pontos comerciais da região norte.</p>
+                            <ul class="property-features">
+                                <li><i class="fa-solid fa-bed"></i> 2 Quartos Premium</li>
+                                <li><i class="fa-solid fa-kaaba"></i> Sacada com Vista Privilegiada</li>
+                                <li><i class="fa-solid fa-car"></i> 1 Vaga de Garagem Coberta</li>
+                                <li><i class="fa-solid fa-expand"></i> Plantas otimizadas com alta iluminação natural</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-secondary-card">Solicitar Informações</a>
+                        </div>
+                    </article>
+
+                    <!-- Imóvel 3 -->
+                    <article class="property-card">
+                        <div class="property-image-wrapper">
+                            <img src="img/residencial-1101-sul.jpg" alt="Empreendimento na Quadra 1101 Sul" loading="lazy">
+                            <span class="property-tag">Lançamento</span>
+                        </div>
+                        <div class="property-info">
+                            <span class="property-location"><i class="fa-solid fa-map-pin"></i> Quadra 1101 Sul, Palmas - TO</span>
+                            <h3>Residencial 1101 Sul</h3>
+                            <p class="property-description">Conceito moderno de moradia que integra uma infraestrutura de lazer incomparável para desfrutar os melhores momentos em família.</p>
+                            <ul class="property-features">
+                                <li><i class="fa-solid fa-bed"></i> 2 Quartos (plantas versáteis)</li>
+                                <li><i class="fa-solid fa-cloud-sun"></i> Ampla Varanda Social</li>
+                                <li><i class="fa-solid fa-car"></i> Garagem Privativa</li>
+                                <li><i class="fa-solid fa-dumbbell"></i> Lazer completo, equipado e decorado</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-secondary-card">Solicitar Informações</a>
+                        </div>
+                    </article>
+
+                    <!-- Imóvel 4 -->
+                    <article class="property-card">
+                        <div class="property-image-wrapper">
+                            <img src="img/palmeira-solare.jpg" alt="Palmeira Solare - Próximo ao Shopping Capim Dourado" loading="lazy">
+                            <span class="property-tag">Últimas Unidades</span>
+                        </div>
+                        <div class="property-info">
+                            <span class="property-location"><i class="fa-solid fa-map-pin"></i> Ao lado do Shopping Capim Dourado, Palmas - TO</span>
+                            <h3>Palmeira Solare</h3>
+                            <p class="property-description">O ápice da conveniência urbana. Viva a poucos passos do principal shopping da cidade com total requinte, segurança e lazer completo.</p>
+                            <ul class="property-features">
+                                <li><i class="fa-solid fa-bed"></i> 2 Quartos (Suíte com Acabamento Premium)</li>
+                                <li><i class="fa-solid fa-fire-burner"></i> Varanda com Churrasqueira integrada</li>
+                                <li><i class="fa-solid fa-car-side"></i> Até 2 Vagas de Garagem</li>
+                                <li><i class="fa-solid fa-swimming-pool"></i> Complexo de Lazer com Piscina e SPA</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-secondary-card">Solicitar Informações</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA INTERMEDIÁRIO -->
+        <section class="middle-cta-section">
+            <div class="container middle-cta-container">
+                <h2>Não encontrou o que procurava?</h2>
+                <p>Deixe que uma consultoria analítica encontre a joia rara ideal para o seu perfil e investimento patrimonial.</p>
+                <a href="#contato" class="btn btn-primary">Agendar Consultoria Exclusiva</a>
+            </div>
+        </section>
+
+        <!-- MAPA DE LOCALIZAÇÃO -->
+        <section class="map-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Localização Privilegiada</span>
+                    <h2>Empreendimentos em Palmas - TO</h2>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31849.578680381663!2d-48.3340455!3d-10.1834045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9324cc30e9d6d713%3A0x67eeaaeb4f0e0fdf!2sPalmas%2C%20TO!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Mapa dos imóveis de alto padrão em Palmas"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE O CONSULTOR -->
+        <section id="sobre" class="about-section section-padding">
+            <div class="container about-container">
+                <div class="about-image">
+                    <img src="img/Foto Profissonal - Neto.png" alt="Neto, Consultor Especialista em Imóveis de Luxo" loading="lazy">
+                </div>
+                <div class="about-content">
+                    <span class="subtitle">Especialista no Alto Padrão</span>
+                    <h2>Conheça Neto Consultor</h2>
+                    <p>Com anos de atuação sólida no mercado imobiliário de Palmas, dedico minha carreira a transformar transações imobiliárias em experiências seguras, sofisticadas e extremamente rentáveis.</p>
+                    <p>Minha premissa é o atendimento sob medida (*tailor-made*), garantindo segurança jurídica e privacidade absoluta da escolha da planta à entrega das chaves.</p>
+
+                    <div class="stats-grid" id="stats-section">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="250">0</span>
+                            <span class="stat-label">Imóveis Vendidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="500">0</span>
+                            <span class="stat-label">Clientes Atendidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Anos de Experiência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-label">% de Satisfação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEEDBACK DOS CLIENTES -->
+        <section id="clientes" class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Prova Social</span>
+                    <h2>Histórias de Sucesso e Parcerias</h2>
+                    <p>Histórias reais de investidores e famílias que confiaram em nossa assessoria exclusiva.</p>
+                </div>
+
+                <div class="testimonials-wrapper">
+                    <div class="testimonials-slider">
+                        <article class="testimonial-card active">
+                            <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
-                        </div>
+                            <p class="testimonial-text">"O Neto superou todas as expectativas. Desde a primeira reunião até o suporte pós-venda na entrega das chaves do Residencial Palma, o processo foi impecável."</p>
+                            <div class="testimonial-user">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de Mariana Fontes" loading="lazy">
+                                <div>
+                                    <h4>Mariana Fontes</h4>
+                                    <span>Investidora - Orla 14</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="slider-controls">
+                        <button id="prev-testimonial" aria-label="Depoimento Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button id="next-testimonial" aria-label="Próximo Depoimento"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
                 </div>
-                <div class="slider-controls">
-                    <button id="prev-testimonial" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button id="next-testimonial" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- FOOTER -->
+    <!-- FOOTER (Rodapé Clean e Corporativo) -->
     <footer>
         <div class="container footer-container">
             <div class="footer-brand">
@@ -242,8 +320,8 @@
         </div>
     </footer>
 
-    <!-- MODAL PREMIUM -->
-    <div id="premium-modal" class="modal-overlay">
+    <!-- MODAL PREMIUM ACESSÍVEL -->
+    <div id="premium-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-content">
             <button class="modal-close" aria-label="Fechar Modal">&times;</button>
             <div id="modal-dynamic-body"></div>
@@ -252,7 +330,7 @@
 
     <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/5563999999999?text=Olá%20Neto,%20gostaria%20de%20mais%20informações%20sobre%20os%20empreendimentos."
-        class="whatsapp-floating" target="_blank" aria-label="Falar no WhatsApp">
+        class="whatsapp-floating" target="_blank" rel="noopener" aria-label="Falar diretamente no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
