@@ -40,8 +40,9 @@
 
             <!-- Redes Sociais Premium -->
             <div class="header-socials">
-                <a href="https://instagram.com" target="_blank" rel="noopener"
-                    aria-label="Acessar o Instagram Profissional"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/neto.corretormrv.palmas?igsh=MXcwZ2Rjb3lrbmU0cQ==" target="_blank"
+                    rel="noopener" aria-label="Acessar o Instagram Profissional"><i
+                        class="fa-brands fa-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Acessar Perfil no LinkedIn"><i
                         class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Acessar Página no Facebook"><i
@@ -67,48 +68,54 @@
                         icônicas e total privacidade patrimonial.</p>
                 </div>
 
-                <!-- FILTROS DE BUSCA FLUTUANTES -->
+                <!-- FILTRO DE BUSCA REDESENHADO -->
                 <div class="filter-wrapper-floating">
-                    <div class="filter-modes">
-                        <button class="filter-mode-btn active" type="button" data-mode="comprar">Comprar</button>
-                        <button class="filter-mode-btn" type="button" data-mode="lancamentos">Lançamentos</button>
-                    </div>
-                    <div class="filter-inner-grid">
-                        <!-- Grupo 1: Empreendimentos (Substituindo Status) -->
-                        <div class="filter-group">
-                            <label for="filter-status"><i class="fa-solid fa-building icon-accent"></i>
-                                Empreendimentos</label>
-                            <select id="filter-status" name="status">
-                                <option value="">Mostrar Todos</option>
-                                <option value="residencial-luxo">Residencial de Luxo</option>
-                                <option value="corporate-tower">Corporate Tower</option>
-                                <option value="mansao-borda-mata">Mansão Borda da Mata</option>
-                            </select>
+                    <div class="filter-body-new">
+                        <div class="filter-field-new">
+                            <label class="filter-label-new" for="filter-status">
+                                <i class="fa-solid fa-building icon-accent" aria-hidden="true"></i>
+                                Empreendimentos
+                            </label>
+                            <div class="filter-select-wrapper">
+                                <select id="filter-status" name="status" class="filter-select-new">
+                                    <option value="">Mostrar Todos</option>
+                                    <option value="Lançamento">Lançamento</option>
+                                    <option value="Venda">Venda</option>
+                                    <option value="Últimas Unidades">Últimas Unidades</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down filter-chevron" aria-hidden="true"></i>
+                            </div>
                         </div>
 
-                        <div class="filter-divider" aria-hidden="true"></div>
+                        <div class="filter-divider-new" aria-hidden="true"></div>
 
-                        <!-- Grupo 2: Região / Bairro (Atualizado para Região Sul e Norte) -->
-                        <div class="filter-group">
-                            <label for="filter-bairro"><i class="fa-solid fa-compass icon-accent"></i> Região /
-                                Bairro</label>
-                            <select id="filter-bairro" name="bairro">
-                                <option value="">Todos os Bairros</option>
-                                <option value="Região Sul">Região Sul</option>
-                                <option value="Região Norte">Região Norte</option>
-                            </select>
+                        <div class="filter-field-new">
+                            <label class="filter-label-new" for="filter-bairro">
+                                <i class="fa-solid fa-map-pin icon-accent" aria-hidden="true"></i>
+                                Região / Bairro
+                            </label>
+                            <div class="filter-select-wrapper">
+                                <select id="filter-bairro" name="bairro" class="filter-select-new">
+                                    <option value="">Todos os Bairros</option>
+                                    <option value="Região Sul">Região Sul</option>
+                                    <option value="Região Norte">Região Norte</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down filter-chevron" aria-hidden="true"></i>
+                            </div>
                         </div>
 
-                        <!-- Botão de Ação Direto (Quartos Removido para otimizar o espaço do Grid) -->
-                        <button class="btn btn-search" id="btn-execute-filter" aria-label="Executar busca de imóveis">
-                            <i class="fa-solid fa-magnifying-glass"></i> <span>Buscar</span>
+                        <button class="btn-buscar-new" id="btn-execute-filter" type="button"
+                            aria-label="Executar busca de imóveis">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                            <span>Buscar</span>
                         </button>
+
+                        <p class="filter-hint-new">Projetos sem precificações públicas expostas</p>
                     </div>
                 </div>
-            </div>
         </section>
 
-        <!-- TRUST BAR INTEGRADA (Garantia de Autoridade) -->
+        <!-- TRUST BAR INTEGRADA -->
         <section class="trust-bar" aria-label="Diferenciais do Atendimento">
             <div class="container trust-grid">
                 <div class="trust-item"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> <span>Atendimento
@@ -136,7 +143,6 @@
                             aria-hidden="true"></i></a>
                 </div>
 
-                <!-- Grid de Imóveis Atualizado com Infraestrutura Detalhada -->
                 <div class="properties-grid-vertical" id="properties-container">
 
                     <!-- Imóvel 1 -->
@@ -144,7 +150,7 @@
                         <div class="property-image-wrapper">
                             <img src="img/reserva-girassois.jpg" alt="Reserva dos Girassóis - Quadra 1506 Sul"
                                 loading="lazy">
-                            <span class="property-tag">Destaque</span>
+                            <span class="property-tag">ÚLTIMAS UNIDADES</span>
                         </div>
                         <div class="property-info">
                             <span class="property-location"><i class="fa-solid fa-map-pin"></i> Quadra 1506 Sul, Palmas
@@ -197,7 +203,7 @@
                         <div class="property-info">
                             <span class="property-location"><i class="fa-solid fa-map-pin"></i> Quadra 1101 Sul, Palmas
                                 - TO</span>
-                            <h3>Residencial 1101 Sul</h3>
+                            <h3>Palmeira Serena</h3>
                             <p class="property-description">Conceito moderno de moradia que integra uma infraestrutura
                                 de lazer incomparável para desfrutar os melhores momentos em família.</p>
                             <ul class="property-features">
@@ -341,35 +347,36 @@
             </div>
         </section>
 
-        <!-- FOOTER (Rodapé Clean e Corporativo) -->
-        <footer>
-            <div class="container footer-container">
-                <div class="footer-brand">
-                    <h3>NETO CONSULTOR</h3>
-                    <p>Acompanhamento analítico e personalizado em todas as etapas da sua jornada imobiliária em Palmas.
-                    </p>
-                </div>
-                <div class="footer-copy">
-                    <p>&copy; 2026 Neto Consultor de Imóveis. Todos os direitos reservados. CRECI/TO XXXXX.</p>
-                </div>
-            </div>
-        </footer>
+    </main>
 
-        <!-- MODAL PREMIUM ACESSÍVEL -->
-        <div id="premium-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="modal-content">
-                <button class="modal-close" aria-label="Fechar Modal">&times;</button>
-                <div id="modal-dynamic-body"></div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h3>NETO CONSULTOR</h3>
+                <p>Acompanhamento analítico e personalizado em todas as etapas da sua jornada imobiliária em Palmas.</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 Neto Consultor de Imóveis. Todos os direitos reservados. CRECI/TO XXXXX.</p>
             </div>
         </div>
+    </footer>
 
-        <!-- WHATSAPP FLUTUANTE -->
-        <a href="https://wa.me/5563999999999?text=Olá%20Neto,%20gostaria%20de%20mais%20informações%20sobre%20os%20empreendimentos."
-            class="whatsapp-floating" target="_blank" rel="noopener" aria-label="Falar diretamente no WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
+    <!-- MODAL PREMIUM ACESSÍVEL -->
+    <div id="premium-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar Modal">&times;</button>
+            <div id="modal-dynamic-body"></div>
+        </div>
+    </div>
 
-        <script src="script.js"></script>
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5563999999999?text=Olá%20Neto,%20gostaria%20de%20mais%20informações%20sobre%20os%20empreendimentos."
+        class="whatsapp-floating" target="_blank" rel="noopener" aria-label="Falar diretamente no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

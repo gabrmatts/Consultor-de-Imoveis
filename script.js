@@ -1,45 +1,43 @@
+// DATASET DE EMPREENDIMENTOS
 const empreendimentos = [
     {
         id: 1,
         nome: "Reserva dos Girassóis",
-        status: "Destaque",
-        statusCode: "lancamento",
-        badgeColor: "#10b981",
+        status: "Últimas Unidades",
+        statusCode: "Últimas Unidades",
+        badgeColor: "#b91010",
         bairro: "Quadra 1506 Sul",
         quartos: 2,
         vagas: "1 a 2",
         area: "Planta Inteligente",
-        // Ajustado para o nome real do arquivo na sua pasta img
         imagem: "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
         descricao: "Uma excelente oportunidade de investimento patrimonial com plantas inteligentes pensadas para o bem-estar e o conforto da sua família.",
         diferenciais: ["2 Quartos (sendo 1 Suíte)", "Varanda Gourmet Integrada", "1 a 2 Vagas de Garagem", "Opções de quintal privativo (Garden)"]
     },
     {
         id: 2,
-        nome: "Residencial 606 Norte",
-        status: "Exclusivo",
-        statusCode: "venda",
-        badgeColor: "#b89047",
+        nome: "Residencial Palma  ",
+        status: "Lançamento",
+        statusCode: "Lançamento",
+        badgeColor: "#57e220",
         bairro: "Quadra 606 Norte",
         quartos: 2,
         vagas: 1,
         area: "Planta Otimizada",
-        // Ajustado conforme o padrão de nomenclatura que você está usando
         imagem: "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
         descricao: "Localização estratégica que une tranquilidade residencial ao acesso facilitado aos principais pontos comerciais da região norte.",
         diferenciais: ["2 Quartos Premium", "Sacada com Vista Privilegiada", "1 Vaga de Garagem Coberta", "Alta iluminação natural"]
     },
     {
         id: 3,
-        nome: "Residencial 1101 Sul",
-        status: "Lançamento",
-        statusCode: "lancamento",
-        badgeColor: "#d97706",
+        nome: "Palmeira Serena",
+        status: "Venda",
+        statusCode: "Venda",
+        badgeColor: "#06d2d9",
         bairro: "Quadra 1101 Sul",
         quartos: 2,
         vagas: "Privativa",
         area: "Conceito Moderno",
-        // Ajustado para a imagem correspondente da guarita/fachada disponível
         imagem: "img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg",
         descricao: "Conceito moderno de moradia que integra uma infraestrutura de lazer incomparável para desfrutar os melhores momentos em família.",
         diferenciais: ["2 Quartos (plantas versáteis)", "Ampla Varanda Social", "Garagem Privativa", "Lazer completo, equipado e decorado"]
@@ -47,21 +45,20 @@ const empreendimentos = [
     {
         id: 4,
         nome: "Palmeira Solare",
-        status: "Últimas Unidades",
-        statusCode: "ultimas",
-        badgeColor: "#3b82f6",
+        status: "Venda",
+        statusCode: "Venda",
+        badgeColor: "#06d2d9",
         bairro: "Ao lado do Shopping Capim Dourado",
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
-        // Ajustado para o nome real do arquivo na sua pasta img
         imagem: "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
         descricao: "O ápice da conveniência urbana. Viva a poucos passos do principal shopping da cidade com total requinte, segurança e lazer completo.",
         diferenciais: ["2 Quartos (Suíte com Acabamento Premium)", "Varanda com Churrasqueira integrada", "Até 2 Vagas de Garagem", "Complexo de Lazer com Piscina e SPA"]
     }
 ];
 
-// DATASET DE DEPOIMENTOS (RESOLVE O ERRO DE REFERÊNCIA)
+// DATASET DE DEPOIMENTOS
 const depoimentos = [
     {
         nome: "Ricardo Cavalcante",
@@ -121,9 +118,10 @@ function initHeader() {
     }
 }
 
-// RENDERIZAR CARDS (SEM EXIBIÇÃO DE PREÇOS)
+// RENDERIZAR CARDS (SUPORTA O NOVO CONTENER DE LISTAGEM)
 function renderCards(dados) {
-    const container = document.getElementById("properties-container");
+    // Busca pelo ID novo ou pelo antigo como fallback seguro
+    const container = document.getElementById("lista-empreendimentos") || document.getElementById("properties-container");
     if (!container) return;
     
     container.innerHTML = "";
@@ -137,16 +135,14 @@ function renderCards(dados) {
         const card = document.createElement("article");
         card.className = "property-card";
         
-        // Mapeia os diferenciais para criar os itens da lista lateral/inferior do card
-        let featuresHTML = "";
-        item.diferenciais.forEach((dif, index) => {
+        // Renderização dinâmica e limpa dos ícones baseado nos diferenciais
+        const featuresHTML = item.diferenciais.map((dif, index) => {
             let icon = "fa-check";
             if (index === 0) icon = "fa-bed";
             else if (index === 1) icon = "fa-vector-square";
             else if (index === 2) icon = "fa-car";
-            
-            featuresHTML += `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
-        });
+            return `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
+        }).join('');
         
         card.innerHTML = `
             <div class="property-image-wrapper">
@@ -154,7 +150,7 @@ function renderCards(dados) {
                 <span class="property-tag" style="background-color: ${item.badgeColor || 'var(--gold)'}">${item.status}</span>
             </div>
             <div class="property-info">
-                <span class="property-location"><i class="fa-solid fa-map-pin"></i> ${item.bairro}, Palmas - TO</span>
+                <span class="property-location"><i class="fa-solid fa-map-pin"></i> ${item.bairro}</span>
                 <h3>${item.nome}</h3>
                 <p class="property-description">${item.descricao}</p>
                 <ul class="property-features">
@@ -168,6 +164,7 @@ function renderCards(dados) {
         container.appendChild(card);
     });
 
+    // Vincula o evento de abertura do modal nos novos botões gerados
     document.querySelectorAll(".open-details").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const button = e.target.closest(".open-details");
@@ -177,26 +174,24 @@ function renderCards(dados) {
     });
 }
 
-// FILTROS REAL-TIME
+// FILTROS REAL-TIME RESILIENTES
 function initFilters() {
     const filterStatus = document.getElementById("filter-status");
     const filterBairro = document.getElementById("filter-bairro");
     const filterQuartos = document.getElementById("filter-quartos");
     const btnSearch = document.getElementById("btn-execute-filter");
 
-    if (!filterStatus || !filterBairro || !filterQuartos) return;
-
+    // Executa a lógica apenas nos elementos que de fato existem na página atual
     function aplicarFiltros() {
         let filtrados = empreendimentos;
 
-        if (filterStatus.value) {
+        if (filterStatus && filterStatus.value) {
             filtrados = filtrados.filter(item => item.statusCode === filterStatus.value);
         }
-        if (filterBairro.value) {
-            // Permite busca parcial ou por correspondência de bairros mapeados na busca
+        if (filterBairro && filterBairro.value) {
             filtrados = filtrados.filter(item => item.bairro.toLowerCase().includes(filterBairro.value.toLowerCase()));
         }
-        if (filterQuartos.value) {
+        if (filterQuartos && filterQuartos.value) {
             const q = parseInt(filterQuartos.value);
             filtrados = filtrados.filter(item => item.quartos >= q);
         }
@@ -204,9 +199,9 @@ function initFilters() {
         renderCards(filtrados);
     }
 
-    // Filtros executam tanto na mudança quanto no clique do botão "Buscar"
+    // Adiciona evento dinâmico aos elementos que existirem
     [filterStatus, filterBairro, filterQuartos].forEach(el => {
-        el.addEventListener("change", aplicarFiltros);
+        if (el) el.addEventListener("change", aplicarFiltros);
     });
 
     if (btnSearch) {
@@ -228,6 +223,8 @@ function initStatsAnimation() {
     const startAnimation = () => {
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute("data-target"));
+            if (isNaN(target)) return;
+            
             let current = 0;
             const increment = target / 40;
             
@@ -272,10 +269,16 @@ function initTestimonials() {
         card.style.transform = "translateY(8px)";
         
         setTimeout(() => {
-            card.querySelector(".testimonial-text").innerText = `"${t.texto.replace(/"/g, '')}"`;
-            card.querySelector(".testimonial-user img").src = t.img;
-            card.querySelector(".testimonial-user h4").innerText = t.nome;
-            card.querySelector(".testimonial-user span").innerText = t.cargo;
+            const textEl = card.querySelector(".testimonial-text");
+            const imgEl = card.querySelector(".testimonial-user img");
+            const nameEl = card.querySelector(".testimonial-user h4");
+            const cargoEl = card.querySelector(".testimonial-user span");
+
+            if (textEl) textEl.innerText = `"${t.texto.replace(/"/g, '')}"`;
+            if (imgEl) imgEl.src = t.img;
+            if (nameEl) nameEl.innerText = t.nome;
+            if (cargoEl) cargoEl.innerText = t.cargo;
+            
             card.style.opacity = 1;
             card.style.transform = "translateY(0)";
         }, 200);
@@ -292,7 +295,7 @@ function initTestimonials() {
     });
 }
 
-// CAPTURA E VALIDAÇÃO DE LEADS (Ajustado id do formulário para bater com o HTML "lead-form")
+// CAPTURA E VALIDAÇÃO DE LEADS
 function initFormValidation() {
     const form = document.getElementById("lead-form") || document.getElementById("contact-form");
     if (!form) return;
@@ -318,9 +321,10 @@ function initFormValidation() {
 
         if (isValid) {
             const btn = form.querySelector("button[type='submit']");
-            const originalText = btn.innerText;
-            btn.innerText = "Enviando Solicitação Privada...";
-            btn.disabled = true;
+            if (btn) {
+                btn.innerText = "Enviando Solicitação Privada...";
+                btn.disabled = true;
+            }
 
             setTimeout(() => {
                 form.innerHTML = `
@@ -377,10 +381,11 @@ function openModalDetails(id) {
     const body = document.getElementById("modal-dynamic-body");
     if (!body) return;
 
-    let diferenciaisHTML = "";
-    item.diferenciais.forEach(dif => {
-        diferenciaisHTML += `<li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark); font-weight:500; text-align: left;"><i class="fa-solid fa-check" style="color:var(--gold); font-size: 0.95rem;"></i> ${dif}</li>`;
-    });
+    const diferenciaisHTML = item.diferenciais.map(dif => `
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark); font-weight:500; text-align: left;">
+            <i class="fa-solid fa-check" style="color:var(--gold, #b89047); font-size: 0.95rem;"></i> ${dif}
+        </li>
+    `).join('');
 
     body.innerHTML = `
         <div class="modal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left;">
@@ -415,13 +420,16 @@ function openModalDetails(id) {
         </div>
     `;
 
-    document.getElementById("modal-scroll-contact").addEventListener("click", () => {
-        fecharModal();
-        setTimeout(() => {
-            const contactSection = document.getElementById("contato");
-            if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
-        }, 200);
-    });
+    const scrollBtn = document.getElementById("modal-scroll-contact");
+    if (scrollBtn) {
+        scrollBtn.addEventListener("click", () => {
+            fecharModal();
+            setTimeout(() => {
+                const contactSection = document.getElementById("contato") || document.getElementById("lead-form");
+                if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
+            }, 200);
+        });
+    }
 
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
