@@ -1003,3 +1003,26 @@ footer {
     color: var(--primary-blue);
     background-color: var(--bg-light);
 }
+
+.property-image-wrapper {
+    width: 100%;
+    height: 250px; /* Altura fixa para a imagem */
+    position: relative;
+    background: #f4f4f4; /* Cor de fundo caso a imagem demore */
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+/* Garante que o swiper ocupe todo o espaço do wrapper */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajuste da imagem dentro do swiper */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    display: block;
+}

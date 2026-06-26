@@ -1,4 +1,3 @@
-// DATASET DE EMPREENDIMENTOS
 const empreendimentos = [
     {
         id: 1,
@@ -10,13 +9,13 @@ const empreendimentos = [
         quartos: 2,
         vagas: "1 a 2",
         area: "Planta Inteligente",
-        imagem: "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
-        descricao: "Uma excelente oportunidade de investimento patrimonial com plantas inteligentes pensadas para o bem-estar e o conforto da sua família.",
-        diferenciais: ["2 Quartos (sendo 1 Suíte)", "Varanda Gourmet Integrada", "1 a 2 Vagas de Garagem", "Opções de quintal privativo (Garden)"]
+        imagens: ["img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg"],
+        descricao: "Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
+        diferenciais: ["2 Quartos (Suíte)", "Varanda Gourmet"]
     },
     {
         id: 2,
-        nome: "Residencial Palma  ",
+        nome: "Residencial Palma",
         status: "Lançamento",
         statusCode: "Lançamento",
         badgeColor: "#57e220",
@@ -24,9 +23,9 @@ const empreendimentos = [
         quartos: 2,
         vagas: 1,
         area: "Planta Otimizada",
-        imagem: "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
-        descricao: "Localização estratégica que une tranquilidade residencial ao acesso facilitado aos principais pontos comerciais da região norte.",
-        diferenciais: ["2 Quartos Premium", "Sacada com Vista Privilegiada", "1 Vaga de Garagem Coberta", "Alta iluminação natural"]
+        imagens: ["img/PPC_PALMA_GUARITA_2026.03.30.jpg"],
+        descricao: "Localização estratégica na região norte.",
+        diferenciais: ["2 Quartos Premium", "Sacada Privativa"]
     },
     {
         id: 3,
@@ -38,9 +37,9 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Privativa",
         area: "Conceito Moderno",
-        imagem: "img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg",
-        descricao: "Conceito moderno de moradia que integra uma infraestrutura de lazer incomparável para desfrutar os melhores momentos em família.",
-        diferenciais: ["2 Quartos (plantas versáteis)", "Ampla Varanda Social", "Garagem Privativa", "Lazer completo, equipado e decorado"]
+        imagens: ["img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg"],
+        descricao: "Conceito moderno de moradia que integra uma infraestrutura de lazer.",
+        diferenciais: ["2 Quartos (plantas versáteis)", "Ampla Varanda Social"]
     },
     {
         id: 4,
@@ -52,9 +51,26 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
-        imagem: "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
-        descricao: "O ápice da conveniência urbana. Viva a poucos passos do principal shopping da cidade com total requinte, segurança e lazer completo.",
-        diferenciais: ["2 Quartos (Suíte com Acabamento Premium)", "Varanda com Churrasqueira integrada", "Até 2 Vagas de Garagem", "Complexo de Lazer com Piscina e SPA"]
+        imagens: ["img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg"],
+        descricao: "O ápice da conveniência urbana.",
+        diferenciais: ["2 Quartos (Suíte)", "Varanda com Churrasqueira"]
+    },
+    {
+        id: 5,
+        nome: "Palmeira Boreal",
+        status: "Venda",
+        statusCode: "Venda",
+        badgeColor: "#06d2d9",
+        bairro: "Ao lado do Shopping Capim Dourado",
+        quartos: 2,
+        vagas: "Até 2",
+        area: "Alto Padrão",
+        imagens: [
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1) (1).jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg"
+        ],
+        descricao: "O ápice da conveniência urbana.",
+        diferenciais: ["2 Quartos (Suíte)", "Varanda com Churrasqueira"]
     }
 ];
 
@@ -100,12 +116,12 @@ function initHeader() {
 
     const toggle = document.querySelector(".mobile-menu-toggle");
     const nav = document.querySelector(".nav-menu");
-    
+
     if (toggle && nav) {
         toggle.addEventListener("click", () => {
             nav.classList.toggle("active");
-            toggle.innerHTML = nav.classList.contains("active") 
-                ? '<i class="fa-solid fa-xmark"></i>' 
+            toggle.innerHTML = nav.classList.contains("active")
+                ? '<i class="fa-solid fa-xmark"></i>'
                 : '<i class="fa-solid fa-bars"></i>';
         });
 
@@ -118,12 +134,11 @@ function initHeader() {
     }
 }
 
-// RENDERIZAR CARDS (SUPORTA O NOVO CONTENER DE LISTAGEM)
+// RENDERIZAR CARDS
 function renderCards(dados) {
-    // Busca pelo ID novo ou pelo antigo como fallback seguro
     const container = document.getElementById("lista-empreendimentos") || document.getElementById("properties-container");
     if (!container) return;
-    
+
     container.innerHTML = "";
 
     if (dados.length === 0) {
@@ -134,8 +149,7 @@ function renderCards(dados) {
     dados.forEach((item) => {
         const card = document.createElement("article");
         card.className = "property-card";
-        
-        // Renderização dinâmica e limpa dos ícones baseado nos diferenciais
+
         const featuresHTML = item.diferenciais.map((dif, index) => {
             let icon = "fa-check";
             if (index === 0) icon = "fa-bed";
@@ -143,10 +157,11 @@ function renderCards(dados) {
             else if (index === 2) icon = "fa-car";
             return `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
         }).join('');
-        
+
+        // CORREÇÃO: usa item.imagens[0] em vez de item.imagem
         card.innerHTML = `
             <div class="property-image-wrapper">
-                <img src="${item.imagem}" alt="${item.nome} - ${item.bairro}" loading="lazy">
+                <img src="${item.imagens[0]}" alt="${item.nome} - ${item.bairro}" loading="lazy">
                 <span class="property-tag" style="background-color: ${item.badgeColor || 'var(--gold)'}">${item.status}</span>
             </div>
             <div class="property-info">
@@ -164,7 +179,6 @@ function renderCards(dados) {
         container.appendChild(card);
     });
 
-    // Vincula o evento de abertura do modal nos novos botões gerados
     document.querySelectorAll(".open-details").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const button = e.target.closest(".open-details");
@@ -174,14 +188,13 @@ function renderCards(dados) {
     });
 }
 
-// FILTROS REAL-TIME RESILIENTES
+// FILTROS REAL-TIME
 function initFilters() {
     const filterStatus = document.getElementById("filter-status");
     const filterBairro = document.getElementById("filter-bairro");
     const filterQuartos = document.getElementById("filter-quartos");
     const btnSearch = document.getElementById("btn-execute-filter");
 
-    // Executa a lógica apenas nos elementos que de fato existem na página atual
     function aplicarFiltros() {
         let filtrados = empreendimentos;
 
@@ -199,7 +212,6 @@ function initFilters() {
         renderCards(filtrados);
     }
 
-    // Adiciona evento dinâmico aos elementos que existirem
     [filterStatus, filterBairro, filterQuartos].forEach(el => {
         if (el) el.addEventListener("change", aplicarFiltros);
     });
@@ -212,7 +224,7 @@ function initFilters() {
     }
 }
 
-// ANIMAÇÃO DE MÉTRICAS (INTERSECTION OBSERVER)
+// ANIMAÇÃO DE MÉTRICAS
 function initStatsAnimation() {
     const statsSection = document.getElementById("stats-section");
     const stats = document.querySelectorAll(".stat-number");
@@ -224,10 +236,10 @@ function initStatsAnimation() {
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute("data-target"));
             if (isNaN(target)) return;
-            
+
             let current = 0;
             const increment = target / 40;
-            
+
             const updateCounter = () => {
                 if (current < target) {
                     current += increment;
@@ -267,7 +279,7 @@ function initTestimonials() {
         const t = depoimentos[index];
         card.style.opacity = 0;
         card.style.transform = "translateY(8px)";
-        
+
         setTimeout(() => {
             const textEl = card.querySelector(".testimonial-text");
             const imgEl = card.querySelector(".testimonial-user img");
@@ -278,7 +290,7 @@ function initTestimonials() {
             if (imgEl) imgEl.src = t.img;
             if (nameEl) nameEl.innerText = t.nome;
             if (cargoEl) cargoEl.innerText = t.cargo;
-            
+
             card.style.opacity = 1;
             card.style.transform = "translateY(0)";
         }, 200);
@@ -299,13 +311,13 @@ function initTestimonials() {
 function initFormValidation() {
     const form = document.getElementById("lead-form") || document.getElementById("contact-form");
     if (!form) return;
-    
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let isValid = true;
 
         const inputs = form.querySelectorAll("input[required], select[required]");
-        
+
         inputs.forEach(input => {
             const group = input.parentElement;
             if (!input.value.trim()) {
@@ -354,11 +366,11 @@ const modal = document.getElementById("premium-modal");
 function initModal() {
     if (!modal) return;
     const closeBtn = document.querySelector(".modal-close");
-    
+
     if (closeBtn) {
         closeBtn.addEventListener("click", () => fecharModal());
     }
-    
+
     window.addEventListener("click", (e) => {
         if (e.target === modal) fecharModal();
     });
@@ -382,15 +394,16 @@ function openModalDetails(id) {
     if (!body) return;
 
     const diferenciaisHTML = item.diferenciais.map(dif => `
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark); font-weight:500; text-align: left;">
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark, #111); font-weight:500; text-align: left;">
             <i class="fa-solid fa-check" style="color:var(--gold, #b89047); font-size: 0.95rem;"></i> ${dif}
         </li>
     `).join('');
 
+    // CORREÇÃO: usa item.imagens[0] em vez de item.imagem
     body.innerHTML = `
         <div class="modal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left;">
             <div class="modal-gallery">
-                <img src="${item.imagem}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">
+                <img src="${item.imagens[0]}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">
                 <div style="background:var(--bg-light, #f9f9f9); padding: 16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted, #666); border-radius:var(--radius-md, 8px); font-size: 0.85rem; border: 1px dashed #3b82f6; text-align:center;">
                     <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; margin-right:8px; color: var(--gold, #b89047);"></i> Plantas de Prerrogativa Corporativa sob Consulta.
                 </div>
@@ -399,7 +412,7 @@ function openModalDetails(id) {
                 <span style="color:${item.badgeColor}; font-weight:700; text-transform:uppercase; font-size:0.75rem; letter-spacing: 0.5px;">${item.status}</span>
                 <h2 style="font-size:1.8rem; margin: 4px 0 12px 0; color:var(--text-dark, #111); line-height: 1.2; font-weight:700;">${item.nome}</h2>
                 <p style="color:var(--text-muted, #666); margin-bottom:20px; font-size: 0.95rem; line-height: 1.5;">${item.descricao}</p>
-                
+
                 <h4 style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; color: var(--text-muted, #666); margin-bottom: 10px; font-weight:700;">Destaques da Unidade</h4>
                 <ul style="margin-bottom: 24px; display:flex; flex-direction:column; gap:10px; list-style: none; padding: 0;">
                     ${diferenciaisHTML}
