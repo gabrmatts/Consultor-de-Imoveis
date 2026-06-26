@@ -6,6 +6,7 @@ const empreendimentos = [
         statusCode: "Últimas Unidades",
         badgeColor: "#b91010",
         bairro: "Quadra 1506 Sul",
+        regiao: "sul",
         quartos: 2,
         vagas: "1 a 2",
         area: "Planta Inteligente",
@@ -20,6 +21,7 @@ const empreendimentos = [
         statusCode: "Lançamento",
         badgeColor: "#57e220",
         bairro: "Quadra 606 Norte",
+        regiao: "norte",
         quartos: 2,
         vagas: 1,
         area: "Planta Otimizada",
@@ -34,6 +36,7 @@ const empreendimentos = [
         statusCode: "Venda",
         badgeColor: "#06d2d9",
         bairro: "Quadra 1101 Sul",
+        regiao: "sul",
         quartos: 2,
         vagas: "Privativa",
         area: "Conceito Moderno",
@@ -48,6 +51,7 @@ const empreendimentos = [
         statusCode: "Venda",
         badgeColor: "#06d2d9",
         bairro: "Ao lado do Shopping Capim Dourado",
+        regiao: "sul",
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
@@ -62,6 +66,7 @@ const empreendimentos = [
         statusCode: "Venda",
         badgeColor: "#06d2d9",
         bairro: "Ao lado do Shopping Capim Dourado",
+        regiao: "sul",
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
@@ -106,11 +111,7 @@ function initHeader() {
     const header = document.getElementById("header");
     if (header) {
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 40) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
-            }
+            header.classList.toggle("sticky", window.scrollY > 40);
         });
     }
 
@@ -134,9 +135,36 @@ function initHeader() {
     }
 }
 
+// GERA HTML DO SWIPER para cada card
+function getSwiperHTML(imagens, swiperClass) {
+    if (!imagens || imagens.length === 0) {
+        return `<div style="background:#ddd; height:260px; display:flex; align-items:center; justify-content:center; color:#999;">Sem imagem</div>`;
+    }
+
+    // Se só tem 1 imagem, renderiza img simples (sem overhead do Swiper)
+    if (imagens.length === 1) {
+        return `<img src="${imagens[0]}" alt="" style="width:100%; height:260px; object-fit:cover; display:block;">`;
+    }
+
+    const slides = imagens.map(img => `
+        <div class="swiper-slide">
+            <img src="${img}" style="width:100%; height:260px; object-fit:cover; display:block;">
+        </div>
+    `).join('');
+
+    return `
+        <div class="swiper ${swiperClass}" style="width:100%; height:260px;">
+            <div class="swiper-wrapper">${slides}</div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    `;
+}
+
 // RENDERIZAR CARDS
 function renderCards(dados) {
-    const container = document.getElementById("lista-empreendimentos") || document.getElementById("properties-container");
+    const container = document.getElementById("properties-container") || document.getElementById("lista-empreendimentos");
     if (!container) return;
 
     container.innerHTML = "";
@@ -150,6 +178,8 @@ function renderCards(dados) {
         const card = document.createElement("article");
         card.className = "property-card";
 
+        const swiperClass = `swiper-card-${item.id}`;
+
         const featuresHTML = item.diferenciais.map((dif, index) => {
             let icon = "fa-check";
             if (index === 0) icon = "fa-bed";
@@ -158,10 +188,9 @@ function renderCards(dados) {
             return `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
         }).join('');
 
-        // CORREÇÃO: usa item.imagens[0] em vez de item.imagem
         card.innerHTML = `
             <div class="property-image-wrapper">
-                <img src="${item.imagens[0]}" alt="${item.nome} - ${item.bairro}" loading="lazy">
+                ${getSwiperHTML(item.imagens, swiperClass)}
                 <span class="property-tag" style="background-color: ${item.badgeColor || 'var(--gold)'}">${item.status}</span>
             </div>
             <div class="property-info">
@@ -177,9 +206,24 @@ function renderCards(dados) {
             </div>
         `;
         container.appendChild(card);
+
+        // Inicia o Swiper apenas se tiver mais de 1 imagem
+        if (item.imagens.length > 1) {
+            setTimeout(() => {
+                new Swiper(`.${swiperClass}`, {
+                    loop: true,
+                    pagination: { el: `.${swiperClass} .swiper-pagination`, clickable: true },
+                    navigation: {
+                        nextEl: `.${swiperClass} .swiper-button-next`,
+                        prevEl: `.${swiperClass} .swiper-button-prev`
+                    }
+                });
+            }, 100);
+        }
     });
 
-    document.querySelectorAll(".open-details").forEach(btn => {
+    // Vincula eventos dos botões
+    container.querySelectorAll(".open-details").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const button = e.target.closest(".open-details");
             const id = parseInt(button.getAttribute("data-id"));
@@ -188,7 +232,7 @@ function renderCards(dados) {
     });
 }
 
-// FILTROS REAL-TIME
+// FILTROS REAL-TIME — corrigido para bater com os dados reais
 function initFilters() {
     const filterStatus = document.getElementById("filter-status");
     const filterBairro = document.getElementById("filter-bairro");
@@ -201,9 +245,13 @@ function initFilters() {
         if (filterStatus && filterStatus.value) {
             filtrados = filtrados.filter(item => item.statusCode === filterStatus.value);
         }
+
+        // FIX: compara com o campo "regiao" em vez do texto do bairro
         if (filterBairro && filterBairro.value) {
-            filtrados = filtrados.filter(item => item.bairro.toLowerCase().includes(filterBairro.value.toLowerCase()));
+            const regiaoSelecionada = filterBairro.value.toLowerCase().includes("sul") ? "sul" : "norte";
+            filtrados = filtrados.filter(item => item.regiao === regiaoSelecionada);
         }
+
         if (filterQuartos && filterQuartos.value) {
             const q = parseInt(filterQuartos.value);
             filtrados = filtrados.filter(item => item.quartos >= q);
@@ -399,11 +447,18 @@ function openModalDetails(id) {
         </li>
     `).join('');
 
-    // CORREÇÃO: usa item.imagens[0] em vez de item.imagem
+    // Swiper no modal se tiver mais de 1 imagem
+    const modalSwiperClass = "swiper-modal-gallery";
+    const galeriaHTML = item.imagens.length > 1
+        ? getSwiperHTML(item.imagens, modalSwiperClass)
+        : `<img src="${item.imagens[0]}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">`;
+
     body.innerHTML = `
         <div class="modal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left;">
             <div class="modal-gallery">
-                <img src="${item.imagens[0]}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">
+                <div style="border-radius:var(--radius-md, 8px); overflow:hidden; margin-bottom:12px;">
+                    ${galeriaHTML}
+                </div>
                 <div style="background:var(--bg-light, #f9f9f9); padding: 16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted, #666); border-radius:var(--radius-md, 8px); font-size: 0.85rem; border: 1px dashed #3b82f6; text-align:center;">
                     <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; margin-right:8px; color: var(--gold, #b89047);"></i> Plantas de Prerrogativa Corporativa sob Consulta.
                 </div>
@@ -432,6 +487,20 @@ function openModalDetails(id) {
             </div>
         </div>
     `;
+
+    // Inicia Swiper no modal se necessário
+    if (item.imagens.length > 1) {
+        setTimeout(() => {
+            new Swiper(`.${modalSwiperClass}`, {
+                loop: true,
+                pagination: { el: `.${modalSwiperClass} .swiper-pagination`, clickable: true },
+                navigation: {
+                    nextEl: `.${modalSwiperClass} .swiper-button-next`,
+                    prevEl: `.${modalSwiperClass} .swiper-button-prev`
+                }
+            });
+        }, 100);
+    }
 
     const scrollBtn = document.getElementById("modal-scroll-contact");
     if (scrollBtn) {
