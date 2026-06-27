@@ -55,7 +55,19 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
-        imagens: ["img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg"],
+        imagens: [
+            "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
+            "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
+            "img/PALMEIRA SOLARE_PPC_ACADEMIA_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_PPC_PLAYGROUND_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_PPC_CHURRASQUEIRA_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_PPC_HAPPY HOUR_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_INTERNA_SALA_COZINHA_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_INTERNA_QUARTO MAIOR_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_INTERNA_QUARTO MENOR_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_INTERNA_VARANDA_2025.08.08.jpg",
+            "img/PALMEIRA SOLARE_INTERNA_AREA PRIVATIVA_2025.08.08.jpg"
+        ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
