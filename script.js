@@ -1,48 +1,39 @@
+// ─────────────────────────────────────────────
+// CONFIGURAÇÃO
+// ─────────────────────────────────────────────
 const WHATSAPP_NUMBER = "5563999911234"; // ← altere para o número real
- 
+
+// ─────────────────────────────────────────────
+// ENCODE DE CAMINHO DE IMAGEM
+// Preserva a pasta "img/" e encoda só o nome do arquivo,
+// tratando espaços, acentos, parênteses e outros caracteres especiais.
+// ─────────────────────────────────────────────
+function encodeImgPath(path) {
+    // Separa o prefixo do diretório do nome do arquivo
+    const lastSlash = path.lastIndexOf("/");
+    if (lastSlash === -1) return encodeURIComponent(path);
+    const dir      = path.slice(0, lastSlash + 1);   // ex: "img/"
+    const filename = path.slice(lastSlash + 1);       // ex: "PALMA GUARITA 2026.jpg"
+    return dir + encodeURIComponent(filename);
+}
+
 // ─────────────────────────────────────────────
 // DATASET DE EMPREENDIMENTOS
 // ─────────────────────────────────────────────
 const empreendimentos = [
     {
-        id: 1,
-        nome: "Reserva dos Girassóis",
-        status: "Últimas Unidades",
-        statusCode: "Últimas Unidades",
-        badgeColor: "#b91010",
-        bairro: "Quadra 1506 Sul",
-        regiao: "sul",
-        quartos: 2,
-        vagas: "1 a 2",
-        area: "Planta Inteligente",
-        // Link direto do Google Maps para o endereço
-        mapsUrl: "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
-        imagens: [
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R03.jpg",
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-03 R03.jpg",
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-PISCINA-R03.jpg",
-            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-AREA PRIVATIVA01 R04.jpg",
-            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-LIVING01-R03.jpg",
-            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-QUARTO CASAL01-R04.jpg",
-            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-VARANDA01-R04.jpg"
-        ],
-        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
-    },
-    {
-        id: 2,
-        nome: "Residencial Palma",
-        status: "Lançamento",
-        statusCode: "Lançamento",
-        badgeColor: "#57e220",
-        bairro: "Quadra 606 Norte",
-        regiao: "norte",
-        quartos: 2,
-        vagas: 1,
-        area: "Planta Otimizada",
-        mapsUrl: "https://maps.app.goo.gl/id1FhPTZeMZHRWB96",
-        imagens: [
+        "id": 1,
+        "nome": "Residencial Palma",
+        "status": "Lançamento",
+        "statusCode": "Lançamento",
+        "badgeColor": "#57e220",
+        "bairro": "Quadra 606 Norte",
+        "regiao": "norte",
+        "quartos": 2,
+        "vagas": 1,
+        "area": "Planta Otimizada",
+        "mapsUrl": "https://maps.app.goo.gl/SbFnn7GDbw4oVjTX7",
+        "imagens": [
             "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
             "img/PPC_PALMA_LAZER GERAL_2026.03.30.jpg",
             "img/PPC_PALMA_PISCINA AÉREA_2026.03.30.jpg",
@@ -53,38 +44,90 @@ const empreendimentos = [
             "img/INT_PALMA_VARANDA_2026.03.30.jpg",
             "img/INT_PALMA_ÁREA PRIVATIVA_2026.03.30.jpg"
         ],
-        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Localização estratégica na região norte.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
+        "descricao": "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Localização estratégica na região norte.",
+        "diferenciais": [
+            "Dois quartos/sala/cozinha/banheiro",
+            "Opções com ou sem Varanda",
+            "Opções com ou sem área privada",
+            "Opções de garagem para carro ou moto"
+        ]
     },
     {
-        id: 3,
-        nome: "Palmeira Serena",
-        status: "Venda",
-        statusCode: "Venda",
-        badgeColor: "#06d2d9",
-        bairro: "Quadra 1101 Sul",
-        regiao: "sul",
-        quartos: 2,
-        vagas: "Privativa",
-        area: "Conceito Moderno",
-        mapsUrl: "https://maps.app.goo.gl/4sx1g2pCpFE6uUtk8",
-        imagens: ["img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg"],
-        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Conceito moderno de moradia que integra uma infraestrutura de lazer.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
+        "id": 2,
+        "nome": "Reserva dos Girassóis",
+        "status": "Últimas Unidades",
+        "statusCode": "Últimas Unidades",
+        "badgeColor": "#b91010",
+        "bairro": "Quadra 1506 Sul",
+        "regiao": "sul",
+        "quartos": 2,
+        "vagas": "1 a 2",
+        "area": "Planta Inteligente",
+        "mapsUrl": "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
+        "imagens": [
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-03 R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-PISCINA-R03.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-AREA PRIVATIVA01 R04.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-LIVING01-R03.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-QUARTO CASAL01-R04.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-VARANDA01-R04.jpg"
+        ],
+        "descricao": "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
+        "diferenciais": [
+            "Dois quartos/sala/cozinha/banheiro",
+            "Opções com ou sem Varanda",
+            "Opções com ou sem área privada",
+            "Opções de garagem para carro ou moto"
+        ]
     },
     {
-        id: 4,
-        nome: "Palmeira Solare",
-        status: "Venda",
-        statusCode: "Venda",
-        badgeColor: "#06d2d9",
-        bairro: "Ao lado do Shopping Capim Dourado",
-        regiao: "sul",
-        quartos: 2,
-        vagas: "Até 2",
-        area: "Alto Padrão",
-        mapsUrl: "https://maps.app.goo.gl/RJTcLszhJKUgpqFz6",
-        imagens: [
+        "id": 3,
+        "nome": "Palmeira Serene",
+        "status": "À Venda",
+        "statusCode": "À Venda",
+        "badgeColor": "#06d2d9",
+        "bairro": "Quadra 1101 Sul",
+        "regiao": "sul",
+        "quartos": 2,
+        "vagas": "Privativa",
+        "area": "Conceito Moderno",
+        "mapsUrl": "https://maps.app.goo.gl/3aG9oH433Q8QpQjn6",
+        "imagens": [
+            "img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg",
+            "img/PPC_PALMEIRA SERENA_PISCINA_2026.03.03.jpg",
+            "img/PPC_PALMEIRA SERENA_MINI QUADRA_2026.03.03.jpg",
+            "img/PPC_PALMEIRA SERENA_GOURMET_2026.03.03.jpg",
+            "img/PPC_PALMEIRA SERENA_GOURMET 02_2026.03.05.jpg",
+            "img/MRV SALÃO DE FESTAS.jpg",
+            "img/INT_PALMEIRA SERENA_SALA COZINHA_2026.02.27.jpg",
+            "img/INT_PALMEIRA SERENA_QUARTO MAIOR_2026.02.27.jpg",
+            "img/INT_PALMEIRA SERENA_QUARTO MENOR_2026.02.27.jpg",
+            "img/INT_PALMEIRA SERENA_VARANDA_2026.02.27.jpg",
+            "img/INT_PALMEIRA SERENA_PRIVATIVA_2026.02.27.jpg"
+        ],
+        "descricao": "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Conceito moderno de moradia que integra uma infraestrutura de lazer.",
+        "diferenciais": [
+            "Dois quartos/sala/cozinha/banheiro",
+            "Opções com ou sem Varanda",
+            "Opções com ou sem área privada",
+            "Opções de garagem para carro ou moto"
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "Palmeira Solare",
+        "status": "À Venda",
+        "statusCode": "À Venda",
+        "badgeColor": "#06d2d9",
+        "bairro": "Ao lado do Shopping Capim Dourado",
+        "regiao": "sul",
+        "quartos": 2,
+        "vagas": "Até 2",
+        "area": "Alto Padrão",
+        "mapsUrl": "https://maps.app.goo.gl/RJTcLszhJKUgpqFz6",
+        "imagens": [
             "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
             "img/PALMEIRA SOLARE_PPC_ACADEMIA_2025.08.08.jpg",
             "img/PALMEIRA SOLARE_PPC_PLAYGROUND_2025.08.08.jpg",
@@ -96,22 +139,27 @@ const empreendimentos = [
             "img/PALMEIRA SOLARE_INTERNA_VARANDA_2025.08.08.jpg",
             "img/PALMEIRA SOLARE_INTERNA_AREA PRIVATIVA_2025.08.08.jpg"
         ],
-        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
+        "descricao": "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
+        "diferenciais": [
+            "Dois quartos/sala/cozinha/banheiro",
+            "Opções com ou sem Varanda",
+            "Opções com ou sem área privada",
+            "Opções de garagem para carro ou moto"
+        ]
     },
     {
-        id: 5,
-        nome: "Palmeira Boreal",
-        status: "Venda",
-        statusCode: "Venda",
-        badgeColor: "#06d2d9",
-        bairro: "Ao lado do Shopping Capim Dourado",
-        regiao: "sul",
-        quartos: 2,
-        vagas: "Até 2",
-        area: "Alto Padrão",
-        mapsUrl: "https://maps.app.goo.gl/uhxnnNcXJ5vR3UQL7",
-        imagens: [
+        "id": 5,
+        "nome": "Palmeira Boreal",
+        "status": "Sucesso de Venda",
+        "statusCode": "Sucesso de Venda",
+        "badgeColor": "#DAA520",
+        "bairro": "Ao lado do Shopping Capim Dourado",
+        "regiao": "sul",
+        "quartos": 2,
+        "vagas": "Até 2",
+        "area": "Alto Padrão",
+        "mapsUrl": "https://maps.app.goo.gl/uhxnnNcXJ5vR3UQL7",
+        "imagens": [
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
@@ -119,11 +167,16 @@ const empreendimentos = [
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg"
         ],
-        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
+        "descricao": "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
+        "diferenciais": [
+            "Dois quartos/sala/cozinha/banheiro",
+            "Opções com ou sem Varanda",
+            "Opções com ou sem área privada",
+            "Opções de garagem para carro ou moto"
+        ]
     }
 ];
- 
+
 // ─────────────────────────────────────────────
 // DATASET DE DEPOIMENTOS
 // ─────────────────────────────────────────────
@@ -141,19 +194,17 @@ const depoimentos = [
         img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
     }
 ];
- 
+
 // ─────────────────────────────────────────────
 // HELPERS
 // ─────────────────────────────────────────────
- 
-/** Gera link de WhatsApp com mensagem pré-preenchida sobre o empreendimento */
 function buildWhatsAppLink(nomeEmpreendimento) {
     const msg = encodeURIComponent(
         `Olá Neto! Tenho interesse no *${nomeEmpreendimento}* e gostaria de mais informações. Pode me atender?`
     );
-    return `https://wa.me/${5563999911234}?text=${msg}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 }
- 
+
 // ─────────────────────────────────────────────
 // LIGHTBOX GLOBAL
 // ─────────────────────────────────────────────
@@ -172,7 +223,7 @@ function initLightbox() {
             padding: 0;
         }
         #lightbox-overlay.active { display: flex; }
- 
+
         #lightbox-img-wrap {
             position: relative;
             max-width: 92vw;
@@ -191,7 +242,7 @@ function initLightbox() {
             transition: opacity .25s;
         }
         #lightbox-img.fading { opacity: 0; }
- 
+
         .lb-arrow {
             position: absolute;
             top: 50%;
@@ -221,7 +272,7 @@ function initLightbox() {
             .lb-arrow-next { right: -44px; }
             .lb-arrow { width: 38px; height: 38px; font-size: 1rem; }
         }
- 
+
         #lightbox-close {
             position: fixed;
             top: 18px; right: 22px;
@@ -240,14 +291,14 @@ function initLightbox() {
             z-index: 10001;
         }
         #lightbox-close:hover { background: rgba(255,255,255,.28); }
- 
+
         #lightbox-counter {
             margin-top: 16px;
             color: rgba(255,255,255,.55);
             font-size: .85rem;
             letter-spacing: .05em;
         }
- 
+
         #lightbox-thumbs {
             display: flex;
             gap: 8px;
@@ -272,8 +323,8 @@ function initLightbox() {
             opacity: 1;
             border-color: rgba(255,255,255,.7);
         }
- 
-        /* ── Setas Swiper ── */
+
+        /* Setas Swiper */
         .swiper-button-next,
         .swiper-button-prev {
             width: 36px !important;
@@ -296,20 +347,19 @@ function initLightbox() {
         .swiper-button-next:hover::after, .swiper-button-prev:hover::after {
             color: #fff !important;
         }
- 
+
         .property-image-wrapper img,
         .property-image-wrapper .swiper-slide img {
             cursor: zoom-in;
         }
- 
-        /* ── Botões do card ── */
+
+        /* Botões do card */
         .card-actions {
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 10px;
             margin-top: 16px;
         }
- 
         .btn-whatsapp-card {
             display: inline-flex;
             align-items: center;
@@ -333,7 +383,7 @@ function initLightbox() {
             box-shadow: 0 6px 20px rgba(37,211,102,.3);
         }
         .btn-whatsapp-card i { font-size: 1rem; }
- 
+
         .btn-maps-card {
             display: inline-flex;
             align-items: center;
@@ -360,7 +410,7 @@ function initLightbox() {
         .btn-maps-card i { font-size: .9rem; color: #ea4335; }
     `;
     document.head.appendChild(style);
- 
+
     const overlay = document.createElement("div");
     overlay.id = "lightbox-overlay";
     overlay.innerHTML = `
@@ -374,21 +424,22 @@ function initLightbox() {
         <div id="lightbox-thumbs"></div>
     `;
     document.body.appendChild(overlay);
- 
+
     let _imgs = [], _idx = 0;
- 
+
     const img      = overlay.querySelector("#lightbox-img");
     const counter  = overlay.querySelector("#lightbox-counter");
     const thumbs   = overlay.querySelector("#lightbox-thumbs");
     const btnClose = overlay.querySelector("#lightbox-close");
     const btnPrev  = overlay.querySelector(".lb-arrow-prev");
     const btnNext  = overlay.querySelector(".lb-arrow-next");
- 
+
     function setImage(index) {
         _idx = (index + _imgs.length) % _imgs.length;
         img.classList.add("fading");
         setTimeout(() => {
-            img.src = _imgs[_idx];
+            // Encode o caminho antes de atribuir ao src do lightbox
+            img.src = encodeImgPath(_imgs[_idx]);
             img.classList.remove("fading");
         }, 200);
         counter.textContent = `${_idx + 1} / ${_imgs.length}`;
@@ -396,29 +447,29 @@ function initLightbox() {
         const activeThumb = thumbs.querySelector(".lb-thumb.active");
         if (activeThumb) activeThumb.scrollIntoView({ inline: "center", behavior: "smooth" });
     }
- 
+
     function buildThumbs() {
         thumbs.innerHTML = "";
         if (_imgs.length <= 1) return;
         _imgs.forEach((src, i) => {
             const t = document.createElement("img");
             t.className = "lb-thumb";
-            t.src = src;
+            t.src = encodeImgPath(src); // ← encode aqui também
             t.alt = `Foto ${i + 1}`;
             t.addEventListener("click", () => setImage(i));
             t.addEventListener("error", () => { t.style.display = "none"; });
             thumbs.appendChild(t);
         });
     }
- 
+
     window.openLightbox = function(imagens, indexInicial = 0) {
-        _imgs = imagens;
+        _imgs = imagens; // guarda os caminhos originais; encode acontece em setImage/buildThumbs
         buildThumbs();
         setImage(indexInicial);
         overlay.classList.add("active");
         document.body.style.overflow = "hidden";
     };
- 
+
     btnPrev.addEventListener("click", () => setImage(_idx - 1));
     btnNext.addEventListener("click", () => setImage(_idx + 1));
     btnClose.addEventListener("click", closeLightbox);
@@ -429,7 +480,7 @@ function initLightbox() {
         if (e.key === "ArrowLeft")  setImage(_idx - 1);
         if (e.key === "Escape")     closeLightbox();
     });
- 
+
     function closeLightbox() {
         overlay.classList.remove("active");
         document.body.style.overflow = "";
@@ -437,7 +488,7 @@ function initLightbox() {
         thumbs.innerHTML = "";
     }
 }
- 
+
 // ─────────────────────────────────────────────
 // FALLBACK DE IMAGENS
 // ─────────────────────────────────────────────
@@ -454,7 +505,7 @@ function handleImageError(imgEl, altText) {
     placeholder.innerHTML = `<i class="fa-solid fa-image" style="font-size:2rem;opacity:.4;"></i><span>${altText || "Imagem indisponível"}</span>`;
     imgEl.parentNode.insertBefore(placeholder, imgEl);
 }
- 
+
 // ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
@@ -467,7 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initTestimonials();
     initFormValidation();
 });
- 
+
 // ─────────────────────────────────────────────
 // HEADER STICKY + MENU MOBILE
 // ─────────────────────────────────────────────
@@ -483,7 +534,7 @@ function initHeader() {
     if (toggle && nav) {
         toggle.addEventListener("click", () => {
             const isOpen = nav.classList.toggle("active");
-            toggle.setAttribute("aria-expanded", isOpen);
+            toggle.setAttribute("aria-expanded", String(isOpen));
             toggle.innerHTML = isOpen
                 ? '<i class="fa-solid fa-xmark"></i>'
                 : '<i class="fa-solid fa-bars"></i>';
@@ -497,9 +548,9 @@ function initHeader() {
         });
     }
 }
- 
+
 // ─────────────────────────────────────────────
-// SWIPER HTML
+// SWIPER HTML  ← ENCODE aplicado em cada src
 // ─────────────────────────────────────────────
 function getSwiperHTML(imagens, swiperClass, itemId) {
     if (!imagens || imagens.length === 0) {
@@ -508,11 +559,12 @@ function getSwiperHTML(imagens, swiperClass, itemId) {
                     <span style="font-size:.85rem;">Sem imagem</span>
                 </div>`;
     }
- 
+
     if (imagens.length === 1) {
+        const src = encodeImgPath(imagens[0]);
         return `
             <div style="position:relative;cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="0">
-                <img src="${imagens[0]}" alt=""
+                <img src="${src}" alt=""
                     style="width:100%;height:260px;object-fit:cover;display:block;"
                     onerror="handleImageError(this,'Imagem indisponível')">
                 <span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:3px 10px;font-size:.75rem;pointer-events:none;backdrop-filter:blur(2px);">
@@ -520,14 +572,18 @@ function getSwiperHTML(imagens, swiperClass, itemId) {
                 </span>
             </div>`;
     }
- 
-    const slides = imagens.map((img, idx) => `
+
+    const slides = imagens.map((raw, idx) => {
+        const src = encodeImgPath(raw); // ← encode por slide
+        return `
         <div class="swiper-slide" style="cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="${idx}">
-            <img src="${img}" style="width:100%;height:260px;object-fit:cover;display:block;"
-                onerror="handleImageError(this,'Foto indisponível')" alt="Foto ${idx + 1}">
-        </div>
-    `).join('');
- 
+            <img src="${src}"
+                style="width:100%;height:260px;object-fit:cover;display:block;"
+                onerror="handleImageError(this,'Foto indisponível')"
+                alt="Foto ${idx + 1}">
+        </div>`;
+    }).join('');
+
     return `
         <div class="swiper ${swiperClass}" style="width:100%;height:260px;">
             <div class="swiper-wrapper">${slides}</div>
@@ -539,16 +595,16 @@ function getSwiperHTML(imagens, swiperClass, itemId) {
             </span>
         </div>`;
 }
- 
+
 // ─────────────────────────────────────────────
 // RENDERIZAR CARDS
 // ─────────────────────────────────────────────
 function renderCards(dados) {
     const container = document.getElementById("properties-container") || document.getElementById("lista-empreendimentos");
     if (!container) return;
- 
+
     container.innerHTML = "";
- 
+
     if (dados.length === 0) {
         container.innerHTML = `
             <p class="no-results" style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);font-weight:500;font-size:1.1rem;">
@@ -556,22 +612,20 @@ function renderCards(dados) {
             </p>`;
         return;
     }
- 
+
     dados.forEach((item) => {
         const card        = document.createElement("article");
         card.className    = "property-card";
         const swiperClass = `swiper-card-${item.id}`;
- 
+
         const icons = ["fa-bed", "fa-vector-square", "fa-car", "fa-check"];
         const featuresHTML = item.diferenciais.map((dif, i) =>
             `<li><i class="fa-solid ${icons[i] || 'fa-check'}"></i> ${dif}</li>`
         ).join('');
- 
-        // Link WhatsApp com mensagem já personalizada
+
         const wppLink  = buildWhatsAppLink(item.nome);
-        // Link Google Maps
         const mapsLink = item.mapsUrl || `https://www.google.com/maps/search/${encodeURIComponent(item.bairro + ', Palmas, TO')}`;
- 
+
         card.innerHTML = `
             <div class="property-image-wrapper">
                 ${getSwiperHTML(item.imagens, swiperClass, item.id)}
@@ -586,21 +640,16 @@ function renderCards(dados) {
                 <h3>${item.nome}</h3>
                 <p class="property-description">${item.descricao}</p>
                 <ul class="property-features">${featuresHTML}</ul>
- 
                 <div class="card-actions">
-                    <a  href="${wppLink}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-whatsapp-card"
-                        aria-label="Falar sobre ${item.nome} no WhatsApp">
+                    <a href="${wppLink}" target="_blank" rel="noopener noreferrer"
+                       class="btn-whatsapp-card"
+                       aria-label="Falar sobre ${item.nome} no WhatsApp">
                         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                         Falar no WhatsApp
                     </a>
-                    <a  href="${mapsLink}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-maps-card"
-                        aria-label="Ver localização de ${item.nome} no Google Maps">
+                    <a href="${mapsLink}" target="_blank" rel="noopener noreferrer"
+                       class="btn-maps-card"
+                       aria-label="Ver localização de ${item.nome} no Google Maps">
                         <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                         Ver local
                     </a>
@@ -608,15 +657,12 @@ function renderCards(dados) {
             </div>
         `;
         container.appendChild(card);
- 
+
         if (item.imagens.length > 1) {
             setTimeout(() => {
                 const swiperInstance = new Swiper(`.${swiperClass}`, {
                     loop: true,
-                    pagination: {
-                        el: `.${swiperClass} .swiper-pagination`,
-                        clickable: true
-                    },
+                    pagination: { el: `.${swiperClass} .swiper-pagination`, clickable: true },
                     navigation: {
                         nextEl: `.${swiperClass} .swiper-button-next`,
                         prevEl: `.${swiperClass} .swiper-button-prev`
@@ -630,28 +676,27 @@ function renderCards(dados) {
             }, 100);
         }
     });
- 
+
     // Delegação: lightbox ao clicar na imagem
     container.addEventListener("click", (e) => {
-        // Ignora cliques em links (WhatsApp, Maps)
-        if (e.target.closest("a")) return;
- 
+        if (e.target.closest("a")) return; // ignora cliques em links
+
         const trigger = e.target.closest("[data-lightbox-id]");
         if (trigger) {
             const id   = parseInt(trigger.dataset.lightboxId);
             const item = empreendimentos.find(em => em.id === id);
             if (!item) return;
- 
+
             const cardEl = trigger.closest("article");
             const idx    = cardEl && cardEl._swiperRealIndex !== undefined
                 ? cardEl._swiperRealIndex
                 : parseInt(trigger.dataset.lightboxIndex || "0");
- 
+
             window.openLightbox(item.imagens, idx);
         }
     });
 }
- 
+
 // ─────────────────────────────────────────────
 // FILTROS
 // ─────────────────────────────────────────────
@@ -660,33 +705,52 @@ function initFilters() {
     const filterBairro  = document.getElementById("filter-bairro");
     const filterQuartos = document.getElementById("filter-quartos");
     const btnSearch     = document.getElementById("btn-execute-filter");
- 
-    function aplicarFiltros() {
+
+    // O parâmetro scrollToResults define se a tela deve descer após filtrar
+    function aplicarFiltros(scrollToResults = false) {
         let filtrados = empreendimentos;
- 
+        
         if (filterStatus && filterStatus.value)
             filtrados = filtrados.filter(i => i.statusCode === filterStatus.value);
- 
+            
         if (filterBairro && filterBairro.value) {
             const reg = filterBairro.value.toLowerCase().includes("sul") ? "sul" : "norte";
             filtrados = filtrados.filter(i => i.regiao === reg);
         }
- 
+        
         if (filterQuartos && filterQuartos.value) {
             const q = parseInt(filterQuartos.value);
             filtrados = filtrados.filter(i => i.quartos >= q);
         }
- 
+        
+        // Renderiza os cards filtrados
         renderCards(filtrados);
+
+        // Executa o scroll SOMENTE se o parâmetro for verdadeiro (após o clique no botão)
+        if (scrollToResults) {
+            const container = document.getElementById("properties-container") || document.getElementById("lista-empreendimentos");
+            if (container) {
+                setTimeout(() => {
+                    container.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 100);
+            }
+        }
     }
- 
+
+    // Ao alterar um filtro no select, apenas atualiza os resultados sem descer a tela
     [filterStatus, filterBairro, filterQuartos].forEach(el => {
-        if (el) el.addEventListener("change", aplicarFiltros);
+        if (el) el.addEventListener("change", () => aplicarFiltros(false));
     });
- 
-    if (btnSearch) btnSearch.addEventListener("click", (e) => { e.preventDefault(); aplicarFiltros(); });
+    
+    // Ao clicar no botão de busca, atualiza os resultados E desce a tela
+    if (btnSearch) {
+        btnSearch.addEventListener("click", (e) => { 
+            e.preventDefault(); 
+            aplicarFiltros(true); 
+        });
+    }
 }
- 
+
 // ─────────────────────────────────────────────
 // ANIMAÇÃO MÉTRICAS
 // ─────────────────────────────────────────────
@@ -694,7 +758,7 @@ function initStatsAnimation() {
     const statsSection = document.getElementById("stats-section");
     const stats        = document.querySelectorAll(".stat-number");
     if (!statsSection || !stats.length) return;
- 
+
     let animated = false;
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -722,7 +786,7 @@ function initStatsAnimation() {
     }, { threshold: 0.15 });
     observer.observe(statsSection);
 }
- 
+
 // ─────────────────────────────────────────────
 // DEPOIMENTOS
 // ─────────────────────────────────────────────
@@ -732,7 +796,7 @@ function initTestimonials() {
     const prevBtn = document.getElementById("prev-testimonial");
     const card    = document.querySelector(".testimonial-card");
     if (!nextBtn || !prevBtn || !card || !depoimentos.length) return;
- 
+
     function updateTestimonial(index) {
         const t = depoimentos[index];
         card.style.opacity   = 0;
@@ -750,7 +814,7 @@ function initTestimonials() {
             card.style.transform = "translateY(0)";
         }, 200);
     }
- 
+
     nextBtn.addEventListener("click", () => {
         currentTestimonial = (currentTestimonial + 1) % depoimentos.length;
         updateTestimonial(currentTestimonial);
@@ -760,29 +824,29 @@ function initTestimonials() {
         updateTestimonial(currentTestimonial);
     });
 }
- 
+
 // ─────────────────────────────────────────────
 // FORMULÁRIO DE LEADS
 // ─────────────────────────────────────────────
 function initFormValidation() {
     const form = document.getElementById("lead-form") || document.getElementById("contact-form");
     if (!form) return;
- 
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let isValid = true;
- 
+
         form.querySelectorAll("input[required], select[required]").forEach(input => {
             const group = input.parentElement;
             const bad   = !input.value.trim() || (input.type === "email" && !validateEmail(input.value));
             group.classList.toggle("invalid", bad);
             if (bad) isValid = false;
         });
- 
+
         if (isValid) {
             const btn = form.querySelector("button[type='submit']");
             if (btn) { btn.textContent = "Enviando..."; btn.disabled = true; }
- 
+
             setTimeout(() => {
                 form.innerHTML = `
                     <div style="text-align:center;padding:48px 0;animation:fadeIn .4s ease forwards;">
@@ -791,7 +855,7 @@ function initFormValidation() {
                         <p style="color:var(--text-muted,#64748b);margin-top:10px;font-size:.95rem;max-width:360px;margin-left:auto;margin-right:auto;">
                             Sua ficha foi gerada. O consultor fará contato exclusivo em instantes via WhatsApp ou ligação.
                         </p>
-                        <a href="https://wa.me/${5563999911234}" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer"
                            style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:13px 28px;background:#25d366;color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;">
                             <i class="fa-brands fa-whatsapp"></i> Falar agora no WhatsApp
                         </a>
@@ -799,12 +863,12 @@ function initFormValidation() {
             }, 1200);
         }
     });
- 
+
     form.querySelectorAll("input, select, textarea").forEach(input => {
         input.addEventListener("input", () => input.parentElement.classList.remove("invalid"));
     });
 }
- 
+
 function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
