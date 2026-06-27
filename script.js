@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5563999999999"; // ← altere para o número real
+const WHATSAPP_NUMBER = "5563999911234"; // ← altere para o número real
  
 // ─────────────────────────────────────────────
 // DATASET DE EMPREENDIMENTOS
@@ -17,7 +17,16 @@ const empreendimentos = [
         area: "Planta Inteligente",
         // Link direto do Google Maps para o endereço
         mapsUrl: "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
-        imagens: ["img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg"],
+        imagens: [
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-03 R03.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-PISCINA-R03.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-AREA PRIVATIVA01 R04.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-LIVING01-R03.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-QUARTO CASAL01-R04.jpg",
+            "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-VARANDA01-R04.jpg"
+        ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
@@ -142,7 +151,7 @@ function buildWhatsAppLink(nomeEmpreendimento) {
     const msg = encodeURIComponent(
         `Olá Neto! Tenho interesse no *${nomeEmpreendimento}* e gostaria de mais informações. Pode me atender?`
     );
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+    return `https://wa.me/${5563999911234}?text=${msg}`;
 }
  
 // ─────────────────────────────────────────────
@@ -782,7 +791,7 @@ function initFormValidation() {
                         <p style="color:var(--text-muted,#64748b);margin-top:10px;font-size:.95rem;max-width:360px;margin-left:auto;margin-right:auto;">
                             Sua ficha foi gerada. O consultor fará contato exclusivo em instantes via WhatsApp ou ligação.
                         </p>
-                        <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/${5563999911234}" target="_blank" rel="noopener noreferrer"
                            style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:13px 28px;background:#25d366;color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;">
                             <i class="fa-brands fa-whatsapp"></i> Falar agora no WhatsApp
                         </a>
