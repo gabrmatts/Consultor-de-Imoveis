@@ -11,8 +11,8 @@ const empreendimentos = [
         vagas: "1 a 2",
         area: "Planta Inteligente",
         imagens: ["img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg"],
-        descricao: "Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
-        diferenciais: ["2 Quartos (Suíte)", "Varanda Gourmet"]
+        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
+        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
     {
         id: 2,
@@ -26,8 +26,8 @@ const empreendimentos = [
         vagas: 1,
         area: "Planta Otimizada",
         imagens: ["img/PPC_PALMA_GUARITA_2026.03.30.jpg"],
-        descricao: "Localização estratégica na região norte.",
-        diferenciais: ["2 Quartos Premium", "Sacada Privativa"]
+        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Localização estratégica na região norte.",
+        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
     {
         id: 3,
@@ -41,8 +41,8 @@ const empreendimentos = [
         vagas: "Privativa",
         area: "Conceito Moderno",
         imagens: ["img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg"],
-        descricao: "Conceito moderno de moradia que integra uma infraestrutura de lazer.",
-        diferenciais: ["2 Quartos (plantas versáteis)", "Ampla Varanda Social"]
+        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Conceito moderno de moradia que integra uma infraestrutura de lazer.",
+        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
     {
         id: 4,
@@ -56,8 +56,8 @@ const empreendimentos = [
         vagas: "Até 2",
         area: "Alto Padrão",
         imagens: ["img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg"],
-        descricao: "O ápice da conveniência urbana.",
-        diferenciais: ["2 Quartos (Suíte)", "Varanda com Churrasqueira"]
+        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
+        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
     {
         id: 5,
@@ -71,11 +71,15 @@ const empreendimentos = [
         vagas: "Até 2",
         area: "Alto Padrão",
         imagens: [
-            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1) (1).jpg",
-            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg"
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_VARANDA_20240513.jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg",
         ],
-        descricao: "O ápice da conveniência urbana.",
-        diferenciais: ["2 Quartos (Suíte)", "Varanda com Churrasqueira"]
+        descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
+        diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     }
 ];
 
@@ -103,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initStatsAnimation();
     initTestimonials();
     initFormValidation();
-    initModal();
 });
 
 // STICKY HEADER & MENU LATERAL MOBILE
@@ -222,12 +225,14 @@ function renderCards(dados) {
         }
     });
 
-    // Vincula eventos dos botões
+    // Vincula eventos dos botões para rolar até o formulário
     container.querySelectorAll(".open-details").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            const button = e.target.closest(".open-details");
-            const id = parseInt(button.getAttribute("data-id"));
-            openModalDetails(id);
+            e.preventDefault();
+            const contactSection = document.getElementById("contato") || document.getElementById("lead-form");
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+            }
         });
     });
 }
@@ -407,112 +412,4 @@ function initFormValidation() {
 
 function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// CONTROLE DO MODAL
-const modal = document.getElementById("premium-modal");
-function initModal() {
-    if (!modal) return;
-    const closeBtn = document.querySelector(".modal-close");
-
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => fecharModal());
-    }
-
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) fecharModal();
-    });
-
-    window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("active")) fecharModal();
-    });
-}
-
-function fecharModal() {
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-}
-
-function openModalDetails(id) {
-    const item = empreendimentos.find(p => p.id === id);
-    if (!item || !modal) return;
-
-    const body = document.getElementById("modal-dynamic-body");
-    if (!body) return;
-
-    const diferenciaisHTML = item.diferenciais.map(dif => `
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-dark, #111); font-weight:500; text-align: left;">
-            <i class="fa-solid fa-check" style="color:var(--gold, #b89047); font-size: 0.95rem;"></i> ${dif}
-        </li>
-    `).join('');
-
-    // Swiper no modal se tiver mais de 1 imagem
-    const modalSwiperClass = "swiper-modal-gallery";
-    const galeriaHTML = item.imagens.length > 1
-        ? getSwiperHTML(item.imagens, modalSwiperClass)
-        : `<img src="${item.imagens[0]}" alt="${item.nome}" style="width:100%; border-radius:var(--radius-md, 8px); object-fit:cover; height:280px; margin-bottom:12px;">`;
-
-    body.innerHTML = `
-        <div class="modal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left;">
-            <div class="modal-gallery">
-                <div style="border-radius:var(--radius-md, 8px); overflow:hidden; margin-bottom:12px;">
-                    ${galeriaHTML}
-                </div>
-                <div style="background:var(--bg-light, #f9f9f9); padding: 16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted, #666); border-radius:var(--radius-md, 8px); font-size: 0.85rem; border: 1px dashed #3b82f6; text-align:center;">
-                    <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; margin-right:8px; color: var(--gold, #b89047);"></i> Plantas de Prerrogativa Corporativa sob Consulta.
-                </div>
-            </div>
-            <div class="modal-info" style="display: flex; flex-direction: column; justify-content: center;">
-                <span style="color:${item.badgeColor}; font-weight:700; text-transform:uppercase; font-size:0.75rem; letter-spacing: 0.5px;">${item.status}</span>
-                <h2 style="font-size:1.8rem; margin: 4px 0 12px 0; color:var(--text-dark, #111); line-height: 1.2; font-weight:700;">${item.nome}</h2>
-                <p style="color:var(--text-muted, #666); margin-bottom:20px; font-size: 0.95rem; line-height: 1.5;">${item.descricao}</p>
-
-                <h4 style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; color: var(--text-muted, #666); margin-bottom: 10px; font-weight:700;">Destaques da Unidade</h4>
-                <ul style="margin-bottom: 24px; display:flex; flex-direction:column; gap:10px; list-style: none; padding: 0;">
-                    ${diferenciaisHTML}
-                </ul>
-
-                <div class="modal-meta-grid" style="margin-bottom: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                    <div style="font-size: 0.85rem; color: var(--text-dark, #111);"><strong>Configuração:</strong><br><span style="color:var(--text-muted, #666);">${item.area}</span></div>
-                    <div style="font-size: 0.85rem; color: var(--text-dark, #111);"><strong>Região / Setor:</strong><br><span style="color:var(--text-muted, #666);">${item.bairro}</span></div>
-                </div>
-
-                <div style="display:flex; flex-direction:column; gap:10px; margin-top: auto;">
-                    <a href="https://wa.me/5563999999999?text=Olá,%20gostaria%20de%20receber%20a%20ficha%20técnica%20e%20disponibilidade%20do%20${encodeURIComponent(item.nome)}" target="_blank" class="btn btn-primary" style="text-align: center; justify-content: center; display: inline-flex; align-items: center; background: #10b981; color: #fff; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 600;">
-                        <i class="fa-brands fa-whatsapp" style="margin-right: 6px;"></i> Simular Disponibilidade via WhatsApp
-                    </a>
-                    <button class="btn btn-primary-outline" id="modal-scroll-contact" style="padding: 12px; border-radius: 6px; background: transparent; border: 1px solid #ccc; cursor: pointer;">Consultar Memorial Descritivo Completo</button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Inicia Swiper no modal se necessário
-    if (item.imagens.length > 1) {
-        setTimeout(() => {
-            new Swiper(`.${modalSwiperClass}`, {
-                loop: true,
-                pagination: { el: `.${modalSwiperClass} .swiper-pagination`, clickable: true },
-                navigation: {
-                    nextEl: `.${modalSwiperClass} .swiper-button-next`,
-                    prevEl: `.${modalSwiperClass} .swiper-button-prev`
-                }
-            });
-        }, 100);
-    }
-
-    const scrollBtn = document.getElementById("modal-scroll-contact");
-    if (scrollBtn) {
-        scrollBtn.addEventListener("click", () => {
-            fecharModal();
-            setTimeout(() => {
-                const contactSection = document.getElementById("contato") || document.getElementById("lead-form");
-                if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
-            }, 200);
-        });
-    }
-
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
 }
