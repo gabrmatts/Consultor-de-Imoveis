@@ -1,3 +1,8 @@
+const WHATSAPP_NUMBER = "5563999999999"; // ← altere para o número real
+ 
+// ─────────────────────────────────────────────
+// DATASET DE EMPREENDIMENTOS
+// ─────────────────────────────────────────────
 const empreendimentos = [
     {
         id: 1,
@@ -10,6 +15,8 @@ const empreendimentos = [
         quartos: 2,
         vagas: "1 a 2",
         area: "Planta Inteligente",
+        // Link direto do Google Maps para o endereço
+        mapsUrl: "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
         imagens: ["img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg"],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
@@ -25,7 +32,18 @@ const empreendimentos = [
         quartos: 2,
         vagas: 1,
         area: "Planta Otimizada",
-        imagens: ["img/PPC_PALMA_GUARITA_2026.03.30.jpg"],
+        mapsUrl: "https://maps.app.goo.gl/id1FhPTZeMZHRWB96",
+        imagens: [
+            "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
+            "img/PPC_PALMA_LAZER GERAL_2026.03.30.jpg",
+            "img/PPC_PALMA_PISCINA AÉREA_2026.03.30.jpg",
+            "img/PPC_PALMA_PLAYBABY_2026.03.30.jpg",
+            "img/INT_PALMA_SALA E COZINHA_2026.03.30.jpg",
+            "img/INT_PALMA_QUARTO MAIOR_2026.03.30.jpg",
+            "img/INT_PALMA_QUARTO MENOR_2026.03.30.jpg",
+            "img/INT_PALMA_VARANDA_2026.03.30.jpg",
+            "img/INT_PALMA_ÁREA PRIVATIVA_2026.03.30.jpg"
+        ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Localização estratégica na região norte.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     },
@@ -40,6 +58,7 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Privativa",
         area: "Conceito Moderno",
+        mapsUrl: "https://maps.app.goo.gl/4sx1g2pCpFE6uUtk8",
         imagens: ["img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg"],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Conceito moderno de moradia que integra uma infraestrutura de lazer.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
@@ -55,9 +74,9 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
+        mapsUrl: "https://maps.app.goo.gl/RJTcLszhJKUgpqFz6",
         imagens: [
             "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
-            "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
             "img/PALMEIRA SOLARE_PPC_ACADEMIA_2025.08.08.jpg",
             "img/PALMEIRA SOLARE_PPC_PLAYGROUND_2025.08.08.jpg",
             "img/PALMEIRA SOLARE_PPC_CHURRASQUEIRA_2025.08.08.jpg",
@@ -82,20 +101,23 @@ const empreendimentos = [
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
+        mapsUrl: "https://maps.app.goo.gl/uhxnnNcXJ5vR3UQL7",
         imagens: [
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_VARANDA_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
-            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg",
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
         diferenciais: ["Dois quartos/sala/cozinha/banheiro", "Opções com ou sem Varanda", "Opções com ou sem área privada", "Opções de garagem para carro ou moto"]
     }
 ];
-
+ 
+// ─────────────────────────────────────────────
 // DATASET DE DEPOIMENTOS
+// ─────────────────────────────────────────────
 const depoimentos = [
     {
         nome: "Ricardo Cavalcante",
@@ -110,9 +132,325 @@ const depoimentos = [
         img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
     }
 ];
-
-// EXECUÇÃO AO CARREGAR O DOM
+ 
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+ 
+/** Gera link de WhatsApp com mensagem pré-preenchida sobre o empreendimento */
+function buildWhatsAppLink(nomeEmpreendimento) {
+    const msg = encodeURIComponent(
+        `Olá Neto! Tenho interesse no *${nomeEmpreendimento}* e gostaria de mais informações. Pode me atender?`
+    );
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+}
+ 
+// ─────────────────────────────────────────────
+// LIGHTBOX GLOBAL
+// ─────────────────────────────────────────────
+function initLightbox() {
+    const style = document.createElement("style");
+    style.textContent = `
+        #lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0;
+        }
+        #lightbox-overlay.active { display: flex; }
+ 
+        #lightbox-img-wrap {
+            position: relative;
+            max-width: 92vw;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #lightbox-img {
+            max-width: 92vw;
+            max-height: 78vh;
+            border-radius: 10px;
+            object-fit: contain;
+            box-shadow: 0 8px 48px rgba(0,0,0,.7);
+            user-select: none;
+            transition: opacity .25s;
+        }
+        #lightbox-img.fading { opacity: 0; }
+ 
+        .lb-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,.12);
+            border: 1.5px solid rgba(255,255,255,.3);
+            color: #fff;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+        .lb-arrow:hover {
+            background: rgba(255,255,255,.28);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .lb-arrow-prev { left: -64px; }
+        .lb-arrow-next { right: -64px; }
+        @media (max-width: 640px) {
+            .lb-arrow-prev { left: -44px; }
+            .lb-arrow-next { right: -44px; }
+            .lb-arrow { width: 38px; height: 38px; font-size: 1rem; }
+        }
+ 
+        #lightbox-close {
+            position: fixed;
+            top: 18px; right: 22px;
+            background: rgba(255,255,255,.12);
+            border: 1.5px solid rgba(255,255,255,.3);
+            color: #fff;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: background .2s;
+            backdrop-filter: blur(4px);
+            z-index: 10001;
+        }
+        #lightbox-close:hover { background: rgba(255,255,255,.28); }
+ 
+        #lightbox-counter {
+            margin-top: 16px;
+            color: rgba(255,255,255,.55);
+            font-size: .85rem;
+            letter-spacing: .05em;
+        }
+ 
+        #lightbox-thumbs {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            overflow-x: auto;
+            max-width: 92vw;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,.2) transparent;
+        }
+        .lb-thumb {
+            flex-shrink: 0;
+            width: 56px; height: 40px;
+            border-radius: 5px;
+            object-fit: cover;
+            opacity: .45;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: opacity .2s, border-color .2s;
+        }
+        .lb-thumb.active, .lb-thumb:hover {
+            opacity: 1;
+            border-color: rgba(255,255,255,.7);
+        }
+ 
+        /* ── Setas Swiper ── */
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 36px !important;
+            height: 36px !important;
+            background: rgba(255,255,255,.92) !important;
+            border-radius: 50% !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,.25) !important;
+            transition: background .2s, transform .2s !important;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: #b89047 !important;
+            transform: scale(1.1) !important;
+        }
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: .8rem !important;
+            font-weight: 800 !important;
+            color: #0b192c !important;
+            transition: color .2s !important;
+        }
+        .swiper-button-next:hover::after, .swiper-button-prev:hover::after {
+            color: #fff !important;
+        }
+ 
+        .property-image-wrapper img,
+        .property-image-wrapper .swiper-slide img {
+            cursor: zoom-in;
+        }
+ 
+        /* ── Botões do card ── */
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-top: 16px;
+        }
+ 
+        .btn-whatsapp-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 18px;
+            background: #25d366;
+            color: #fff;
+            font-size: .88rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background .2s, transform .2s, box-shadow .2s;
+            white-space: nowrap;
+        }
+        .btn-whatsapp-card:hover {
+            background: #1ebe5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,211,102,.3);
+        }
+        .btn-whatsapp-card i { font-size: 1rem; }
+ 
+        .btn-maps-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 13px 16px;
+            background: transparent;
+            color: var(--primary, #0b192c);
+            font-size: .85rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1.5px solid var(--border, #e2e8f0);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background .2s, border-color .2s, transform .2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .btn-maps-card:hover {
+            background: var(--bg-light, #f8fafc);
+            border-color: var(--primary, #0b192c);
+            transform: translateY(-2px);
+        }
+        .btn-maps-card i { font-size: .9rem; color: #ea4335; }
+    `;
+    document.head.appendChild(style);
+ 
+    const overlay = document.createElement("div");
+    overlay.id = "lightbox-overlay";
+    overlay.innerHTML = `
+        <button id="lightbox-close" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+        <div id="lightbox-img-wrap">
+            <button class="lb-arrow lb-arrow-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="lightbox-img" src="" alt="Visualização ampliada">
+            <button class="lb-arrow lb-arrow-next" aria-label="Próxima"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div id="lightbox-counter"></div>
+        <div id="lightbox-thumbs"></div>
+    `;
+    document.body.appendChild(overlay);
+ 
+    let _imgs = [], _idx = 0;
+ 
+    const img      = overlay.querySelector("#lightbox-img");
+    const counter  = overlay.querySelector("#lightbox-counter");
+    const thumbs   = overlay.querySelector("#lightbox-thumbs");
+    const btnClose = overlay.querySelector("#lightbox-close");
+    const btnPrev  = overlay.querySelector(".lb-arrow-prev");
+    const btnNext  = overlay.querySelector(".lb-arrow-next");
+ 
+    function setImage(index) {
+        _idx = (index + _imgs.length) % _imgs.length;
+        img.classList.add("fading");
+        setTimeout(() => {
+            img.src = _imgs[_idx];
+            img.classList.remove("fading");
+        }, 200);
+        counter.textContent = `${_idx + 1} / ${_imgs.length}`;
+        thumbs.querySelectorAll(".lb-thumb").forEach((t, i) => t.classList.toggle("active", i === _idx));
+        const activeThumb = thumbs.querySelector(".lb-thumb.active");
+        if (activeThumb) activeThumb.scrollIntoView({ inline: "center", behavior: "smooth" });
+    }
+ 
+    function buildThumbs() {
+        thumbs.innerHTML = "";
+        if (_imgs.length <= 1) return;
+        _imgs.forEach((src, i) => {
+            const t = document.createElement("img");
+            t.className = "lb-thumb";
+            t.src = src;
+            t.alt = `Foto ${i + 1}`;
+            t.addEventListener("click", () => setImage(i));
+            t.addEventListener("error", () => { t.style.display = "none"; });
+            thumbs.appendChild(t);
+        });
+    }
+ 
+    window.openLightbox = function(imagens, indexInicial = 0) {
+        _imgs = imagens;
+        buildThumbs();
+        setImage(indexInicial);
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+    };
+ 
+    btnPrev.addEventListener("click", () => setImage(_idx - 1));
+    btnNext.addEventListener("click", () => setImage(_idx + 1));
+    btnClose.addEventListener("click", closeLightbox);
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener("keydown", (e) => {
+        if (!overlay.classList.contains("active")) return;
+        if (e.key === "ArrowRight") setImage(_idx + 1);
+        if (e.key === "ArrowLeft")  setImage(_idx - 1);
+        if (e.key === "Escape")     closeLightbox();
+    });
+ 
+    function closeLightbox() {
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+        img.src = "";
+        thumbs.innerHTML = "";
+    }
+}
+ 
+// ─────────────────────────────────────────────
+// FALLBACK DE IMAGENS
+// ─────────────────────────────────────────────
+function handleImageError(imgEl, altText) {
+    imgEl.style.display = "none";
+    const placeholder = document.createElement("div");
+    placeholder.style.cssText = `
+        width:100%; height:260px;
+        background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:center;
+        color:#999; font-size:.85rem; gap:8px;
+    `;
+    placeholder.innerHTML = `<i class="fa-solid fa-image" style="font-size:2rem;opacity:.4;"></i><span>${altText || "Imagem indisponível"}</span>`;
+    imgEl.parentNode.insertBefore(placeholder, imgEl);
+}
+ 
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
+    initLightbox();
     initHeader();
     renderCards(empreendimentos);
     initFilters();
@@ -120,8 +458,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initTestimonials();
     initFormValidation();
 });
-
-// STICKY HEADER & MENU LATERAL MOBILE
+ 
+// ─────────────────────────────────────────────
+// HEADER STICKY + MENU MOBILE
+// ─────────────────────────────────────────────
 function initHeader() {
     const header = document.getElementById("header");
     if (header) {
@@ -129,299 +469,333 @@ function initHeader() {
             header.classList.toggle("sticky", window.scrollY > 40);
         });
     }
-
     const toggle = document.querySelector(".mobile-menu-toggle");
-    const nav = document.querySelector(".nav-menu");
-
+    const nav    = document.querySelector(".nav-menu");
     if (toggle && nav) {
         toggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-            toggle.innerHTML = nav.classList.contains("active")
+            const isOpen = nav.classList.toggle("active");
+            toggle.setAttribute("aria-expanded", isOpen);
+            toggle.innerHTML = isOpen
                 ? '<i class="fa-solid fa-xmark"></i>'
                 : '<i class="fa-solid fa-bars"></i>';
         });
-
         nav.querySelectorAll("ul a").forEach(link => {
             link.addEventListener("click", () => {
                 nav.classList.remove("active");
+                toggle.setAttribute("aria-expanded", "false");
                 toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
             });
         });
     }
 }
-
-// GERA HTML DO SWIPER para cada card
-function getSwiperHTML(imagens, swiperClass) {
+ 
+// ─────────────────────────────────────────────
+// SWIPER HTML
+// ─────────────────────────────────────────────
+function getSwiperHTML(imagens, swiperClass, itemId) {
     if (!imagens || imagens.length === 0) {
-        return `<div style="background:#ddd; height:260px; display:flex; align-items:center; justify-content:center; color:#999;">Sem imagem</div>`;
+        return `<div style="background:#e8e8e8;height:260px;display:flex;align-items:center;justify-content:center;color:#999;flex-direction:column;gap:8px;">
+                    <i class="fa-solid fa-image" style="font-size:2rem;opacity:.4;"></i>
+                    <span style="font-size:.85rem;">Sem imagem</span>
+                </div>`;
     }
-
-    // Se só tem 1 imagem, renderiza img simples (sem overhead do Swiper)
+ 
     if (imagens.length === 1) {
-        return `<img src="${imagens[0]}" alt="" style="width:100%; height:260px; object-fit:cover; display:block;">`;
+        return `
+            <div style="position:relative;cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="0">
+                <img src="${imagens[0]}" alt=""
+                    style="width:100%;height:260px;object-fit:cover;display:block;"
+                    onerror="handleImageError(this,'Imagem indisponível')">
+                <span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:3px 10px;font-size:.75rem;pointer-events:none;backdrop-filter:blur(2px);">
+                    <i class='fa-solid fa-magnifying-glass-plus'></i> Ampliar
+                </span>
+            </div>`;
     }
-
-    const slides = imagens.map(img => `
-        <div class="swiper-slide">
-            <img src="${img}" style="width:100%; height:260px; object-fit:cover; display:block;">
+ 
+    const slides = imagens.map((img, idx) => `
+        <div class="swiper-slide" style="cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="${idx}">
+            <img src="${img}" style="width:100%;height:260px;object-fit:cover;display:block;"
+                onerror="handleImageError(this,'Foto indisponível')" alt="Foto ${idx + 1}">
         </div>
     `).join('');
-
+ 
     return `
-        <div class="swiper ${swiperClass}" style="width:100%; height:260px;">
+        <div class="swiper ${swiperClass}" style="width:100%;height:260px;">
             <div class="swiper-wrapper">${slides}</div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-        </div>
-    `;
+            <span style="position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:3px 10px;font-size:.75rem;pointer-events:none;backdrop-filter:blur(2px);">
+                <i class='fa-solid fa-images'></i> ${imagens.length} fotos
+            </span>
+        </div>`;
 }
-
+ 
+// ─────────────────────────────────────────────
 // RENDERIZAR CARDS
+// ─────────────────────────────────────────────
 function renderCards(dados) {
     const container = document.getElementById("properties-container") || document.getElementById("lista-empreendimentos");
     if (!container) return;
-
+ 
     container.innerHTML = "";
-
+ 
     if (dados.length === 0) {
-        container.innerHTML = `<p class="no-results" style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-muted); font-weight: 500; font-size: 1.1rem;">Nenhum empreendimento corresponde aos filtros selecionados.</p>`;
+        container.innerHTML = `
+            <p class="no-results" style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);font-weight:500;font-size:1.1rem;">
+                Nenhum empreendimento corresponde aos filtros selecionados.
+            </p>`;
         return;
     }
-
+ 
     dados.forEach((item) => {
-        const card = document.createElement("article");
-        card.className = "property-card";
-
+        const card        = document.createElement("article");
+        card.className    = "property-card";
         const swiperClass = `swiper-card-${item.id}`;
-
-        const featuresHTML = item.diferenciais.map((dif, index) => {
-            let icon = "fa-check";
-            if (index === 0) icon = "fa-bed";
-            else if (index === 1) icon = "fa-vector-square";
-            else if (index === 2) icon = "fa-car";
-            return `<li><i class="fa-solid ${icon}"></i> ${dif}</li>`;
-        }).join('');
-
+ 
+        const icons = ["fa-bed", "fa-vector-square", "fa-car", "fa-check"];
+        const featuresHTML = item.diferenciais.map((dif, i) =>
+            `<li><i class="fa-solid ${icons[i] || 'fa-check'}"></i> ${dif}</li>`
+        ).join('');
+ 
+        // Link WhatsApp com mensagem já personalizada
+        const wppLink  = buildWhatsAppLink(item.nome);
+        // Link Google Maps
+        const mapsLink = item.mapsUrl || `https://www.google.com/maps/search/${encodeURIComponent(item.bairro + ', Palmas, TO')}`;
+ 
         card.innerHTML = `
             <div class="property-image-wrapper">
-                ${getSwiperHTML(item.imagens, swiperClass)}
-                <span class="property-tag" style="background-color: ${item.badgeColor || 'var(--gold)'}">${item.status}</span>
+                ${getSwiperHTML(item.imagens, swiperClass, item.id)}
+                <span class="property-tag" style="background-color:${item.badgeColor || 'var(--gold)'}">
+                    ${item.status}
+                </span>
             </div>
             <div class="property-info">
-                <span class="property-location"><i class="fa-solid fa-map-pin"></i> ${item.bairro}</span>
+                <span class="property-location">
+                    <i class="fa-solid fa-map-pin"></i> ${item.bairro}
+                </span>
                 <h3>${item.nome}</h3>
                 <p class="property-description">${item.descricao}</p>
-                <ul class="property-features">
-                    ${featuresHTML}
-                </ul>
-                <button class="btn btn-secondary-card open-details" data-id="${item.id}" style="width: 100%; text-align: center; margin-top: 15px;">
-                    Solicitar Informações
-                </button>
+                <ul class="property-features">${featuresHTML}</ul>
+ 
+                <div class="card-actions">
+                    <a  href="${wppLink}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-whatsapp-card"
+                        aria-label="Falar sobre ${item.nome} no WhatsApp">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        Falar no WhatsApp
+                    </a>
+                    <a  href="${mapsLink}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-maps-card"
+                        aria-label="Ver localização de ${item.nome} no Google Maps">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        Ver local
+                    </a>
+                </div>
             </div>
         `;
         container.appendChild(card);
-
-        // Inicia o Swiper apenas se tiver mais de 1 imagem
+ 
         if (item.imagens.length > 1) {
             setTimeout(() => {
-                new Swiper(`.${swiperClass}`, {
+                const swiperInstance = new Swiper(`.${swiperClass}`, {
                     loop: true,
-                    pagination: { el: `.${swiperClass} .swiper-pagination`, clickable: true },
+                    pagination: {
+                        el: `.${swiperClass} .swiper-pagination`,
+                        clickable: true
+                    },
                     navigation: {
                         nextEl: `.${swiperClass} .swiper-button-next`,
                         prevEl: `.${swiperClass} .swiper-button-prev`
                     }
                 });
+                swiperInstance.on("slideChange", () => {
+                    card._swiperRealIndex = swiperInstance.realIndex;
+                });
+                card._swiperInstance  = swiperInstance;
+                card._swiperRealIndex = 0;
             }, 100);
         }
     });
-
-    // Vincula eventos dos botões para rolar até o formulário
-    container.querySelectorAll(".open-details").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const contactSection = document.getElementById("contato") || document.getElementById("lead-form");
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth" });
-            }
-        });
+ 
+    // Delegação: lightbox ao clicar na imagem
+    container.addEventListener("click", (e) => {
+        // Ignora cliques em links (WhatsApp, Maps)
+        if (e.target.closest("a")) return;
+ 
+        const trigger = e.target.closest("[data-lightbox-id]");
+        if (trigger) {
+            const id   = parseInt(trigger.dataset.lightboxId);
+            const item = empreendimentos.find(em => em.id === id);
+            if (!item) return;
+ 
+            const cardEl = trigger.closest("article");
+            const idx    = cardEl && cardEl._swiperRealIndex !== undefined
+                ? cardEl._swiperRealIndex
+                : parseInt(trigger.dataset.lightboxIndex || "0");
+ 
+            window.openLightbox(item.imagens, idx);
+        }
     });
 }
-
-// FILTROS REAL-TIME — corrigido para bater com os dados reais
+ 
+// ─────────────────────────────────────────────
+// FILTROS
+// ─────────────────────────────────────────────
 function initFilters() {
-    const filterStatus = document.getElementById("filter-status");
-    const filterBairro = document.getElementById("filter-bairro");
+    const filterStatus  = document.getElementById("filter-status");
+    const filterBairro  = document.getElementById("filter-bairro");
     const filterQuartos = document.getElementById("filter-quartos");
-    const btnSearch = document.getElementById("btn-execute-filter");
-
+    const btnSearch     = document.getElementById("btn-execute-filter");
+ 
     function aplicarFiltros() {
         let filtrados = empreendimentos;
-
-        if (filterStatus && filterStatus.value) {
-            filtrados = filtrados.filter(item => item.statusCode === filterStatus.value);
-        }
-
-        // FIX: compara com o campo "regiao" em vez do texto do bairro
+ 
+        if (filterStatus && filterStatus.value)
+            filtrados = filtrados.filter(i => i.statusCode === filterStatus.value);
+ 
         if (filterBairro && filterBairro.value) {
-            const regiaoSelecionada = filterBairro.value.toLowerCase().includes("sul") ? "sul" : "norte";
-            filtrados = filtrados.filter(item => item.regiao === regiaoSelecionada);
+            const reg = filterBairro.value.toLowerCase().includes("sul") ? "sul" : "norte";
+            filtrados = filtrados.filter(i => i.regiao === reg);
         }
-
+ 
         if (filterQuartos && filterQuartos.value) {
             const q = parseInt(filterQuartos.value);
-            filtrados = filtrados.filter(item => item.quartos >= q);
+            filtrados = filtrados.filter(i => i.quartos >= q);
         }
-
+ 
         renderCards(filtrados);
     }
-
+ 
     [filterStatus, filterBairro, filterQuartos].forEach(el => {
         if (el) el.addEventListener("change", aplicarFiltros);
     });
-
-    if (btnSearch) {
-        btnSearch.addEventListener("click", (e) => {
-            e.preventDefault();
-            aplicarFiltros();
-        });
-    }
+ 
+    if (btnSearch) btnSearch.addEventListener("click", (e) => { e.preventDefault(); aplicarFiltros(); });
 }
-
-// ANIMAÇÃO DE MÉTRICAS
+ 
+// ─────────────────────────────────────────────
+// ANIMAÇÃO MÉTRICAS
+// ─────────────────────────────────────────────
 function initStatsAnimation() {
     const statsSection = document.getElementById("stats-section");
-    const stats = document.querySelectorAll(".stat-number");
-    if (!statsSection || stats.length === 0) return;
-
+    const stats        = document.querySelectorAll(".stat-number");
+    if (!statsSection || !stats.length) return;
+ 
     let animated = false;
-
-    const startAnimation = () => {
-        stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute("data-target"));
-            if (isNaN(target)) return;
-
-            let current = 0;
-            const increment = target / 40;
-
-            const updateCounter = () => {
-                if (current < target) {
-                    current += increment;
-                    stat.innerText = Math.ceil(current);
-                    setTimeout(updateCounter, 25);
-                } else {
-                    stat.innerText = target + (stat.getAttribute("data-target") === "100" ? "%" : "+");
-                }
-            };
-            updateCounter();
-        });
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !animated) {
-                startAnimation();
                 animated = true;
                 observer.unobserve(statsSection);
+                stats.forEach(stat => {
+                    const target = parseInt(stat.getAttribute("data-target"));
+                    if (isNaN(target)) return;
+                    let current = 0;
+                    const increment = target / 40;
+                    const tick = () => {
+                        if (current < target) {
+                            current += increment;
+                            stat.innerText = Math.ceil(current);
+                            setTimeout(tick, 25);
+                        } else {
+                            stat.innerText = target + (stat.getAttribute("data-target") === "100" ? "%" : "+");
+                        }
+                    };
+                    tick();
+                });
             }
         });
     }, { threshold: 0.15 });
-
     observer.observe(statsSection);
 }
-
-// CARROSSEL DE DEPOIMENTOS
+ 
+// ─────────────────────────────────────────────
+// DEPOIMENTOS
+// ─────────────────────────────────────────────
 let currentTestimonial = 0;
 function initTestimonials() {
     const nextBtn = document.getElementById("next-testimonial");
     const prevBtn = document.getElementById("prev-testimonial");
-    const card = document.querySelector(".testimonial-card");
-
+    const card    = document.querySelector(".testimonial-card");
     if (!nextBtn || !prevBtn || !card || !depoimentos.length) return;
-
+ 
     function updateTestimonial(index) {
         const t = depoimentos[index];
-        card.style.opacity = 0;
+        card.style.opacity   = 0;
         card.style.transform = "translateY(8px)";
-
         setTimeout(() => {
-            const textEl = card.querySelector(".testimonial-text");
-            const imgEl = card.querySelector(".testimonial-user img");
-            const nameEl = card.querySelector(".testimonial-user h4");
+            const textEl  = card.querySelector(".testimonial-text");
+            const imgEl   = card.querySelector(".testimonial-user img");
+            const nameEl  = card.querySelector(".testimonial-user h4");
             const cargoEl = card.querySelector(".testimonial-user span");
-
-            if (textEl) textEl.innerText = `"${t.texto.replace(/"/g, '')}"`;
-            if (imgEl) imgEl.src = t.img;
-            if (nameEl) nameEl.innerText = t.nome;
+            if (textEl)  textEl.innerText = `"${t.texto.replace(/"/g, '')}"`;
+            if (imgEl)   imgEl.src         = t.img;
+            if (nameEl)  nameEl.innerText  = t.nome;
             if (cargoEl) cargoEl.innerText = t.cargo;
-
-            card.style.opacity = 1;
+            card.style.opacity   = 1;
             card.style.transform = "translateY(0)";
         }, 200);
     }
-
+ 
     nextBtn.addEventListener("click", () => {
         currentTestimonial = (currentTestimonial + 1) % depoimentos.length;
         updateTestimonial(currentTestimonial);
     });
-
     prevBtn.addEventListener("click", () => {
         currentTestimonial = (currentTestimonial - 1 + depoimentos.length) % depoimentos.length;
         updateTestimonial(currentTestimonial);
     });
 }
-
-// CAPTURA E VALIDAÇÃO DE LEADS
+ 
+// ─────────────────────────────────────────────
+// FORMULÁRIO DE LEADS
+// ─────────────────────────────────────────────
 function initFormValidation() {
     const form = document.getElementById("lead-form") || document.getElementById("contact-form");
     if (!form) return;
-
+ 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let isValid = true;
-
-        const inputs = form.querySelectorAll("input[required], select[required]");
-
-        inputs.forEach(input => {
+ 
+        form.querySelectorAll("input[required], select[required]").forEach(input => {
             const group = input.parentElement;
-            if (!input.value.trim()) {
-                group.classList.add("invalid");
-                isValid = false;
-            } else if (input.type === "email" && !validateEmail(input.value)) {
-                group.classList.add("invalid");
-                isValid = false;
-            } else {
-                group.classList.remove("invalid");
-            }
+            const bad   = !input.value.trim() || (input.type === "email" && !validateEmail(input.value));
+            group.classList.toggle("invalid", bad);
+            if (bad) isValid = false;
         });
-
+ 
         if (isValid) {
             const btn = form.querySelector("button[type='submit']");
-            if (btn) {
-                btn.innerText = "Enviando Solicitação Privada...";
-                btn.disabled = true;
-            }
-
+            if (btn) { btn.textContent = "Enviando..."; btn.disabled = true; }
+ 
             setTimeout(() => {
                 form.innerHTML = `
-                    <div class="success-box" style="text-align:center; padding: 40px 0; animation: fadeIn 0.4s ease forwards;">
-                        <i class="fa-solid fa-circle-check" style="color:#10b981; font-size: 3.5rem; margin-bottom: 20px; display:block;"></i>
-                        <h3 style="font-size: 1.6rem; color: var(--text-dark); font-weight:700;">Atendimento Solicitado</h3>
-                        <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.95rem; max-width: 360px; margin-left: auto; margin-right: auto;">Sua ficha de interesse foi gerada. O consultor responsável fará contato exclusivo em instantes via ligação ou WhatsApp.</p>
-                    </div>
-                `;
+                    <div style="text-align:center;padding:48px 0;animation:fadeIn .4s ease forwards;">
+                        <i class="fa-solid fa-circle-check" style="color:#10b981;font-size:3.5rem;margin-bottom:20px;display:block;"></i>
+                        <h3 style="font-size:1.5rem;color:var(--text-dark,#0b192c);font-weight:700;">Atendimento Solicitado!</h3>
+                        <p style="color:var(--text-muted,#64748b);margin-top:10px;font-size:.95rem;max-width:360px;margin-left:auto;margin-right:auto;">
+                            Sua ficha foi gerada. O consultor fará contato exclusivo em instantes via WhatsApp ou ligação.
+                        </p>
+                        <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer"
+                           style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:13px 28px;background:#25d366;color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;">
+                            <i class="fa-brands fa-whatsapp"></i> Falar agora no WhatsApp
+                        </a>
+                    </div>`;
             }, 1200);
         }
     });
-
+ 
     form.querySelectorAll("input, select, textarea").forEach(input => {
-        input.addEventListener("input", () => {
-            input.parentElement.classList.remove("invalid");
-        });
+        input.addEventListener("input", () => input.parentElement.classList.remove("invalid"));
     });
 }
-
+ 
 function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
