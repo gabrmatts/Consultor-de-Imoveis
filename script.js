@@ -121,8 +121,8 @@ const empreendimentos = [
         "status": "À Venda",
         "statusCode": "À Venda",
         "badgeColor": "#06d2d9",
-        "bairro": "Ao lado do Shopping Capim Dourado",
-        "regiao": "sul",
+        "bairro": "Quadra 207 Norte",
+        "regiao": "norte",
         "quartos": 2,
         "vagas": "Até 2",
         "area": "Alto Padrão",
@@ -701,26 +701,40 @@ function renderCards(dados) {
 // FILTROS
 // ─────────────────────────────────────────────
 function initFilters() {
-    const filterStatus  = document.getElementById("filter-status");
-    const filterBairro  = document.getElementById("filter-bairro");
-    const filterQuartos = document.getElementById("filter-quartos");
-    const btnSearch     = document.getElementById("btn-execute-filter");
+    const filterStatus = document.getElementById("filter-status");
+    const filterBairro = document.getElementById("filter-bairro");
+    const btnSearch    = document.getElementById("btn-execute-filter");
 
-    // O parâmetro scrollToResults define se a tela deve descer após filtrar
     function aplicarFiltros(scrollToResults = false) {
         let filtrados = empreendimentos;
         
-        if (filterStatus && filterStatus.value)
-            filtrados = filtrados.filter(i => i.statusCode === filterStatus.value);
+        // 1. Filtro de Status
+        if (filterStatus && filterStatus.value) {
+            const valorBusca = filterStatus.value.trim().toLowerCase();
             
-        if (filterBairro && filterBairro.value) {
-            const reg = filterBairro.value.toLowerCase().includes("sul") ? "sul" : "norte";
-            filtrados = filtrados.filter(i => i.regiao === reg);
+            filtrados = filtrados.filter(i => {
+                if (!i.statusCode) return false;
+                
+                const statusObjeto = i.statusCode.toLowerCase();
+                
+                // Ajuste: Se o valor buscado for "venda", busca qualquer status que contenha "venda"
+                // Isso resolve a diferença entre "venda" (HTML) e "à venda" (JSON)
+                if (valorBusca === "venda") {
+                    return statusObjeto.includes("venda");
+                }
+                
+                return statusObjeto === valorBusca;
+            });
         }
-        
-        if (filterQuartos && filterQuartos.value) {
-            const q = parseInt(filterQuartos.value);
-            filtrados = filtrados.filter(i => i.quartos >= q);
+            
+        // 2. Filtro de Região
+        if (filterBairro && filterBairro.value) {
+            const valorBusca = filterBairro.value.toLowerCase();
+            const termoChave = valorBusca.includes("sul") ? "sul" : "norte";
+            
+            filtrados = filtrados.filter(i => {
+                return i.regiao && i.regiao.toLowerCase().includes(termoChave);
+            });
         }
         
         // Renderiza os cards filtrados
@@ -737,12 +751,10 @@ function initFilters() {
         }
     }
 
-    // Ao alterar um filtro no select, apenas atualiza os resultados sem descer a tela
-    [filterStatus, filterBairro, filterQuartos].forEach(el => {
+    [filterStatus, filterBairro].forEach(el => {
         if (el) el.addEventListener("change", () => aplicarFiltros(false));
     });
     
-    // Ao clicar no botão de busca, atualiza os resultados E desce a tela
     if (btnSearch) {
         btnSearch.addEventListener("click", (e) => { 
             e.preventDefault(); 
@@ -788,87 +800,25 @@ function initStatsAnimation() {
 }
 
 // ─────────────────────────────────────────────
-// DEPOIMENTOS
+// DEPOIMENTO ÚNICO - MARIA APARECIDA
 // ─────────────────────────────────────────────
-let currentTestimonial = 0;
 function initTestimonials() {
-    const nextBtn = document.getElementById("next-testimonial");
-    const prevBtn = document.getElementById("prev-testimonial");
-    const card    = document.querySelector(".testimonial-card");
-    if (!nextBtn || !prevBtn || !card || !depoimentos.length) return;
+    const card = document.querySelector(".testimonial-card");
+    if (!card || !depoimentos.length) return;
 
-    function updateTestimonial(index) {
-        const t = depoimentos[index];
-        card.style.opacity   = 0;
-        card.style.transform = "translateY(8px)";
-        setTimeout(() => {
-            const textEl  = card.querySelector(".testimonial-text");
-            const imgEl   = card.querySelector(".testimonial-user img");
-            const nameEl  = card.querySelector(".testimonial-user h4");
-            const cargoEl = card.querySelector(".testimonial-user span");
-            if (textEl)  textEl.innerText = `"${t.texto.replace(/"/g, '')}"`;
-            if (imgEl)   imgEl.src         = t.img;
-            if (nameEl)  nameEl.innerText  = t.nome;
-            if (cargoEl) cargoEl.innerText = t.cargo;
-            card.style.opacity   = 1;
-            card.style.transform = "translateY(0)";
-        }, 200);
-    }
+    const maria = depoimentos.find(
+        d => d.nome.toLowerCase().includes("maria aparecida")
+    );
 
-    nextBtn.addEventListener("click", () => {
-        currentTestimonial = (currentTestimonial + 1) % depoimentos.length;
-        updateTestimonial(currentTestimonial);
-    });
-    prevBtn.addEventListener("click", () => {
-        currentTestimonial = (currentTestimonial - 1 + depoimentos.length) % depoimentos.length;
-        updateTestimonial(currentTestimonial);
-    });
-}
+    if (!maria) return;
 
-// ─────────────────────────────────────────────
-// FORMULÁRIO DE LEADS
-// ─────────────────────────────────────────────
-function initFormValidation() {
-    const form = document.getElementById("lead-form") || document.getElementById("contact-form");
-    if (!form) return;
+    const textEl  = card.querySelector(".testimonial-text");
+    const imgEl   = card.querySelector(".testimonial-user img");
+    const nameEl  = card.querySelector(".testimonial-user h4");
+    const cargoEl = card.querySelector(".testimonial-user span");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let isValid = true;
-
-        form.querySelectorAll("input[required], select[required]").forEach(input => {
-            const group = input.parentElement;
-            const bad   = !input.value.trim() || (input.type === "email" && !validateEmail(input.value));
-            group.classList.toggle("invalid", bad);
-            if (bad) isValid = false;
-        });
-
-        if (isValid) {
-            const btn = form.querySelector("button[type='submit']");
-            if (btn) { btn.textContent = "Enviando..."; btn.disabled = true; }
-
-            setTimeout(() => {
-                form.innerHTML = `
-                    <div style="text-align:center;padding:48px 0;animation:fadeIn .4s ease forwards;">
-                        <i class="fa-solid fa-circle-check" style="color:#10b981;font-size:3.5rem;margin-bottom:20px;display:block;"></i>
-                        <h3 style="font-size:1.5rem;color:var(--text-dark,#0b192c);font-weight:700;">Atendimento Solicitado!</h3>
-                        <p style="color:var(--text-muted,#64748b);margin-top:10px;font-size:.95rem;max-width:360px;margin-left:auto;margin-right:auto;">
-                            Sua ficha foi gerada. O consultor fará contato exclusivo em instantes via WhatsApp ou ligação.
-                        </p>
-                        <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer"
-                           style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:13px 28px;background:#25d366;color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;">
-                            <i class="fa-brands fa-whatsapp"></i> Falar agora no WhatsApp
-                        </a>
-                    </div>`;
-            }, 1200);
-        }
-    });
-
-    form.querySelectorAll("input, select, textarea").forEach(input => {
-        input.addEventListener("input", () => input.parentElement.classList.remove("invalid"));
-    });
-}
-
-function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (textEl)  textEl.innerText = `"${maria.texto.replace(/"/g, "")}"`;
+    if (imgEl)   imgEl.src = maria.img;
+    if (nameEl)  nameEl.innerText = maria.nome;
+    if (cargoEl) cargoEl.innerText = maria.cargo;
 }
