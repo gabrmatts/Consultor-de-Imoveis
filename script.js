@@ -5,8 +5,6 @@ const WHATSAPP_NUMBER = "5563999911234";
 
 // ─────────────────────────────────────────────
 // ENCODE DE CAMINHO DE IMAGEM
-// Preserva "img/" e encoda só o nome do arquivo,
-// resolvendo espaços, acentos, parênteses, etc.
 // ─────────────────────────────────────────────
 function encodeImgPath(path) {
     if (!path) return "";
@@ -34,13 +32,12 @@ const empreendimentos = [
         area: "Planta Otimizada",
         mapsUrl: "https://maps.app.goo.gl/SbFnn7GDbw4oVjTX7",
         imagens: [
-            // ✅ nomes exatos conforme pasta img/ no disco
             "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
             "img/PPC_PALMA_LAZER GERAL_2026.03.30.jpg",
-            "img/PCC_PALMA_PISCINA AÉREA_2026.03.30.jpg",   // PCC (não PPC)
-            "img/PCC_PALMA_PLAYBABY_2026.03.30.jpg",        // PCC
-            "img/PCC_PALMA_QUADRA_2026.03.30.jpg",          // PCC + QUADRA (não MINI QUADRA)
-            "img/PCC_PALMA_FUNCIONAL_2026.03.30.jpg",       // PCC + FUNCIONAL (extra)
+            "img/PCC_PALMA_PISCINA AÉREA_2026.03.30.jpg",
+            "img/PCC_PALMA_PLAYBABY_2026.03.30.jpg",
+            "img/PCC_PALMA_QUADRA_2026.03.30.jpg",
+            "img/PCC_PALMA_FUNCIONAL_2026.03.30.jpg",
             "img/INT_PALMA_SALA E COZINHA_2026.03.30.jpg",
             "img/INT_PALMA_QUARTO MAIOR_2026.03.30.jpg",
             "img/INT_PALMA_QUARTO MENOR_2026.03.30.jpg",
@@ -48,7 +45,12 @@ const empreendimentos = [
             "img/INT_PALMA_ÁREA PRIVATIVA_2026.03.30.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Localização estratégica na região norte.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro","Opções com ou sem Varanda","Opções com ou sem área privada","Opções de garagem para carro ou moto"]
+        diferenciais: [
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
+            { icone: "fa-square-parking", texto: "Garagem para carro ou moto" }
+        ]
     },
     {
         id: 2,
@@ -64,15 +66,20 @@ const empreendimentos = [
         mapsUrl: "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
         imagens: [
             "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R02.jpg",  
-            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-CHURRASQUEIRA-R03.jpg", 
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R02.jpg",
+            "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-CHURRASQUEIRA-R03.jpg",
             "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-PISCINA-R03.jpg",
             "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-LIVING01-R03.jpg",
             "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-QUARTO CASAL01-R04.jpg",
             "img/SQUAD-MRV-RESERVA DOS GIRASSOIS-IMG-VARANDA01-R04.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Uma excelente oportunidade de investimento patrimonial com plantas inteligentes.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro","Opções com ou sem Varanda","Opções com ou sem área privada","Opções de garagem para carro ou moto"]
+        diferenciais: [
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
+            { icone: "fa-square-parking", texto: "1 a 2 vagas de garagem" }
+        ]
     },
     {
         id: 3,
@@ -92,7 +99,7 @@ const empreendimentos = [
             "img/PPC_PALMEIRA SERENA_MINI QUADRA_2026.03.03.jpg",
             "img/PPC_PALMEIRA SERENA_GOURMET_2026.03.03.jpg",
             "img/PPC_PALMEIRA SERENA_GOURMET 02_2026.03.05.jpg",
-            "img/MRV_SALÃO DE FESTAS.jpg",                          // underscore MRV_ (não espaço)
+            "img/MRV_SALÃO DE FESTAS.jpg",
             "img/INT_PALMEIRA SERENA_SALA COZINHA_2026.02.27.jpg",
             "img/INT_PALMEIRA SERENA_QUARTO MAIOR_2026.02.27.jpg",
             "img/INT_PALMEIRA SERENA_QUARTO MENOR_2026.02.27.jpg",
@@ -100,7 +107,12 @@ const empreendimentos = [
             "img/INT_PALMEIRA SERENA_PRIVATIVA_2026.02.27.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. Conceito moderno de moradia que integra uma infraestrutura de lazer.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro","Opções com ou sem Varanda","Opções com ou sem área privada","Opções de garagem para carro ou moto"]
+        diferenciais: [
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Área privativa disponível" },
+            { icone: "fa-square-parking", texto: "Vaga privativa de garagem" }
+        ]
     },
     {
         id: 4,
@@ -127,7 +139,12 @@ const empreendimentos = [
             "img/PALMEIRA SOLARE_INTERNA_AREA PRIVATIVA_2025.08.08.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro","Opções com ou sem Varanda","Opções com ou sem área privada","Opções de garagem para carro ou moto"]
+        diferenciais: [
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
+            { icone: "fa-square-parking", texto: "Até 2 vagas de garagem" }
+        ]
     },
     {
         id: 5,
@@ -135,8 +152,8 @@ const empreendimentos = [
         status: "Sucesso de Venda",
         statusCode: "Sucesso de Venda",
         badgeColor: "#DAA520",
-        bairro: "Ao lado do Shopping Capim Dourado",
-        regiao: "sul",
+        bairro: "Região Norte",
+        regiao: "norte",
         quartos: 2,
         vagas: "Até 2",
         area: "Alto Padrão",
@@ -147,11 +164,16 @@ const empreendimentos = [
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_VARANDA_20240513.jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
-            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 01_20240513 (1).jpg",  // 01 (não 02)
+            "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 01_20240513 (1).jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg"
         ],
         descricao: "Apartamentos bem distribuídos com 2 quartos, sala, cozinha e banheiro. Escolha a planta ideal para o seu estilo de vida, com opções de unidades com ou sem varanda, área privativa e vagas de garagem para carro ou moto. O ápice da conveniência urbana.",
-        diferenciais: ["Dois quartos/sala/cozinha/banheiro","Opções com ou sem Varanda","Opções com ou sem área privada","Opções de garagem para carro ou moto"]
+        diferenciais: [
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
+            { icone: "fa-square-parking", texto: "Até 2 vagas de garagem" }
+        ]
     }
 ];
 
@@ -184,11 +206,52 @@ function buildWhatsAppLink(nomeEmpreendimento) {
 }
 
 // ─────────────────────────────────────────────
+// LAZY LOADING COM INTERSECTION OBSERVER
+// Só carrega imagem quando ela está prestes
+// a entrar na viewport — economiza banda.
+// ─────────────────────────────────────────────
+const lazyImageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        const src = img.dataset.src;
+        if (!src) return;
+
+        img.src = src;
+        img.removeAttribute("data-src");
+        img.classList.remove("img-lazy");
+        lazyImageObserver.unobserve(img);
+    });
+}, {
+    // Começa a carregar 200px antes de entrar na tela
+    rootMargin: "200px 0px",
+    threshold: 0
+});
+
+function registerLazyImages(container) {
+    container.querySelectorAll("img[data-src]").forEach(img => {
+        lazyImageObserver.observe(img);
+    });
+}
+
+// ─────────────────────────────────────────────
 // LIGHTBOX GLOBAL
 // ─────────────────────────────────────────────
 function initLightbox() {
     const style = document.createElement("style");
     style.textContent = `
+        /* === Lazy image placeholder === */
+        img.img-lazy {
+            background: linear-gradient(110deg, #e8eaed 30%, #f5f5f5 50%, #e8eaed 70%);
+            background-size: 200% 100%;
+            animation: lazy-shimmer 1.4s infinite linear;
+        }
+        @keyframes lazy-shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* === Lightbox === */
         #lightbox-overlay {
             display:none; position:fixed; inset:0;
             background:rgba(0,0,0,.92); z-index:9999;
@@ -245,10 +308,11 @@ function initLightbox() {
             flex-shrink:0; width:56px; height:40px; border-radius:5px;
             object-fit:cover; opacity:.45; cursor:pointer;
             border:2px solid transparent; transition:opacity .2s, border-color .2s;
+            background:#333;
         }
         .lb-thumb.active, .lb-thumb:hover { opacity:1; border-color:rgba(255,255,255,.7); }
 
-        /* Setas Swiper */
+        /* === Setas Swiper === */
         .swiper-button-next, .swiper-button-prev {
             width:36px !important; height:36px !important;
             background:rgba(255,255,255,.92) !important;
@@ -268,7 +332,7 @@ function initLightbox() {
         .property-image-wrapper img,
         .property-image-wrapper .swiper-slide img { cursor:zoom-in; }
 
-        /* Botões dos cards */
+        /* === Botões dos cards === */
         .card-actions {
             display:grid; grid-template-columns:1fr auto;
             gap:10px; margin-top:16px;
@@ -300,90 +364,20 @@ function initLightbox() {
         }
         .btn-maps-card i { font-size:.9rem; color:#ea4335; }
 
-        /* Estilos extras do HTML novo */
+        /* === Contador de fotos === */
+        .photo-counter {
+            position:absolute; bottom:10px; right:10px; z-index:10;
+            background:rgba(0,0,0,.52); color:#fff; border-radius:20px;
+            padding:3px 10px; font-size:.75rem; pointer-events:none;
+            backdrop-filter:blur(2px); display:flex; align-items:center; gap:5px;
+        }
+
+        /* === Extras de outros elementos do HTML === */
         .hero-ctas { display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
-        .btn-outline {
-            display:inline-flex; align-items:center; justify-content:center;
-            gap:10px; padding:15px 30px; font-size:.92rem; font-weight:600;
-            border-radius:10px; border:1.5px solid rgba(255,255,255,.45);
-            color:#fff; background:transparent; cursor:pointer;
-            transition:all .35s cubic-bezier(.16,1,.3,1); white-space:nowrap;
-            text-decoration:none;
-        }
-        .btn-outline:hover {
-            background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.8);
-            transform:translateY(-2px);
-        }
-        .btn-ghost {
-            display:inline-flex; align-items:center; justify-content:center;
-            gap:10px; padding:13px 24px; font-size:.9rem; font-weight:600;
-            border-radius:10px; border:1.5px solid var(--border,#e2e8f0);
-            color:var(--primary,#0b192c); background:transparent; cursor:pointer;
-            transition:all .2s ease; white-space:nowrap; text-decoration:none;
-        }
-        .btn-ghost:hover { background:var(--bg-light,#f8fafc); border-color:var(--primary,#0b192c); transform:translateY(-2px); }
         .about-ctas { display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
-        .btn-submit { width:100%; justify-content:center; margin-top:20px; padding:16px; font-size:1rem; }
+        .filter-hint-new i { margin-right:4px; opacity:.7; }
         .form-privacy { text-align:center; font-size:.78rem; color:var(--text-faint,#94a3b8); margin-top:14px; }
         .form-privacy i { margin-right:4px; }
-        .testimonials-header { text-align:center; max-width:560px; margin-left:auto; margin-right:auto; }
-        .testimonials-header .subtitle { justify-content:center; }
-        .contact-header { text-align:center; max-width:580px; margin-left:auto; margin-right:auto; }
-        .contact-header .subtitle { justify-content:center; }
-        .contact-grid {
-            display:grid; grid-template-columns:1fr; gap:48px; margin-top:0;
-        }
-        @media(min-width:768px){ .contact-grid { grid-template-columns:1.2fr 1fr; } }
-        .form-grid { display:grid; grid-template-columns:1fr; gap:14px; }
-        @media(min-width:640px){ .form-grid { grid-template-columns:1fr 1fr; } .form-grid .full-width { grid-column:1/-1; } }
-        .form-group { display:flex; flex-direction:column; gap:6px; }
-        .form-group label { font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dark,#0b192c); }
-        .form-group input, .form-group select, .form-group textarea {
-            padding:12px 16px; border:1.5px solid var(--border,#e2e8f0);
-            border-radius:10px; font-size:.92rem; color:var(--text-dark,#0b192c);
-            background:var(--bg-light,#f8fafc); transition:border-color .2s, box-shadow .2s;
-            outline:none; font-family:inherit;
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color:#b89047; box-shadow:0 0 0 3px rgba(184,144,71,.12);
-            background:#fff;
-        }
-        .form-group.invalid input, .form-group.invalid select {
-            border-color:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.1);
-        }
-        .contact-info { padding:36px; background:var(--bg-light,#f8fafc); border-radius:16px; border:1px solid var(--border,#e2e8f0); }
-        .contact-info h3 { font-size:1.2rem; color:var(--primary,#0b192c); margin-bottom:12px; font-weight:700; }
-        .contact-info > p { font-size:.9rem; color:var(--text-muted,#64748b); margin-bottom:28px; line-height:1.6; }
-        .contact-channels { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
-        .contact-channel-link {
-            display:flex; align-items:center; gap:14px; padding:14px 16px;
-            background:#fff; border-radius:10px; border:1px solid var(--border,#e2e8f0);
-            text-decoration:none; transition:box-shadow .2s, transform .2s;
-        }
-        .contact-channel-link:hover { box-shadow:0 4px 16px rgba(11,25,44,.08); transform:translateY(-2px); }
-        .channel-icon {
-            width:40px; height:40px; border-radius:10px;
-            display:flex; align-items:center; justify-content:center;
-            font-size:1.2rem; flex-shrink:0; color:#fff;
-        }
-        .channel-wpp { background:#25d366; }
-        .channel-ig { background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af); }
-        .channel-text { flex:1; display:flex; flex-direction:column; }
-        .channel-text strong { font-size:.9rem; font-weight:600; color:var(--primary,#0b192c); }
-        .channel-text small { font-size:.78rem; color:var(--text-muted,#64748b); }
-        .channel-arrow { font-size:.75rem; color:var(--text-faint,#94a3b8); }
-        .contact-badges { display:flex; flex-wrap:wrap; gap:8px; }
-        .badge {
-            display:inline-flex; align-items:center; gap:6px;
-            padding:6px 12px; background:#fff; border-radius:20px;
-            border:1px solid var(--border,#e2e8f0); font-size:.75rem;
-            font-weight:600; color:var(--text-muted,#64748b);
-        }
-        .badge i { color:#b89047; }
-        .footer-socials { display:flex; gap:14px; margin-top:18px; }
-        .footer-socials a { color:#94a3b8; font-size:1.1rem; transition:color .2s; }
-        .footer-socials a:hover { color:#b89047; }
-        .filter-hint-new i { margin-right:4px; opacity:.7; }
     `;
     document.head.appendChild(style);
 
@@ -409,6 +403,7 @@ function initLightbox() {
     const btnPrev  = overlay.querySelector(".lb-arrow-prev");
     const btnNext  = overlay.querySelector(".lb-arrow-next");
 
+    // No lightbox carregamos diretamente — usuário pediu ver a imagem
     function setImage(index) {
         _idx = (index + _imgs.length) % _imgs.length;
         lbImg.classList.add("fading");
@@ -428,6 +423,7 @@ function initLightbox() {
         _imgs.forEach((src, i) => {
             const t = document.createElement("img");
             t.className = "lb-thumb";
+            // Thumbnails no lightbox: carga normal pois o usuário abriu intencionalmente
             t.src = encodeImgPath(src);
             t.alt = `Foto ${i + 1}`;
             t.addEventListener("click", () => setImage(i));
@@ -467,7 +463,6 @@ function initLightbox() {
 // FALLBACK: imagem quebrada
 // ─────────────────────────────────────────────
 function handleImageError(imgEl, altText) {
-    // Evita loop de error
     imgEl.onerror = null;
     imgEl.style.display = "none";
     const placeholder = document.createElement("div");
@@ -503,7 +498,7 @@ function initHeader() {
     if (header) {
         window.addEventListener("scroll", () => {
             header.classList.toggle("sticky", window.scrollY > 40);
-        });
+        }, { passive: true });
     }
     const toggle = document.querySelector(".mobile-menu-toggle");
     const nav    = document.querySelector(".nav-menu");
@@ -526,7 +521,9 @@ function initHeader() {
 }
 
 // ─────────────────────────────────────────────
-// SWIPER HTML — encode em cada src
+// SWIPER HTML — lazy loading nas imagens
+// Só a primeira imagem carrega de imediato;
+// as demais usam data-src + lazy observer.
 // ─────────────────────────────────────────────
 function getSwiperHTML(imagens, swiperClass, itemId) {
     if (!imagens || imagens.length === 0) {
@@ -540,21 +537,30 @@ function getSwiperHTML(imagens, swiperClass, itemId) {
         const src = encodeImgPath(imagens[0]);
         return `
             <div style="position:relative;cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="0">
-                <img src="${src}" alt=""
+                <img src="${src}" alt="${imagens[0].split('/').pop()}"
+                    width="640" height="260"
                     style="width:100%;height:260px;object-fit:cover;display:block;"
+                    loading="lazy"
+                    decoding="async"
                     onerror="handleImageError(this,'Imagem indisponível')">
-                <span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:3px 10px;font-size:.75rem;pointer-events:none;backdrop-filter:blur(2px);">
-                    <i class='fa-solid fa-magnifying-glass-plus'></i> Ampliar
+                <span class="photo-counter">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar
                 </span>
             </div>`;
     }
 
+    // Slides: primeira imagem eager (já aparece no viewport),
+    // demais com data-src para lazy loading via IntersectionObserver
     const slides = imagens.map((raw, idx) => {
         const src = encodeImgPath(raw);
+        const isFirst = idx === 0;
         return `
         <div class="swiper-slide" style="cursor:zoom-in;" data-lightbox-id="${itemId}" data-lightbox-index="${idx}">
-            <img src="${src}"
+            <img ${isFirst ? `src="${src}"` : `data-src="${src}" class="img-lazy"`}
+                width="640" height="260"
                 style="width:100%;height:260px;object-fit:cover;display:block;"
+                ${isFirst ? 'loading="eager"' : 'loading="lazy"'}
+                decoding="async"
                 onerror="handleImageError(this,'Foto indisponível')"
                 alt="Foto ${idx + 1}">
         </div>`;
@@ -566,8 +572,8 @@ function getSwiperHTML(imagens, swiperClass, itemId) {
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            <span style="position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:3px 10px;font-size:.75rem;pointer-events:none;backdrop-filter:blur(2px);">
-                <i class='fa-solid fa-images'></i> ${imagens.length} fotos
+            <span class="photo-counter">
+                <i class="fa-solid fa-images"></i> ${imagens.length} fotos
             </span>
         </div>`;
 }
@@ -593,9 +599,12 @@ function renderCards(dados) {
         card.className    = "property-card";
         const swiperClass = `swiper-card-${item.id}`;
 
-        const icons = ["fa-bed","fa-vector-square","fa-car","fa-check"];
-        const featuresHTML = item.diferenciais.map((dif, i) =>
-            `<li><i class="fa-solid ${icons[i] || 'fa-check'}"></i> ${dif}</li>`
+        // Diferenciais com ícones semânticos vindos do dataset
+        const featuresHTML = item.diferenciais.map(dif =>
+            `<li>
+                <i class="fa-solid ${dif.icone}" aria-hidden="true"></i>
+                ${dif.texto}
+            </li>`
         ).join('');
 
         const wppLink  = buildWhatsAppLink(item.nome);
@@ -611,7 +620,8 @@ function renderCards(dados) {
             </div>
             <div class="property-info">
                 <span class="property-location">
-                    <i class="fa-solid fa-map-pin"></i> ${item.bairro}
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    ${item.bairro}
                 </span>
                 <h3>${item.nome}</h3>
                 <p class="property-description">${item.descricao}</p>
@@ -634,6 +644,10 @@ function renderCards(dados) {
         `;
         container.appendChild(card);
 
+        // Registra imagens lazy do card recém-criado
+        registerLazyImages(card);
+
+        // Inicia Swiper e carrega a próxima imagem ao trocar slide
         if (item.imagens.length > 1) {
             setTimeout(() => {
                 const swiperInstance = new Swiper(`.${swiperClass}`, {
@@ -642,11 +656,31 @@ function renderCards(dados) {
                     navigation: {
                         nextEl: `.${swiperClass} .swiper-button-next`,
                         prevEl: `.${swiperClass} .swiper-button-prev`
-                    }
+                    },
+                    // Pré-carrega 1 slide adjacente para transição suave
+                    preloadImages: false,
+                    lazy: false // gerenciamos manualmente via data-src
                 });
+
+                // Ao trocar slide, carrega a imagem sob demanda
                 swiperInstance.on("slideChange", () => {
                     card._swiperRealIndex = swiperInstance.realIndex;
+
+                    // Força carregamento do slide atual e do próximo
+                    [swiperInstance.realIndex, (swiperInstance.realIndex + 1) % item.imagens.length]
+                        .forEach(idx => {
+                            const slides = card.querySelectorAll(".swiper-slide");
+                            slides.forEach(slide => {
+                                const img = slide.querySelector("img[data-src]");
+                                if (img) {
+                                    img.src = img.dataset.src;
+                                    img.removeAttribute("data-src");
+                                    img.classList.remove("img-lazy");
+                                }
+                            });
+                        });
                 });
+
                 card._swiperInstance  = swiperInstance;
                 card._swiperRealIndex = 0;
             }, 100);
@@ -686,7 +720,6 @@ function initFilters() {
             filtrados = filtrados.filter(i => {
                 if (!i.statusCode) return false;
                 const sc = i.statusCode.toLowerCase();
-                // "Venda" do HTML captura tanto "Venda" quanto "À Venda" e "Sucesso de Venda"
                 if (busca === "venda") return sc.includes("venda");
                 return sc === busca;
             });
@@ -770,11 +803,11 @@ function initTestimonials() {
             const textEl  = card.querySelector(".testimonial-text");
             const imgEl   = card.querySelector(".testimonial-user img");
             const nameEl  = card.querySelector(".testimonial-user h4");
-            const cargoEl = card.querySelector(".testimonial-user span");
+            const cargoEl = card.querySelector(".testimonial-role");
             if (textEl)  textEl.innerText = `"${t.texto.replace(/"/g, "")}"`;
             if (imgEl)   imgEl.src         = t.img;
             if (nameEl)  nameEl.innerText  = t.nome;
-            if (cargoEl) cargoEl.innerText = t.cargo;
+            if (cargoEl) cargoEl.innerHTML = `<i class="fa-solid fa-user-tie" aria-hidden="true"></i> ${t.cargo}`;
             card.style.opacity   = "1";
             card.style.transform = "translateY(0)";
         }, 200);
