@@ -1,23 +1,115 @@
 /* ==========================================================================
-   RESPONSIVO MOBILE
+   RESPONSIVO
+   Breakpoints:
+   - Tablet largo  : max-width 1024px
+   - Tablet/Mobile : max-width  768px
+   - Mobile        : max-width  480px
+   - Mobile pequeno: max-width  360px
+   ========================================================================== */
+
+/* ==========================================================================
+   TABLET LARGO (1025px → 768px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+    /* Filtro hero: volta a ser coluna antes do breakpoint do desktop */
+    .filter-body-new {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 28px;
+    }
+
+    .filter-field-new {
+        padding: 0;
+        border-right: none;
+    }
+
+    .filter-divider-new {
+        display: block;
+        height: 1px;
+        background: var(--border);
+    }
+
+    .btn-buscar-new {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Hint volta para posição normal (não absolute) */
+    .filter-hint-new {
+        position: static;
+        color: var(--text-muted);
+        margin-top: 8px;
+    }
+
+    /* Grid de empreendimentos: 2 colunas em tablet */
+    .properties-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    /* Process: 2 colunas */
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Sobre: garante que a imagem não fique muito grande */
+    .about-container {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 40px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE (≤ 768px)
    ========================================================================== */
 @media (max-width: 768px) {
+
+    /* --- HEADER --- */
+    .mobile-menu-toggle {
+        display: flex;
+        z-index: 1001;
+        position: relative;
+    }
+
+    .header-socials {
+        display: none;
+    }
+
+    /* Overlay escuro atrás do menu — fecha ao clicar fora via JS */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        z-index: 998;
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
+
+    /* Menu: usa transform em vez de right — não gera reflow */
     .nav-menu {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 280px;
-        height: 100vh;
+        height: 100dvh;
+        /* dvh: respeita barra de endereço do mobile */
         background: var(--white);
         box-shadow: var(--shadow-lg);
         z-index: 999;
-        transition: right 0.35s ease;
-        padding: 100px 32px 40px;
+        padding: 100px 28px 40px;
         border-left: 1px solid var(--border);
+        /* transform em vez de right — só compositor, zero reflow */
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav-menu ul {
@@ -30,56 +122,261 @@
         padding: 12px 16px;
         border-radius: var(--radius-sm);
         font-size: 1rem;
+        color: var(--text-dark);
+        /* var(--bg-light) não existe no :root — corrigido */
+        transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    .nav-link:hover {
-        background: var(--bg-light);
+    .nav-link:hover,
+    .nav-link.active {
+        background: var(--surface-stone);
+        color: var(--gold);
     }
 
-    .mobile-menu-toggle {
-        display: flex;
-        z-index: 1001;
-    }
-
-    .header-socials {
+    .nav-link::after {
         display: none;
     }
 
+    /* --- HERO --- */
+    .hero-section {
+        padding-top: 110px;
+        padding-bottom: 60px;
+        min-height: auto;
+    }
+
+    .hero-container {
+        gap: 36px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.9rem, 7vw, 2.6rem);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-badges {
+        gap: 8px;
+    }
+
+    /* --- SEÇÃO HEADERS --- */
     .section-header-flex {
         flex-direction: column;
         align-items: flex-start;
+        gap: 14px;
+    }
+
+    /* --- TRUST BAR --- */
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* --- PROCESSO --- */
+    .process-steps {
+        grid-template-columns: 1fr;
         gap: 16px;
     }
 
+    .process-step {
+        padding: 28px 22px;
+    }
+
+    /* --- EMPREENDIMENTOS --- */
     .properties-grid-vertical {
         grid-template-columns: 1fr;
         gap: 24px;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+
+    /* --- SOBRE --- */
+    .about-container {
+        grid-template-columns: 1fr;
+        /* Quebra para uma coluna no mobile */
+        gap: 32px;
+        /* Opcional: reduz o espaçamento vertical entre a foto e os textos */
+    }
+
+    .about-section::before {
+        display: none;
     }
 
     .about-image::before {
         display: none;
     }
+
+    /* --- DEPOIMENTOS --- */
+    .testimonial-card {
+        padding: 28px 22px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    /* --- CONTATO --- */
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .contact-card {
+        padding: 28px 22px;
+    }
+
+    /* --- FOOTER --- */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 56px 0 32px;
+    }
+
+    .footer-brand>p {
+        max-width: 100%;
+        /* Permite que o texto ocupe toda a largura no mobile */
+        margin-bottom: 16px;
+    }
+
+    .footer-links h4,
+    .footer-contact-info h4 {
+        margin-bottom: 20px;
+    }
+
+    /* O copyright já estava com flex-direction: column no seu código, 
+       mas vamos garantir o alinhamento */
+    .footer-bottom .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    /* --- MODAL --- */
+    #premium-modal .modal-content {
+        padding: 24px 20px;
+        max-height: 85dvh;
+    }
+
+    /* --- WHATSAPP FLUTUANTE --- */
+    .whatsapp-floating {
+        bottom: 20px;
+        right: 16px;
+        width: 52px;
+        height: 52px;
+        font-size: 1.6rem;
+    }
 }
 
+/* ==========================================================================
+   MOBILE PEQUENO (≤ 480px)
+   ========================================================================== */
 @media (max-width: 480px) {
     .container {
-        padding: 0 18px;
+        padding: 0 16px;
     }
 
+    /* Hero ainda mais compacto */
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 48px;
+    }
+
+    /* Filtro */
     .filter-body-new {
-        padding: 20px;
+        padding: 18px 16px;
     }
 
+    /* Trust bar: coluna única */
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Cards */
     .property-info {
-        padding: 22px;
+        padding: 20px 18px;
     }
 
+    .card-actions {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .btn-maps-card {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Stats: coluna única */
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* CTA do meio */
+    .middle-cta-container h2 {
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
+    }
+
+    /* Depoimentos */
+    .testimonial-user {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .testimonial-user h4 {
+        text-align: center;
+    }
+
+    .testimonial-role {
+        justify-content: center;
+    }
+
+    /* Footer */
+    .footer-brand {
+        gap: 28px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE MUITO PEQUENO (≤ 360px)
+   Garante que nada quebre em telas como Galaxy A01
+   ========================================================================== */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero-badge {
+        font-size: 0.68rem;
+        padding: 6px 10px;
+    }
+
+    .btn {
+        padding: 13px 20px;
+        font-size: 0.88rem;
+    }
+
+    .btn-whatsapp-card,
+    .btn-maps-card {
+        padding: 11px 14px;
+        font-size: 0.83rem;
+    }
+
+    .stat-item {
+        padding: 18px 14px;
+    }
+
+    .process-step {
+        padding: 22px 16px;
+    }
+}
+
+/* ==========================================================================
+   PREFERÊNCIA: MOVIMENTO REDUZIDO
+   Desativa animações para usuários com vestibular disorders, etc.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu {
+        transition: none;
     }
 }
