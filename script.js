@@ -45,7 +45,7 @@ const empreendimentos = [
             { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
             { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
             { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
-            { icone: "fa-square-parking", texto: "Garagem para carro ou moto" }
+            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
         ]
     },
     {
@@ -103,7 +103,7 @@ const empreendimentos = [
             { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
             { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
             { icone: "fa-lock",           texto: "Área privativa disponível" },
-            { icone: "fa-square-parking", texto: "Vaga privativa de garagem" }
+            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
         ]
     },
     {
@@ -133,7 +133,7 @@ const empreendimentos = [
             { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
             { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
             { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
-            { icone: "fa-square-parking", texto: "Até 2 vagas de garagem" }
+            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
         ]
     },
     {
@@ -160,7 +160,7 @@ const empreendimentos = [
             { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
             { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
             { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
-            { icone: "fa-square-parking", texto: "Até 2 vagas de garagem" }
+            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
         ]
     }
 ];

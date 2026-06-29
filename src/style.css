@@ -41,7 +41,6 @@
     --shadow-gold: 0 6px 24px rgba(184, 144, 71, .22);
     --shadow-warm: 0 8px 32px rgba(184, 144, 71, .12);
 
-    /* Transições específicas por propriedade — evita monitorar tudo com "all" */
     --transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
         background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
         border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -260,7 +259,6 @@ img {
     width: 100%;
     z-index: 1000;
     padding: 22px 0;
-    /* backdrop-filter removido do estado padrão — só ativa no sticky */
     background: rgba(11, 25, 44, .92);
     border-bottom: 1px solid rgba(255, 255, 255, .06);
     transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
@@ -271,7 +269,6 @@ img {
     padding: 14px 0;
     background: rgba(11, 25, 44, .98);
     box-shadow: 0 2px 24px rgba(0, 0, 0, .25);
-    /* backdrop-filter só quando sticky — menos elementos sofrendo o custo */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
@@ -360,14 +357,27 @@ img {
     transform: translateY(-2px);
 }
 
+/* =============================================
+   FIX: MOBILE MENU TOGGLE (botão sanduíche / X)
+   ============================================= */
 .mobile-menu-toggle {
     display: none;
     background: none;
     border: none;
-    color: var(--white);
+    color: var(--white);          /* ícone sempre branco */
     font-size: 1.4rem;
     cursor: pointer;
     padding: 4px;
+    position: relative;           /* fica acima do nav aberto */
+    z-index: 1001;
+    line-height: 1;
+}
+
+/* Garante que o <i> do Font Awesome herde a cor corretamente */
+.mobile-menu-toggle i {
+    color: inherit;
+    display: block;
+    line-height: 1;
 }
 
 /* ==========================================================================
@@ -384,7 +394,6 @@ img {
     background-position: center;
     background-size: cover;
     color: var(--white);
-    /* Força compositing na GPU para não travar com a imagem grande */
     will-change: transform;
     transform: translateZ(0);
 }
@@ -399,7 +408,6 @@ img {
     z-index: 1;
 }
 
-/* Detalhe dourado no topo direito */
 .hero-section::after {
     content: '';
     position: absolute;
@@ -467,7 +475,6 @@ img {
     font-weight: 600;
     color: var(--gold-light);
     letter-spacing: 0.03em;
-    /* backdrop-filter removido dos badges — custo alto, ganho visual mínimo */
     transition: var(--transition-fast);
 }
 
@@ -702,7 +709,6 @@ img {
     overflow: hidden;
 }
 
-/* Apenas um detalhe geométrico — o segundo foi removido por custo/benefício */
 .process-section::before {
     content: '';
     position: absolute;
@@ -854,7 +860,6 @@ img {
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
         box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
         border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    /* Promove o card para camada própria antecipadamente */
     will-change: transform;
 }
 
@@ -1050,7 +1055,6 @@ img {
     overflow: hidden;
 }
 
-/* Grade geométrica leve — só linhas, sem repaint pesado */
 .middle-cta-section::before {
     content: '';
     position: absolute;
@@ -1281,7 +1285,6 @@ img {
     box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
     border: 1px solid rgba(255, 255, 255, .08);
     text-align: center;
-    /* backdrop-filter removido — causa repaint em cada frame de scroll */
     position: relative;
 }
 
@@ -1489,40 +1492,29 @@ img {
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-
 footer {
     background: #070f1c;
     color: var(--text-faint);
 }
 
-/* ==========================================================================
-   GRID PRINCIPAL DO FOOTER
-   ========================================================================== */
 .footer-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    /* Reduzido para aproximar os elementos no mobile */
     padding: 56px 0 40px;
-    /* Menos espaço sobrando no topo e na base */
 }
 
 @media (min-width: 768px) {
     .footer-container {
-        /* Ajusta as proporções para evitar o buraco enorme no meio */
         grid-template-columns: 2fr 1.2fr 1.2fr;
         gap: 32px;
         align-items: start;
     }
 }
 
-/* ==========================================================================
-   MARCA E DESCRIÇÃO
-   ========================================================================== */
 .footer-brand h3 {
     color: var(--white);
     font-size: 1.25rem;
-    /* Levemente maior para mais peso */
     font-weight: 800;
     letter-spacing: 0.05em;
     margin-bottom: 16px;
@@ -1530,18 +1522,12 @@ footer {
 
 .footer-brand>p {
     max-width: 360px;
-    /* Permite que o texto preencha mais a coluna horizontalmente */
     line-height: 1.6;
     color: rgba(148, 163, 184, .7);
-    /* Opacidade aumentada para melhor leitura */
     font-size: 0.9rem;
     margin-bottom: 0;
-    /* Remove a margem inútil que empurrava o layout */
 }
 
-/* ==========================================================================
-   TÍTULOS DAS COLUNAS (Navegação e Info)
-   ========================================================================== */
 .footer-links h4,
 .footer-contact-info h4 {
     color: rgba(255, 255, 255, .9);
@@ -1550,14 +1536,11 @@ footer {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 24px;
-    /* Espaço para o traço dourado */
     padding-bottom: 0;
     border-bottom: none;
-    /* Remove a linha longa antiga */
     position: relative;
 }
 
-/* Novo detalhe premium: Um pequeno traço sob o título */
 .footer-links h4::after,
 .footer-contact-info h4::after {
     content: '';
@@ -1567,35 +1550,27 @@ footer {
     width: 24px;
     height: 2px;
     background: var(--gold);
-    /* Certifique-se de que a variável --gold existe */
     border-radius: 2px;
 }
 
-/* Reset de listas */
 .footer-links ul,
 .footer-contact-info ul {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* Links um pouco mais próximos */
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-/* ==========================================================================
-   LINKS DE NAVEGAÇÃO
-   ========================================================================== */
 .footer-links ul li a {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    /* Mais espaço entre ícone e texto */
     font-size: 0.9rem;
     color: rgba(148, 163, 184, .7);
     transition: color 0.2s ease, transform 0.2s ease;
     padding: 4px 0;
-    /* Aumenta a área clicável no mobile */
     text-decoration: none;
 }
 
@@ -1603,7 +1578,6 @@ footer {
     color: var(--gold);
     font-size: 0.85rem;
     width: 18px;
-    /* Fixa a largura para alinhar o texto perfeitamente */
     text-align: center;
     opacity: 0.7;
     flex-shrink: 0;
@@ -1619,9 +1593,6 @@ footer {
     opacity: 1;
 }
 
-/* ==========================================================================
-   INFORMAÇÕES DE CONTATO
-   ========================================================================== */
 .footer-contact-info ul li {
     display: flex;
     align-items: flex-start;
@@ -1639,12 +1610,8 @@ footer {
     flex-shrink: 0;
     opacity: 0.7;
     margin-top: 4px;
-    /* Alinha o pino com o centro da primeira linha de texto */
 }
 
-/* ==========================================================================
-   RODAPÉ (Copyright)
-   ========================================================================== */
 .footer-bottom {
     padding: 24px 0;
     border-top: 1px solid rgba(255, 255, 255, .06);
@@ -1671,7 +1638,6 @@ footer {
     color: rgba(148, 163, 184, .4);
     margin: 0;
 }
-
 
 /* ==========================================================================
    WHATSAPP FLUTUANTE
@@ -1707,7 +1673,6 @@ footer {
     position: fixed;
     inset: 0;
     background: rgba(7, 15, 28, .8);
-    /* backdrop-filter só no modal — abre sob demanda, não fica na tela toda */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 2000;
@@ -1778,13 +1743,8 @@ footer {
 }
 
 @keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-
-    100% {
-        background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
 
 .no-results {
@@ -1811,11 +1771,53 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE MENU
+   ========================================================================== */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;               /* torna o botão visível no mobile */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-menu {
+        display: none;               /* esconde o nav por padrão no mobile */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 25, 44, .98);
+        border-top: 1px solid rgba(255, 255, 255, .08);
+        padding: 20px 28px 28px;
+        z-index: 999;                /* abaixo do toggle (z-index: 1001) */
+    }
+
+    .nav-menu.active {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 12px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .header-socials {
+        display: none;               /* oculta ícones sociais no mobile para não amontoar */
     }
 }
