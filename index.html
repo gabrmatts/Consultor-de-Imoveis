@@ -33,6 +33,43 @@
 
     <!-- Pré-carrega a imagem hero para evitar o travamento inicial -->
     <link rel="preload" as="image" href="PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg" fetchpriority="high">
+
+    <!--
+      AJUSTE: pequeno bloco de estilo complementar, apenas para o NOVO campo
+      "Locomoção" e para o modo "Alugar". Não sobrescreve nada do src/style.css —
+      só usa as MESMAS variáveis/classes que o filtro original já usa
+      (filter-field-new, filter-select-new, icon-accent, etc.), então se as
+      variáveis de cor do seu tema mudarem, isso acompanha automaticamente.
+      Se preferir, mova este bloco para dentro de src/style.css depois.
+    -->
+    <style>
+        /* Campo de Locomoção some com transição suave quando o modo não é "Alugar" */
+        .filter-field-new[data-conditional="alugar"] {
+            transition: opacity .25s ease, max-width .25s ease, margin .25s ease, transform .25s ease;
+            overflow: hidden;
+        }
+
+        .filter-field-new[data-conditional="alugar"][hidden] {
+            display: none;
+        }
+
+        /* Pequeno "pulso" no ícone quando o campo de locomoção aparece, reforça que é novo */
+        @keyframes locomocao-pop {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .filter-field-new[data-conditional="alugar"]:not([hidden]) {
+            animation: locomocao-pop .3s ease both;
+        }
+    </style>
 </head>
 
 <body>
@@ -112,6 +149,7 @@
                                     <option value="Lançamento">Lançamento</option>
                                     <option value="Venda">À Venda</option>
                                     <option value="Últimas Unidades">Últimas Unidades</option>
+                                    <option value="Alugar">Para Alugar</option>
                                 </select>
                                 <i class="fa-solid fa-chevron-down filter-chevron"></i>
                             </div>
@@ -129,6 +167,32 @@
                                     <option value="">Todos os Bairros</option>
                                     <option value="Região Sul">Região Sul</option>
                                     <option value="Região Norte">Região Norte</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down filter-chevron"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-divider-new" data-conditional="alugar" hidden></div>
+
+                        <!--
+                          NOVO FILTRO: Locomoção
+                          Só faz sentido para imóveis de aluguel (mobilidade no dia a dia),
+                          então começa oculto (hidden) e um pequeno script no fim da página
+                          mostra/esconde ele conforme o campo "Empreendimentos" = "Para Alugar".
+                          Estrutura idêntica aos filtros acima (mesmo padrão de classes).
+                        -->
+                        <div class="filter-field-new" id="filter-field-locomocao" data-conditional="alugar" hidden>
+                            <label class="filter-label-new" for="filter-locomocao">
+                                <i class="fa-solid fa-route icon-accent"></i>
+                                Locomoção
+                            </label>
+                            <div class="filter-select-wrapper">
+                                <select id="filter-locomocao" name="locomocao" class="filter-select-new">
+                                    <option value="">Qualquer Distância</option>
+                                    <option value="A pé">A pé de tudo</option>
+                                    <option value="Transporte Público">Perto de Transporte Público</option>
+                                    <option value="Vias Principais">Fácil Acesso a Vias Principais</option>
+                                    <option value="Carro">Melhor de Carro</option>
                                 </select>
                                 <i class="fa-solid fa-chevron-down filter-chevron"></i>
                             </div>
@@ -455,6 +519,35 @@
         document.addEventListener('DOMContentLoaded', function () {
             var hero = document.querySelector('.hero-section[data-bg]');
             if (hero) hero.style.backgroundImage = "url('" + hero.dataset.bg + "')";
+        });
+    </script>
+
+    <!--
+      NOVO: mostra/esconde o filtro "Locomoção" (e o divisor ao lado dele)
+      apenas quando "Para Alugar" está selecionado em Empreendimentos.
+      Também expõe window.filtroLocomocaoAtivo para o seu script.js usar
+      na hora de aplicar o filtro de fato sobre os cards de imóveis
+      (isso depende de como properties-container é populado, que está em
+      script.js — não incluído aqui).
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var statusSelect = document.getElementById('filter-status');
+            var campoLocomocao = document.getElementById('filter-field-locomocao');
+            var divisorLocomocao = document.querySelector('.filter-divider-new[data-conditional="alugar"]');
+            var selectLocomocao = document.getElementById('filter-locomocao');
+
+            if (!statusSelect || !campoLocomocao) return;
+
+            function atualizarVisibilidadeLocomocao() {
+                var ehAluguel = statusSelect.value === 'Alugar';
+                campoLocomocao.hidden = !ehAluguel;
+                if (divisorLocomocao) divisorLocomocao.hidden = !ehAluguel;
+                if (!ehAluguel && selectLocomocao) selectLocomocao.value = ''; // reseta ao sair do modo aluguel
+            }
+
+            statusSelect.addEventListener('change', atualizarVisibilidadeLocomocao);
+            atualizarVisibilidadeLocomocao(); // estado inicial
         });
     </script>
 </body>

@@ -15,6 +15,13 @@ function encodeImgPath(path) {
 
 // ─────────────────────────────────────────────
 // DATASET DE EMPREENDIMENTOS
+//
+// AJUSTE: cada item ganhou um campo opcional `locomocao` (array de strings).
+// Ele só é usado quando statusCode === "Alugar", pois o filtro de Locomoção
+// só aparece nesse modo. Valores aceitos (precisam bater com as <option>
+// do <select id="filter-locomocao"> no HTML):
+//   "A pé" | "Transporte Público" | "Vias Principais" | "Carro"
+// Um item pode ter mais de um valor (ex.: ["A pé", "Transporte Público"]).
 // ─────────────────────────────────────────────
 const empreendimentos = [
     {
@@ -27,6 +34,7 @@ const empreendimentos = [
         regiao: "norte",
         quartos: 2,
         mapsUrl: "https://maps.app.goo.gl/SbFnn7GDbw4oVjTX7",
+        locomocao: [],
         imagens: [
             "img/PPC_PALMA_GUARITA_2026.03.30.jpg",
             "img/PPC_PALMA_LAZER GERAL_2026.03.30.jpg",
@@ -58,6 +66,7 @@ const empreendimentos = [
         regiao: "sul",
         quartos: 2,
         mapsUrl: "https://maps.app.goo.gl/ChfJRLSKuFwAxArt8",
+        locomocao: [],
         imagens: [
             "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-GUARITA-R03.jpg",
             "img/SQUAD-MRV ENGENHARIA-RESERVA DO GIRASSOL-IMG-AEREA LAZER-02 R02.jpg",
@@ -85,6 +94,7 @@ const empreendimentos = [
         regiao: "sul",
         quartos: 2,
         mapsUrl: "https://maps.app.goo.gl/3aG9oH433Q8QpQjn6",
+        locomocao: [],
         imagens: [
             "img/PPC_PALMEIRA SERENA_GUARITA_2026.03.03.jpg",
             "img/PPC_PALMEIRA SERENA_PISCINA_2026.03.03.jpg",
@@ -116,6 +126,7 @@ const empreendimentos = [
         regiao: "norte",
         quartos: 2,
         mapsUrl: "https://maps.app.goo.gl/RJTcLszhJKUgpqFz6",
+        locomocao: [],
         imagens: [
             "img/PALMEIRA SOLARE_PPC_FACHADA_01.09.2025.jpg",
             "img/PALMEIRA SOLARE_PPC_ACADEMIA_2025.08.08.jpg",
@@ -146,6 +157,7 @@ const empreendimentos = [
         regiao: "norte",
         quartos: 2,
         mapsUrl: "https://maps.app.goo.gl/uhxnnNcXJ5vR3UQL7",
+        locomocao: [],
         imagens: [
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
             "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
@@ -162,7 +174,45 @@ const empreendimentos = [
             { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
             { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
         ]
-    }
+    },
+
+    // ─────────────────────────────────────────
+    // EXEMPLO / PLACEHOLDER — apartamento para ALUGAR
+    // Adicionado só para o filtro "Para Alugar" + "Locomoção" ter algo
+    // para mostrar. Troque nome, bairro, imagens, descrição e os valores
+    // de `locomocao` pelos dados reais assim que tiver um imóvel de
+    // aluguel de verdade. As imagens abaixo são placeholders — se o
+    // arquivo não existir, o próprio handleImageError() já cobre o
+    // fallback visual, então nada quebra.
+    // ─────────────────────────────────────────
+  {
+    id: 6,
+    nome: "Boreal Residence",
+    status: "Para Alugar",
+    statusCode: "Alugar",
+    badgeColor: "#1e3e62",
+    bairro: "Quadra 104 Sul",
+    regiao: "sul",
+    quartos: 2,
+    mapsUrl: "",
+    locomocao: ["Transporte Público", "Vias Principais"],
+    imagens: [
+        "img/banheiro.jpg",
+        "img/corredor.jpg",
+        "img/cozinha 3.jpg",
+        "img/cozinha e area de serviço 1.jpg",
+        "img/quarto 1 (2).jpg",
+        "img/quarto 2 (2).jpg"
+    ],
+    descricao: "Apartamento para locação no Boreal Residence, com ambientes bem distribuídos, cozinha funcional, área de serviço independente e excelente localização com fácil acesso aos principais pontos da cidade.",
+    diferenciais: [
+        { icone: "fa-bed", texto: "2 quartos confortáveis" },
+        { icone: "fa-bath", texto: "Banheiro moderno" },
+        { icone: "fa-utensils", texto: "Cozinha planejada e área de serviço" },
+        { icone: "fa-house", texto: "Ambientes amplos e bem iluminados" },
+        { icone: "fa-route", texto: "Localização estratégica" }
+    ]
+}
 ];
 
 // ─────────────────────────────────────────────
@@ -473,9 +523,28 @@ function renderCards(dados) {
 // FILTROS
 // ─────────────────────────────────────────────
 function initFilters() {
-    const selStatus = document.getElementById("filter-status");
-    const selBairro = document.getElementById("filter-bairro");
-    const btnSearch = document.getElementById("btn-execute-filter");
+    const selStatus    = document.getElementById("filter-status");
+    const selBairro    = document.getElementById("filter-bairro");
+    const selLocomocao = document.getElementById("filter-locomocao");
+    const btnSearch    = document.getElementById("btn-execute-filter");
+
+    // Campo condicional + divisor ao lado dele (só existem no modo "Alugar")
+    const campoLocomocao    = document.getElementById("filter-field-locomocao");
+    const divisorLocomocao  = document.querySelector('.filter-divider-new[data-conditional="alugar"]');
+
+    // ─────────────────────────────────────
+    // Mostra/esconde "Locomoção" conforme o
+    // status selecionado. Segue o mesmo
+    // princípio dos outros filtros: reage a
+    // "change" e reseta o próprio valor
+    // quando sai do modo Alugar.
+    // ─────────────────────────────────────
+    function atualizarVisibilidadeLocomocao() {
+        const ehAluguel = selStatus?.value === "Alugar";
+        if (campoLocomocao)   campoLocomocao.hidden = !ehAluguel;
+        if (divisorLocomocao) divisorLocomocao.hidden = !ehAluguel;
+        if (!ehAluguel && selLocomocao) selLocomocao.value = "";
+    }
 
     function aplicar(scroll = false) {
         let lista = empreendimentos;
@@ -493,6 +562,13 @@ function initFilters() {
             lista = lista.filter(i => i.regiao?.toLowerCase().includes(regiao));
         }
 
+        // Locomoção só filtra de fato quando o modo Alugar está ativo
+        // (o campo fica escondido nos outros modos, então na prática
+        // selLocomocao.value só existe nesse contexto).
+        if (selStatus?.value === "Alugar" && selLocomocao?.value) {
+            lista = lista.filter(i => Array.isArray(i.locomocao) && i.locomocao.includes(selLocomocao.value));
+        }
+
         renderCards(lista);
 
         if (scroll) {
@@ -503,8 +579,18 @@ function initFilters() {
         }
     }
 
-    [selStatus, selBairro].forEach(el => el?.addEventListener("change", () => aplicar()));
+    // Status precisa atualizar a visibilidade do campo de Locomoção
+    // ANTES de reaplicar o filtro, senão o campo mostra/esconde um
+    // frame depois do resultado.
+    selStatus?.addEventListener("change", () => {
+        atualizarVisibilidadeLocomocao();
+        aplicar();
+    });
+
+    [selBairro, selLocomocao].forEach(el => el?.addEventListener("change", () => aplicar()));
     btnSearch?.addEventListener("click", (e) => { e.preventDefault(); aplicar(true); });
+
+    atualizarVisibilidadeLocomocao(); // estado inicial da página
 }
 
 // ─────────────────────────────────────────────

@@ -653,6 +653,40 @@ img {
 }
 
 /* ==========================================================================
+   FILTRO CONDICIONAL — LOCOMOÇÃO (visível apenas no modo "Para Alugar")
+   ========================================================================== */
+.filter-field-new[data-conditional="alugar"] {
+    overflow: hidden;
+    transition: var(--transition-fast), max-width 0.2s ease;
+}
+
+.filter-field-new[data-conditional="alugar"][hidden],
+.filter-divider-new[data-conditional="alugar"][hidden] {
+    display: none;
+}
+
+.filter-field-new[data-conditional="alugar"]:not([hidden]) {
+    animation: filtro-locomocao-entrada 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes filtro-locomocao-entrada {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Realça sutilmente o rótulo enquanto o campo está ativo, reforçando que é novo */
+.filter-field-new[data-conditional="alugar"] .filter-label-new i {
+    color: var(--gold-hover);
+}
+
+/* ==========================================================================
    TRUST BAR
    ========================================================================== */
 .trust-bar {
