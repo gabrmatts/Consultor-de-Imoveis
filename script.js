@@ -187,7 +187,7 @@ const empreendimentos = [
     // ─────────────────────────────────────────
   {
     id: 6,
-    nome: "Boreal Residence",
+    nome: "Palmeira Boreal",
     status: "Para Alugar",
     statusCode: "Alugar",
     badgeColor: "#1e3e62",
@@ -197,6 +197,13 @@ const empreendimentos = [
     mapsUrl: "",
     locomocao: ["Transporte Público", "Vias Principais"],
     imagens: [
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_VARANDA_20240513.jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 01_20240513 (1).jpg",
+        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 02_20240513.jpg",
         "img/banheiro.jpg",
         "img/corredor.jpg",
         "img/cozinha 3.jpg",
@@ -204,13 +211,12 @@ const empreendimentos = [
         "img/quarto 1 (2).jpg",
         "img/quarto 2 (2).jpg"
     ],
-    descricao: "Apartamento para locação no Boreal Residence, com ambientes bem distribuídos, cozinha funcional, área de serviço independente e excelente localização com fácil acesso aos principais pontos da cidade.",
+    descricao: "Apartamentos com 2 quartos, sala, cozinha e banheiro. Opções com ou sem varanda, área privativa e até 2 vagas de garagem.",
     diferenciais: [
-        { icone: "fa-bed", texto: "2 quartos confortáveis" },
-        { icone: "fa-bath", texto: "Banheiro moderno" },
-        { icone: "fa-utensils", texto: "Cozinha planejada e área de serviço" },
-        { icone: "fa-house", texto: "Ambientes amplos e bem iluminados" },
-        { icone: "fa-route", texto: "Localização estratégica" }
+            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
+            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
+            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
     ]
 }
 ];
