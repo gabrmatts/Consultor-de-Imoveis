@@ -191,15 +191,13 @@ const empreendimentos = [
     status: "Para Alugar",
     statusCode: "Alugar",
     badgeColor: "#1e3e62",
-    bairro: "Quadra 104 Sul",
-    regiao: "sul",
+    bairro: "Região Norte",
+    regiao: "norte",
     quartos: 2,
     mapsUrl: "",
-    locomocao: ["Transporte Público", "Vias Principais"],
+    locomocao: [],
     imagens: [
         "img/RESIDENCIAL PALMEIRA BOREAL_PPC_GUARITA E FACHADA_20240513 (1).jpg",
-        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_QUARTO MAIOR_20240513.jpg",
-        "img/RESIDENCIAL PALMEIRA BOREAL_PPC_SALA COZINHA_20240513.jpg",
         "img/RESIDENCIAL PALMEIRA BOREAL_PPC_VARANDA_20240513.jpg",
         "img/RESIDENCIAL PALMEIRA BOREAL_PPC_CHURRASQUEIRA PLAY_20240513.jpg",
         "img/RESIDENCIAL PALMEIRA BOREAL_PPC_PISCINA 01_20240513 (1).jpg",
@@ -211,12 +209,12 @@ const empreendimentos = [
         "img/quarto 1 (2).jpg",
         "img/quarto 2 (2).jpg"
     ],
-    descricao: "Apartamentos com 2 quartos, sala, cozinha e banheiro. Opções com ou sem varanda, área privativa e até 2 vagas de garagem.",
+    descricao: "Apartamento com 1 quarto, sala, cozinha e banheiro. Sem varanda, Sem área privativa e 1 garagem para carro.",
     diferenciais: [
-            { icone: "fa-bed",            texto: "2 quartos · sala · cozinha · banheiro" },
-            { icone: "fa-door-open",      texto: "Opções com ou sem varanda" },
-            { icone: "fa-lock",           texto: "Opções com ou sem área privativa" },
-            { icone: "fa-square-parking", texto: "Opções de garagem para carro ou moto" }
+            { icone: "fa-bed",            texto: "1 quarto · sala · cozinha · banheiro" },
+            { icone: "fa-door-open",      texto: "Sem varanda" },
+            { icone: "fa-lock",           texto: "Sem área privativa" },
+            { icone: "fa-square-parking", texto: "Garagem para 1 carro" }
     ]
 }
 ];
