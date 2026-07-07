@@ -208,9 +208,9 @@ const empreendimentos = [
         "img/quarto 1 (2).jpg",
         "img/quarto 2 (2).jpg"
     ],
-    descricao: "Apartamento com 1 quarto, sala, cozinha e banheiro. Sem varanda, Sem área privativa e 1 garagem para carro.",
+    descricao: "Apartamento com 2 quartos, sala, cozinha, banheiro e garagem para 1 carro.",
     diferenciais: [
-            { icone: "fa-bed",            texto: "1 quarto · sala · cozinha · banheiro" },
+            { icone: "fa-bed",            texto: "2 quarto · sala · cozinha · banheiro" },
             { icone: "fa-door-open",      texto: "Sem varanda" },
             { icone: "fa-lock",           texto: "Sem área privativa" },
             { icone: "fa-square-parking", texto: "Garagem para 1 carro" }
